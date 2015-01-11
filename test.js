@@ -76,6 +76,24 @@ function doTest( err, label, tests ) {
 
 
 queue.push( function() {
+
+
+queue.push( function() {
+  app(
+    {
+      entity: 'software',
+      country: 'NL',
+      term: null,
+      limit: 1,
+      price: 0
+    },
+    function( err, data ) {
+      doTest( null, 'Error: no results', [
+        ['error', err && err.message === 'no results']
+      ])
+    }
+  )
+})
   app(
     {
       entity: 'software',

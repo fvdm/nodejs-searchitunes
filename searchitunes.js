@@ -64,7 +64,12 @@ module.exports = function( params, cb ) {
 
       try {
         data = JSON.parse( data )
-        doCallback( null, data )
+
+        if( !(data.results instanceof Array) || data.results.length === 0 ) {
+          doCallback( new Error('no results') )
+        } else {
+          doCallback( null, data )
+        }
       }
       catch(e) {
         var error = new Error('invalid response')
