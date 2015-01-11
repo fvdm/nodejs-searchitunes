@@ -58,7 +58,7 @@ searchitunes(
     } else {
 
       // All good
-      console.log( app )
+      console.log( data )
 
     }
   }
