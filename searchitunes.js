@@ -4,10 +4,9 @@ Description:  Search the Apple iTunes Store and App Store.
 Author:       Franklin van de Meent (https://frankl.in)
 Source:       https://github.com/fvdm/nodejs-searchitunes
 Feedback:     https://github.com/fvdm/nodejs-searchitunes/issues
+API docs:     http://www.apple.com/itunes/affiliates/resources/documentation/itunes-store-web-service-search-api.html
 License:      Unlicense / Public Domain, see UNLICENSE file
               (https://github.com/fvdm/nodejs-searchitunes/raw/master/UNLICENSE)
-
-API docs:     http://www.apple.com/itunes/affiliates/resources/documentation/itunes-store-web-service-search-api.html
 */
 
 var http = require('http')
