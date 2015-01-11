@@ -9,9 +9,6 @@ Light node.js module to quickly search the Apple iTunes Store and App Store for 
 Installation
 ------------
 
-Installation and connecting is simple:
-
-
 Stable: `npm install searchitunes`
 
 Source: `npm install fvdm/nodejs-searchitunes`
