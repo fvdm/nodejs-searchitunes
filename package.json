@@ -2,11 +2,11 @@
   "author": {
     "name":               "Franklin van de Meent",
     "email":              "fr@nkl.in",
-    "url":                "http://frankl.in"
+    "url":                "https://frankl.in"
   },
   "name":                 "searchitunes",
-  "description":          "Light module to quickly search Apple's iTunes Store for music and apps.",
   "version":              "1.0.0",
+  "description":          "Light module to search the Apple iTunes Store and App Store",
   "repository": {
     "type":               "git",
     "url":                "git://github.com/fvdm/nodejs-searchitunes.git"
@@ -21,7 +21,7 @@
   "engines": {
     "node":               ">=0.8.0"
   },
-  "keywords":             ["itunes", "apps", "apple", "middleware", "api"],
+  "keywords":             ["itunes", "apps", "appstore", "apple", "api"],
   "license": {
     "type":               "Public Domain",
     "url":                "https://github.com/fvdm/nodejs-searchitunes/raw/master/UNLICENSE"
