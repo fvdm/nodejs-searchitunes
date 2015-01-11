@@ -6,53 +6,39 @@ Light Node.js module to quickly search Apple's iTunes Store for music and apps.
 Basically this performs a GET request to the iTunes API and validates the returned data to make sure the process doesn't die by remote failures.
 
 
-# Installation
+Installation
+------------
 
 Installation and connecting is simple:
 
 
-### From NPM
+Stable: `npm install searchitunes`
 
-```
-npm install searchitunes
-```
-
-```js
-var itunes = require('searchitunes')
-```
+Source: `npm install fvdm/nodejs-searchitunes`
 
 
-### From Github
+Usage
+-----
 
-```
-git clone https://github.com/fvdm/nodejs-searchitunes
-```
+### ( params, callback )
 
-```js
-var itunes = require('./nodejs-searchitunes')
-```
-
-
-# Usage
-
-### ( paramsObject, callback )
-
-* **paramsObject** -- object with search parameters.
-* **callback** -- function that receives results.
-
-You can find all the parameters in the API documentation: http://www.apple.com/itunes/affiliates/resources/documentation/itunes-store-web-service-search-api.html
+parameter | type     | required | description
+--------- | -------- | -------- | -----------------------------
+params    | object   | yes      | object with search parameters
+callback  | function | yes      | function to process results
 
 
-## callback
-
-**Success**: callbackFunction ( resultObject )
-
-**Faillure**: callbackFunction ( result, errorObject )
-
-**Result** is always the response body, in case of JSON the parsed object. In case of faillure **errorObject** is provided with *reason* and *headers*.
+Params: [API documentation](http://www.apple.com/itunes/affiliates/resources/documentation/itunes-store-web-service-search-api.html)
 
 
-## Example
+### Callback
+
+The `callback` function receives two parameters: `err` and `data`.
+On success `err` is _null_ and `data` is the result object.
+On error `err` is an instance of _Error_ and `data` is not set, see *Errors* below.
+
+
+### Example
 
 ```js
 var searchitunes = require('searchitunes')
@@ -67,9 +53,12 @@ searchitunes({
 }, console.log )
 ```
 
+
+#### Output
+
 ```js
 { resultCount: 1,
-  results: 
+  results:
    [ { kind: 'software',
        features: [],
        supportedDevices: [Object],
@@ -109,10 +98,10 @@ searchitunes({
        userRatingCount: 3 } ] }
 ```
 
-*(console.log goes only 3 levels deep, combined with [util.inspect](http://nodejs.org/api/util.html#util_util_inspect_object_showhidden_depth_colors) would be more useful)*
 
 
-# Unlicense
+Unlicense
+---------
 
 This is free and unencumbered software released into the public domain.
 
