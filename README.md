@@ -114,6 +114,17 @@ searchitunes(
 ```
 
 
+Errors
+------
+
+message          | description
+---------------- | --------------------------------------------
+request failed   | Request can not be made, see `err.error`
+request closed   | Request was closed too early
+invalid response | API returned unreadable data, see `err.body`
+invalid params   | Client provided no or invalid parameters
+no results       | No results received
+
 
 Unlicense
 ---------
