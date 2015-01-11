@@ -1,9 +1,7 @@
-nodejs-searchitunes
-===================
+searchitunes
+============
 
-Light Node.js module to quickly search Apple's iTunes Store for music and apps.
-
-Basically this performs a GET request to the iTunes API and validates the returned data to make sure the process doesn't die by remote failures.
+Light node.js module to quickly search the Apple iTunes Store and App Store for music, apps, etc.
 
 
 Installation
