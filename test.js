@@ -76,6 +76,12 @@ function doTest( err, label, tests ) {
 
 
 queue.push( function() {
+  app( null, function( err, data ) {
+    doTest( null, 'Error: invalid params', [
+      ['error', err && err.message === 'invalid params']
+    ])
+  })
+})
 
 
 queue.push( function() {
@@ -94,6 +100,9 @@ queue.push( function() {
     }
   )
 })
+
+
+queue.push( function() {
   app(
     {
       entity: 'software',

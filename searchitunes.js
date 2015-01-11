@@ -22,6 +22,12 @@ module.exports = function( params, cb ) {
     }
   }
 
+  // check input
+  if( !params || !(params instanceof Object) ) {
+    doCallback( new Error('invalid params') )
+    return
+  }
+
   // build request
   params.version = params.version || 2
 
