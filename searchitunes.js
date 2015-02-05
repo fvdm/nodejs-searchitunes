@@ -94,4 +94,4 @@ module.exports = function (params, cb) {
 
   // run it
   request.end ();
-}
+};
