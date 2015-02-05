@@ -38,10 +38,10 @@ On error `err` is an instance of _Error_ and `data` is not set, see *Errors* bel
 ### Example
 
 ```js
-var searchitunes = require('searchitunes')
+var searchitunes = require ('searchitunes');
 
 // Find free Github app for iPhone in Dutch App Store
-searchitunes(
+searchitunes (
   {
     entity: 'software',
     country: 'NL',
@@ -49,20 +49,20 @@ searchitunes(
     limit: 1,
     price: 0
   },
-  function( err, data ) {
-    if( err ) {
+  function (err, data) {
+    if (err) {
 
       // Error
-      console.log( 'Search failed: '+ err.message )
+      console.log ('Search failed: %s', err.message);
 
     } else {
 
       // All good
-      console.log( data )
+      console.log (data);
 
     }
   }
-)
+);
 ```
 
 
