@@ -6,7 +6,7 @@
   },
   "name":                 "searchitunes",
   "description":          "Light module to search the Apple iTunes Store and App Store",
-  "version":              "2.0.0",
+  "version":              "2.0.1",
   "repository": {
     "type":               "git",
     "url":                "git://github.com/fvdm/nodejs-searchitunes.git"
