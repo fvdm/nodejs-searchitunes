@@ -13,9 +13,9 @@ var app = require ('./');
 
 
 // handle exits
-var errors = 0
+var errors = 0;
 process.on ('exit', function () {
-  if (errors == 0) {
+  if (errors === 0) {
     console.log ('\n\033[1mDONE, no errors.\033[0m\n');
     process.exit (0);
   } else {
@@ -64,7 +64,7 @@ function doTest (err, label, tests) {
       }
     });
 
-    if (testErrors.length == 0) {
+    if (testErrors.length === 0) {
       console.log (label +': \033[1m\033[32mok\033[0m');
     } else {
       console.error (label +': \033[1m\033[31mfailed\033[0m ('+ testErrors.join (', ') +')');
@@ -76,7 +76,7 @@ function doTest (err, label, tests) {
 
 
 queue.push (function () {
-  app (null, function (err, data) {
+  app (null, function (err) {
     doTest (null, 'Error: invalid params', [
       ['error', err && err.message === 'invalid params']
     ]);
@@ -93,7 +93,7 @@ queue.push (function () {
       limit: 1,
       price: 0
     },
-    function (err, data) {
+    function (err) {
       doTest (null, 'Error: no results', [
         ['error', err && err.message === 'no results']
       ]);
