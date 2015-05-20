@@ -22,10 +22,7 @@
     "node":               ">=0.8.0"
   },
   "keywords":             ["itunes", "apps", "music", "appstore", "apple", "api"],
-  "license": {
-    "type":               "Public Domain",
-    "url":                "https://github.com/fvdm/nodejs-searchitunes/raw/master/UNLICENSE"
-  },
+  "license":              "Unlicense",
   "scripts": {
     "test":               "node test.js"
   }
