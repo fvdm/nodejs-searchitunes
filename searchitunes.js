@@ -11,7 +11,12 @@ License:      Unlicense / Public Domain, see UNLICENSE file
 
 var http = require ('httpreq');
 
-module.exports = function (params, callback) {
+module.exports = function (params, timeout, callback) {
+  if (typeof timeout === 'function') {
+    callback = timeout;
+    timeout = 5000;
+  }
+
   if (!params || !(params instanceof Object)) {
     return callback (new Error ('invalid params'));
   }
@@ -22,6 +27,7 @@ module.exports = function (params, callback) {
     'https://itunes.apple.com/WebObjects/MZStoreServices.woa/ws/wsSearch',
     {
       parameters: params,
+      timeout: timeout,
       headers: {
         'Accept': 'application/json',
         'User-Agent': 'searchitunes.js'
