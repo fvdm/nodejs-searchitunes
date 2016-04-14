@@ -6,125 +6,71 @@ Feedback:     https://github.com/fvdm/nodejs-openkvk/issues
 License:      Public Domain / Unlicense (see LICENSE file)
 */
 
-var util = require ('util');
-
-// Setup
+var dotest = require ('dotest');
 var app = require ('./');
 
+// Setup
 
-// handle exits
-var errors = 0;
-process.on ('exit', function () {
-  if (errors === 0) {
-    console.log ('\n\033[1mDONE, no errors.\033[0m\n');
-    process.exit (0);
-  } else {
-    console.log ('\n\033[1mFAIL, '+ errors +' error'+ (errors > 1 ? 's' : '') +' occurred!\033[0m\n');
-    process.exit (1);
-  }
+
+// Tests
+dotest.add ('Module', function (test) {
+  test ()
+    .isFunction ('fail', 'exports', app)
+    .done ();
 });
 
-// prevent errors from killing the process
-process.on ('uncaughtException', function (err) {
-  console.log ();
-  console.error (err.stack);
-  console.trace ();
-  console.log ();
-  errors++;
-});
 
-// Queue to prevent flooding
-var queue = [];
-var next = 0;
-
-function doNext () {
-  next++;
-  if (queue[next]) {
-    queue[next] ();
-  }
-}
-
-// doTest( passErr, 'methods', [
-//   ['feeds', typeof feeds === 'object']
-// ])
-function doTest (err, label, tests) {
-  if (err instanceof Error) {
-    console.error (label +': \033[1m\033[31mERROR\033[0m\n');
-    console.error (util.inspect (err, {depth: 10, colors: true}));
-    console.log ();
-    console.error (err.stack);
-    console.log ();
-    errors++;
-  } else {
-    var testErrors = [];
-    tests.forEach (function (test) {
-      if (test[1] !== true) {
-        testErrors.push (test[0]);
-        errors++;
-      }
-    });
-
-    if (testErrors.length === 0) {
-      console.log (label +': \033[1m\033[32mok\033[0m');
-    } else {
-      console.error (label +': \033[1m\033[31mfailed\033[0m ('+ testErrors.join (', ') +')');
-    }
-  }
-
-  doNext ();
-}
-
-
-queue.push (function () {
+dotest.add ('Error: invalid params', function (test) {
   app (null, function (err) {
-    doTest (null, 'Error: invalid params', [
-      ['error', err && err.message === 'invalid params']
-    ]);
+    test ()
+      .isError ('fail', 'err', err)
+      .isExactly ('fail', 'err.message', err && err.message, 'invalid params')
+      .done ();
   });
 });
 
 
-queue.push (function () {
-  app (
-    {
-      entity: 'software',
-      country: 'NL',
-      term: null,
-      limit: 1,
-      price: 0
-    },
-    function (err) {
-      doTest (null, 'Error: no results', [
-        ['error', err && err.message === 'no results']
-      ]);
-    }
-  );
+dotest.add ('Error: no results', function (test) {
+  var params = {
+    entity: 'software',
+    country: 'NL',
+    term: null,
+    limit: 1,
+    price: 0
+  };
+
+  app (params, timeout, function (err) {
+    test ()
+      .isError ('fail', 'err', err)
+      .isExactly ('fail', 'err.message', err && err.message, 'no results')
+      .done ();
+  });
 });
 
 
-queue.push (function () {
-  app (
-    {
-      entity: 'software',
-      country: 'NL',
-      term: 'github',
-      limit: 1,
-      price: 0
-    },
-    function (err, data) {
-      doTest (err, 'search', [
-        ['data type', data && data instanceof Object],
-        ['resultCount', data && data.resultCount && data.resultCount === 1],
-        ['results type', data && data.results && data.results instanceof Array],
-        ['results length', data && data.results && data.results instanceof Array && data.results.length === 1],
-        ['item type', data && data.results && data.results[0] && data.results[0] instanceof Object],
-        ['item kind', data && data.results && data.results[0] && data.results[0].kind === 'software']
-      ]);
-    }
-  );
+dotest.add ('Search', function (test) {
+  var params = {
+    entity: 'software',
+    country: 'NL',
+    term: 'github',
+    limit: 1,
+    price: 0
+  };
+
+  app (params, timeout, function (err, data) {
+    var item = data && data.results && data.results [0];
+
+    test (err)
+      .isObject ('fail', 'data', data)
+      .isExactly ('fail', 'data.resultCount', data && data.resultCount, 1)
+      .isArray ('fail', 'data.results', data && data.results)
+      .isNotEmpty ('fail', 'data.results', data && data.results)
+      .isObject ('fail', 'data.results[0]', item)
+      .isExactly ('fail', 'data.results[0].kind', item && item.kind, 'software')
+      .done ();
+  });
 });
 
 
 // Start the tests
-console.log ('Running tests...\n');
-queue[0] ();
+dotest.run ();
