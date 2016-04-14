@@ -19,7 +19,7 @@ module.exports = function (params, callback) {
   params.version = params.version || 2;
 
   http.get (
-    'http://itunes.apple.com/WebObjects/MZStoreServices.woa/ws/wsSearch',
+    'https://itunes.apple.com/WebObjects/MZStoreServices.woa/ws/wsSearch',
     {
       parameters: params,
       headers: {
