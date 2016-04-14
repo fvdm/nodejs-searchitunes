@@ -18,7 +18,8 @@ module.exports = function (params, timeout, callback) {
   }
 
   if (!params || !(params instanceof Object)) {
-    return callback (new Error ('invalid params'));
+    callback (new Error ('invalid params'));
+    return;
   }
 
   params.version = params.version || 2;
@@ -34,22 +35,28 @@ module.exports = function (params, timeout, callback) {
       }
     },
     function (err, res) {
+      var error = null;
+      var data;
+
       if (err) {
-        var error = new Error ('http error');
+        error = new Error ('http error');
         error.code = res.statusCode;
         error.body = res.body;
-        return callback (error);
+        callback (error);
+        return;
       }
 
       try {
         data = JSON.parse (res.body);
-        if (!(data.results instanceof Array) || data.results.length === 0) {
-          return callback (new Error ('no results'));
+
+        if (!(data.results instanceof Array) || !data.results.length) {
+          callback (new Error ('no results'));
+          return;
         }
-        return callback (null, data);
-      }
-      catch (e) {
-        var error = new Error ('invalid response');
+
+        callback (null, data);
+      } catch (e) {
+        error = new Error ('invalid response');
         error.error = e;
         callback (error);
       }
