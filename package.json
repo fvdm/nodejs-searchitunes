@@ -1,31 +1,40 @@
 {
   "author": {
-    "name":               "Franklin van de Meent",
-    "email":              "fr@nkl.in",
-    "url":                "https://frankl.in"
+    "name": "Franklin van de Meent",
+    "email": "fr@nkl.in",
+    "url": "https://frankl.in"
   },
-  "name":                 "searchitunes",
-  "description":          "Search the Apple iTunes Store and App Store with this lightweight module",
-  "version":              "2.1.1",
+  "name": "searchitunes",
+  "description": "Search the Apple iTunes Store and App Store with this lightweight module",
+  "version": "2.1.1",
   "repository": {
-    "type":               "git",
-    "url":                "git://github.com/fvdm/nodejs-searchitunes.git"
+    "type": "git",
+    "url": "git://github.com/fvdm/nodejs-searchitunes.git"
   },
   "bugs": {
-    "url":                "https://github.com/fvdm/nodejs-searchitunes/issues"
+    "url": "https://github.com/fvdm/nodejs-searchitunes/issues"
   },
-  "main":                 "searchitunes.js",
+  "main": "searchitunes.js",
   "dependencies": {
-    "httpreq":            "0.4.x"
+    "httpreq": "^0.4.16"
   },
-  "devDependencies":      {},
-  "optionalDependencies": {},
+  "devDependencies": {
+    "dotest": "^1.7.0",
+    "eslint": "^2.7.0"
+  },
   "engines": {
-    "node":               ">=0.8.0"
+    "node": ">=0.12.0"
   },
-  "keywords":             ["itunes", "apps", "music", "appstore", "apple", "api"],
-  "license":              "Unlicense",
+  "keywords": [
+    "itunes",
+    "apps",
+    "music",
+    "appstore",
+    "apple",
+    "api"
+  ],
+  "license": "Unlicense",
   "scripts": {
-    "test":               "node test.js"
+    "test": "st=0; eslint . || st=1; node test.js || st=1; exit $st"
   }
 }
