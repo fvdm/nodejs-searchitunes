@@ -25,6 +25,7 @@ callback  | function | yes      |         | [Callback](#callback) function to pr
 
 
 * Parameters: [API documentation](http://www.apple.com/itunes/affiliates/resources/documentation/itunes-store-web-service-search-api.html)
+* Live demo: [Tonic](https://tonicdev.com/npm/searchitunes)
 
 
 #### Callback
