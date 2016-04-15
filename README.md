@@ -69,88 +69,76 @@ searchitunes (
 #### Output
 
 ```js
-{
-  resultCount: 1,
-  results: [
-    {
-      kind: 'software',
-      features: [
-        'iosUniversal'
-      ],
-      supportedDevices: [
-        'iPad23G',
-        'iPhone5',
-        'iPadMini4G',
-        'iPhone5s',
-        'iPad2Wifi',
-        'iPadFourthGen4G',
-        'iPadThirdGen4G',
-        'iPhone4S',
-        'iPadFourthGen',
-        'iPodTouchFifthGen',
-        'iPadThirdGen',
-        'iPhone4',
-        'iPhone5c',
-        'iPadMini'
-      ],
-      advisories: [],
-      isGameCenterEnabled: false,
-      screenshotUrls: [
-        'http://a5.mzstatic.com/eu/r30/Purple/v4/89/22/af/8922afb3-2977-112d-9a6c-517195e90923/screen1136x1136.jpeg',
-        'http://a5.mzstatic.com/eu/r30/Purple6/v4/72/e2/ef/72e2efff-81fe-2072-2e79-159ab412f39a/screen1136x1136.jpeg',
-        'http://a4.mzstatic.com/eu/r30/Purple/v4/e2/9a/69/e29a69d2-7fbe-e4bb-0b96-656789a0fcd8/screen1136x1136.jpeg',
-        'http://a2.mzstatic.com/eu/r30/Purple6/v4/a2/ec/f2/a2ecf2b9-8880-55ea-e51f-77a14a4b1e38/screen1136x1136.jpeg',
-        'http://a1.mzstatic.com/eu/r30/Purple/v4/3b/70/e4/3b70e426-3d06-cca4-388c-23ca0754c878/screen1136x1136.jpeg'
-      ],
-      ipadScreenshotUrls: [
-        'http://a1.mzstatic.com/eu/r30/Purple4/v4/34/49/b4/3449b49d-9159-aa13-bd7f-650d5d61fae7/screen480x480.jpeg',
-        'http://a3.mzstatic.com/eu/r30/Purple6/v4/48/9f/76/489f7624-6748-a7f9-33f7-4989b1ea9be8/screen480x480.jpeg',
-        'http://a3.mzstatic.com/eu/r30/Purple6/v4/b4/6d/50/b46d5066-4bf0-b74a-ee56-23a2901f49e2/screen480x480.jpeg',
-        'http://a2.mzstatic.com/eu/r30/Purple/v4/4b/76/78/4b7678b7-93bf-dd9e-22bc-7992a7c30ebd/screen480x480.jpeg',
-        'http://a3.mzstatic.com/eu/r30/Purple4/v4/95/79/61/95796168-cad7-322f-cb42-a189997084cb/screen480x480.jpeg'
-      ],
-      artworkUrl60: 'http://a1453.phobos.apple.com/us/r30/Purple2/v4/7c/f3/10/7cf31092-9315-6d88-8a8f-f7654fc3c477/Icon.png',
-      artworkUrl512: 'http://a1363.phobos.apple.com/us/r30/Purple4/v4/47/96/97/479697ad-2032-3cb6-af4c-1ed00afe6848/mzl.sdsxxvxi.png',
-      artistViewUrl: 'https://itunes.apple.com/nl/artist/dillon-buchanan/id551531425?uo=4',
-      artistId: 551531425,
-      artistName: 'Dillon Buchanan',
-      price: 0,
-      version: '2.3.3',
-      description: '...',
-      currency: 'EUR',
-      genres: [
-        'Productiviteit', 'Sociaal netwerken'
-      ],
-      genreIds: [
-        '6007', '6005'
-      ],
-      releaseDate: '2013-10-01T01:00:56Z',
-      sellerName: 'Dillon Buchanan',
-      bundleId: 'com.dillonbuchanan.codehub',
-      trackId: 707173885,
-      trackName: 'CodeHub - GitHub for iOS',
-      primaryGenreName: 'Productivity',
-      primaryGenreId: 6007,
-      releaseNotes: '...',
-      minimumOsVersion: '7.0',
-      wrapperType: 'software',
-      formattedPrice: 'Gratis',
-      trackCensoredName: 'CodeHub - GitHub for iOS',
-      languageCodesISO2A: [
-        'EN'
-      ],
-      fileSizeBytes: '20558576',
-      contentAdvisoryRating: '4+',
-      averageUserRatingForCurrentVersion: 5,
-      userRatingCountForCurrentVersion: 3,
-      artworkUrl100: 'http://a1363.phobos.apple.com/us/r30/Purple4/v4/47/96/97/479697ad-2032-3cb6-af4c-1ed00afe6848/mzl.sdsxxvxi.png',
-      trackViewUrl: 'https://itunes.apple.com/nl/app/codehub-github-for-ios/id707173885?mt=8&uo=4',
-      trackContentRating: '4+',
-      averageUserRating: 4.5,
-      userRatingCount: 13
-    }
-  ]
-}
+{ resultCount: 1,
+  results: 
+   [ { screenshotUrls: 
+        [ 'http://a4.mzstatic.com/eu/r30/Purple69/v4/8e/b6/b1/8eb6b18c-1703-3fe9-1311-9a891a851f2b/screen1136x1136.jpeg',
+          'http://a5.mzstatic.com/eu/r30/Purple69/v4/8c/9c/df/8c9cdf9a-36ec-9b81-63af-68be202691d3/screen1136x1136.jpeg',
+          'http://a3.mzstatic.com/eu/r30/Purple69/v4/9b/f7/6f/9bf76f76-05d8-80b0-4b9f-6dbb365a782a/screen1136x1136.jpeg',
+          'http://a1.mzstatic.com/eu/r30/Purple69/v4/3d/81/77/3d8177a8-2653-7cbb-e04c-d45942ca980e/screen1136x1136.jpeg',
+          'http://a4.mzstatic.com/eu/r30/Purple49/v4/b8/4d/24/b84d24c8-3647-9df3-2244-ea0ddea32bc6/screen1136x1136.jpeg' ],
+       ipadScreenshotUrls: 
+        [ 'http://a1.mzstatic.com/eu/r30/Purple69/v4/f6/44/ee/f644ee69-53ed-65dd-85f0-24cf31f7daa1/screen480x480.jpeg',
+          'http://a5.mzstatic.com/eu/r30/Purple69/v4/56/94/d3/5694d376-cea1-ab3f-51b4-f771c73c9bce/screen480x480.jpeg',
+          'http://a3.mzstatic.com/eu/r30/Purple69/v4/2e/19/1d/2e191d6d-c571-360a-5d7c-a5a3e636af39/screen480x480.jpeg',
+          'http://a4.mzstatic.com/eu/r30/Purple69/v4/aa/ec/91/aaec918e-4e32-f90e-dc18-9d183a636925/screen480x480.jpeg',
+          'http://a4.mzstatic.com/eu/r30/Purple69/v4/6e/0d/30/6e0d30fc-aaa8-f3f4-0fd7-42f92b876e96/screen480x480.jpeg' ],
+       appletvScreenshotUrls: [],
+       artworkUrl60: 'http://is3.mzstatic.com/image/thumb/Purple49/v4/e9/84/67/e98467b8-388e-33fc-5ddd-70c1bf0e01ea/source/60x60bb.jpg',
+       artworkUrl512: 'http://is3.mzstatic.com/image/thumb/Purple49/v4/e9/84/67/e98467b8-388e-33fc-5ddd-70c1bf0e01ea/source/512x512bb.jpg',
+       artworkUrl100: 'http://is3.mzstatic.com/image/thumb/Purple49/v4/e9/84/67/e98467b8-388e-33fc-5ddd-70c1bf0e01ea/source/100x100bb.jpg',
+       artistViewUrl: 'https://itunes.apple.com/nl/developer/dillon-buchanan/id551531425?uo=4',
+       kind: 'software',
+       features: [ 'iosUniversal' ],
+       supportedDevices: 
+        [ 'iPad2Wifi',
+          'iPad23G',
+          'iPhone4S',
+          'iPadThirdGen',
+          'iPadThirdGen4G',
+          'iPhone5',
+          'iPodTouchFifthGen',
+          'iPadFourthGen',
+          'iPadFourthGen4G',
+          'iPadMini',
+          'iPadMini4G',
+          'iPhone5c',
+          'iPhone5s',
+          'iPhone6',
+          'iPhone6Plus',
+          'iPodTouchSixthGen' ],
+       advisories: [],
+       isGameCenterEnabled: false,
+       trackCensoredName: 'CodeHub - A Client for GitHub',
+       languageCodesISO2A: [ 'EN' ],
+       fileSizeBytes: '42504655',
+       sellerUrl: 'http://codehub-app.com',
+       contentAdvisoryRating: '4+',
+       trackViewUrl: 'https://itunes.apple.com/nl/app/codehub-a-client-for-github/id707173885?mt=8&uo=4',
+       trackContentRating: '4+',
+       currency: 'EUR',
+       wrapperType: 'software',
+       version: '2.9.1',
+       description: 'CodeHub is the best way to browse and maintain your GitHub repositories on any iPhone, iPod Touch, and iPad device! Keep an eye on your projects with the ability to view everything from pull requests to commenting on individual file diffs in the latest changeset. CodeHub brings GitHub to your finger tips in a sleek and efficient design. \n\nFeatures include: \n\n- GitHub.com and GitHub Enterprise support\n- Multiple GitHub profiles for easy switching \n- View repository events, issues, and change sets, pull requests, etc..\n- Browse source directories & files with beautiful syntax highlighting\n- Edit files and commit them!\n- View file diffs from checkins and pull requests\n- Update, comment and manage repository issues\n- Upload images directly from your devices to comments/issues.\n- Explore other GitHub open source repositories \n- Inline commit commenting\n- Access your public, private, and starred gists\n- Slide out menu for quick and efficient navigation\n- Much much more! \n\nFollow the project on twitter: @CodeHubApp\n\nPlease note: CodeHub is not affiliated with GitHub in any way. CodeHub is a third-party GitHub client.',
+       artistId: 551531425,
+       artistName: 'Dillon Buchanan',
+       genres: [ 'Productiviteit', 'Sociaal netwerken' ],
+       price: 0,
+       trackName: 'CodeHub - A Client for GitHub',
+       trackId: 707173885,
+       bundleId: 'com.dillonbuchanan.codehub',
+       primaryGenreName: 'Productivity',
+       releaseDate: '2013-10-01T01:00:56Z',
+       isVppDeviceBasedLicensingEnabled: false,
+       currentVersionReleaseDate: '2016-04-14T13:40:02Z',
+       releaseNotes: '- Bug fixes',
+       sellerName: 'Dillon Buchanan',
+       minimumOsVersion: '9.0',
+       primaryGenreId: 6007,
+       formattedPrice: 'Gratis',
+       genreIds: [ '6007', '6005' ],
+       averageUserRating: 4.5,
+       userRatingCount: 19 } ] }
 ```
 
 
