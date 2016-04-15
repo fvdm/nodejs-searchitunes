@@ -9,9 +9,7 @@ Light node.js module to quickly search the Apple iTunes Store and App Store for 
 Installation
 ------------
 
-Stable: `npm install searchitunes`
-
-Source: `npm install fvdm/nodejs-searchitunes`
+`npm install searchitunes`
 
 
 Usage
@@ -19,23 +17,23 @@ Usage
 
 ### ( params, callback )
 
-parameter | type     | required | description
---------- | -------- | -------- | -----------------------------
-params    | object   | yes      | object with search parameters
-callback  | function | yes      | function to process results
+argument  | type     | required | default | description
+:---------|:---------|:---------|:--------|:------------------------------
+params    | object   | yes      |         | Search parameters
+callback  | function | yes      |         | [Callback](#callback) function to process results
 
 
-Params: [API documentation](http://www.apple.com/itunes/affiliates/resources/documentation/itunes-store-web-service-search-api.html)
+* Parameters: [API documentation](http://www.apple.com/itunes/affiliates/resources/documentation/itunes-store-web-service-search-api.html)
 
 
-### Callback
+#### Callback
 
 The `callback` function receives two parameters: `err` and `data`.
 On success `err` is _null_ and `data` is the result object.
-On error `err` is an instance of _Error_ and `data` is not set, see *Errors* below.
+On error `err` is an instance of _Error_ and `data` is not set, see [Errors](#errors) below.
 
 
-### Example
+#### Example
 
 ```js
 var searchitunes = require ('searchitunes');
@@ -158,9 +156,8 @@ Errors
 ------
 
 message          | description
----------------- | --------------------------------------------
-request failed   | Request can not be made, see `err.error`
-request closed   | Request was closed too early
+:----------------|:--------------------------------------------
+http error       | API communication failed
 invalid response | API returned unreadable data, see `err.body`
 invalid params   | Client provided no or invalid parameters
 no results       | No results received
