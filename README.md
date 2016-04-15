@@ -15,11 +15,12 @@ Installation
 Usage
 -----
 
-### ( params, callback )
+### ( params, [timeout], callback )
 
 argument  | type     | required | default | description
 :---------|:---------|:---------|:--------|:------------------------------
 params    | object   | yes      |         | Search parameters
+timeout   | number   | no       | 5000    | Wait time out in ms
 callback  | function | yes      |         | [Callback](#callback) function to process results
 
 
