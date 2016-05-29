@@ -3,6 +3,7 @@ searchitunes
 
 Light node.js module to quickly search the Apple iTunes Store and App Store for music, apps, etc.
 
+[![npm](https://img.shields.io/npm/v/searchitunes.svg?maxAge=3600)](https://github.com/fvdm/nodejs-searchitunes/blob/master/CHANGELOG.md)
 [![Build Status](https://travis-ci.org/fvdm/nodejs-searchitunes.svg?branch=master)](https://travis-ci.org/fvdm/nodejs-searchitunes)
 
 
