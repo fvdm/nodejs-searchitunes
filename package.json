@@ -1,12 +1,12 @@
 {
   "author": {
-    "name": "Franklin van de Meent",
+    "name": "pavelapps",
     "changer": "pavelapps@gmail.com",
     "url": "fruktorum.com"
   },
-  "name": "searchitunes",
-  "description": "Search the Apple iTunes Store and App Store with this lightweight module",
-  "version": "2.2.1",
+  "name": "searchitunes-fruktorum",
+  "description": "Search the Apple iTunes Store and App Store with this lightweight module. Based on https://www.npmjs.com/package/searchitunes",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "git://github.com/pavelapps/nodejs-searchitunes.git"
@@ -15,20 +15,16 @@
   "dependencies": {
     "httpreq": "^0.4.16"
   },
-  "devDependencies": {
-    "dotest": "^1.7.0",
-    "eslint": "^2.7.0"
-  },
-  "engines": {
-    "node": ">=0.12.0"
-  },
   "keywords": [
     "itunes",
     "apps",
     "music",
     "appstore",
     "apple",
-    "api"
+    "api",
+    "search",
+    "find",
+    "id"
   ],
   "license": "Unlicense",
   "tonicExampleFilename": "example.js",
