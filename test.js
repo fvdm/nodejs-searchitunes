@@ -10,7 +10,7 @@ var dotest = require ('dotest');
 var app = require ('./');
 
 // Setup
-var timeout = process.env.testTimeout || 5000;
+var timeout = process.env.testTimeout || null;
 
 
 // Tests
