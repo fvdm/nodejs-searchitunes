@@ -26,12 +26,17 @@
     "node": ">=0.12.0"
   },
   "keywords": [
-    "itunes",
-    "apps",
-    "music",
-    "appstore",
+    "api",
     "apple",
-    "api"
+    "apps",
+    "appstore",
+    "id",
+    "itunes",
+    "lookup",
+    "music",
+    "search",
+    "term",
+    "terms"
   ],
   "license": "Unlicense",
   "tonicExampleFilename": "example.js",
