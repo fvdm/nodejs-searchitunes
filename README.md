@@ -43,28 +43,24 @@ On error `err` is an instance of _Error_ and `data` is not set, see [Errors](#er
 ```js
 var searchitunes = require ('searchitunes');
 
+var searchParams = {
+  entity: 'software',
+  country: 'NL',
+  term: 'github',
+  limit: 1,
+  price: 0
+};
+  
+
 // Find free Github app for iPhone in Dutch App Store
-searchitunes (
-  {
-    entity: 'software',
-    country: 'NL',
-    term: 'github',
-    limit: 1,
-    price: 0
-  },
-  function (err, data) {
-    if (err) {
-
-      // Error
-      console.log ('Search failed: %s', err.message);
-
-    } else {
-
-      // All good
-      console.log (data);
-
-    }
+searchitunes (searchParams, function (err, data) {
+  if (err) {
+    console.log (err);
+    return;
   }
+
+  // All good
+  console.log (data);
 );
 ```
 
