@@ -49,6 +49,18 @@ dotest.add ('Error: no results', function (test) {
 });
 
 
+dotest.add ('Error: http error', function (test) {
+  app ({}, 1, function (err, data) {
+    test (null)
+      .isError ('fail', 'err', err)
+      .isExactly ('fail', 'err.message', err && err.message, 'http error')
+      .isUndefined ('fail', 'err.statusCode', err && err.statusCode)
+      .isUndefined ('fail', 'data', data)
+      .done ();
+  });
+});
+
+
 dotest.add ('Search by ID', function (test) {
   var params = {
     id: 512939461
