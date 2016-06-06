@@ -62,7 +62,7 @@ function httpResponse (err, res, callback, firstResult) {
 
   if (err) {
     error = new Error ('http error');
-    error.code = res.statusCode;
+    error.code = res && res.statusCode;
     error.body = data;
     callback (error);
     return;
