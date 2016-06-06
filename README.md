@@ -1,11 +1,7 @@
 searchitunes
 ============
 
-Light node.js module to quickly search the Apple iTunes Store and App Store for music, apps, etc.
-
-[![npm](https://img.shields.io/npm/v/searchitunes.svg?maxAge=3600)](https://github.com/fvdm/nodejs-searchitunes/blob/master/CHANGELOG.md)
-[![Build Status](https://travis-ci.org/fvdm/nodejs-searchitunes.svg?branch=master)](https://travis-ci.org/fvdm/nodejs-searchitunes)
-[![Dependency Status](https://gemnasium.com/badges/github.com/fvdm/nodejs-searchitunes.svg)](https://gemnasium.com/github.com/fvdm/nodejs-searchitunes#runtime-dependencies)
+Light node.js module to quickly search the Apple iTunes Store and App Store for music, apps, etc. with added searching functionality by app store id.
 
 
 Installation
@@ -37,112 +33,162 @@ On success `err` is _null_ and `data` is the result object.
 On error `err` is an instance of _Error_ and `data` is not set, see [Errors](#errors) below.
 
 
-#### Example
+#### Example 1
 
 ```js
-var searchitunes = require ('searchitunes');
+var itunes = require ('searchitunes');
 
-// Find free Github app for iPhone in Dutch App Store
-searchitunes (
-  {
-    entity: 'software',
-    country: 'NL',
-    term: 'github',
-    limit: 1,
-    price: 0
-  },
-  function (err, data) {
-    if (err) {
-
-      // Error
-      console.log ('Search failed: %s', err.message);
-
-    } else {
-
-      // All good
-      console.log (data);
-
+// Find free Panda app for iPhone in Dutch App Store
+itunes.searchByTerm (
+    {
+        entity: 'software',
+        country: 'NL',
+        term: 'Subway',
+        limit: 1,
+        price: 0
+    },
+    function (err, data) {
+        if (err) {
+            // Error
+            console.log ('Search failed: %s', err.message);
+        } else {
+            // All good
+            console.log (data);
+        }
     }
-  }
 );
 ```
 
+#### Example 2
+
+```js
+var itunes = require ('searchitunes');
+
+// Find free app for iPhone in Dutch App Store by id from URL https://itunes.apple.com/nl/app/subway-surfers/id51293946
+itunes.searchById(
+    {
+        entity: 'software',
+        country: 'NL',
+        id: '51293946',
+        limit: 1,
+        price: 0
+    },
+    function (err, data) {
+        if (err) {
+            // Error
+            console.log ('Search failed: %s', err.message);
+        } else {
+            // All good
+            console.log (data);
+        }
+    }
+);
+```
 
 #### Output
 
 ```js
-{ resultCount: 1,
-  results: 
-   [ { screenshotUrls: 
-        [ 'http://a4.mzstatic.com/eu/r30/Purple69/v4/8e/b6/b1/8eb6b18c-1703-3fe9-1311-9a891a851f2b/screen1136x1136.jpeg',
-          'http://a5.mzstatic.com/eu/r30/Purple69/v4/8c/9c/df/8c9cdf9a-36ec-9b81-63af-68be202691d3/screen1136x1136.jpeg',
-          'http://a3.mzstatic.com/eu/r30/Purple69/v4/9b/f7/6f/9bf76f76-05d8-80b0-4b9f-6dbb365a782a/screen1136x1136.jpeg',
-          'http://a1.mzstatic.com/eu/r30/Purple69/v4/3d/81/77/3d8177a8-2653-7cbb-e04c-d45942ca980e/screen1136x1136.jpeg',
-          'http://a4.mzstatic.com/eu/r30/Purple49/v4/b8/4d/24/b84d24c8-3647-9df3-2244-ea0ddea32bc6/screen1136x1136.jpeg' ],
-       ipadScreenshotUrls: 
-        [ 'http://a1.mzstatic.com/eu/r30/Purple69/v4/f6/44/ee/f644ee69-53ed-65dd-85f0-24cf31f7daa1/screen480x480.jpeg',
-          'http://a5.mzstatic.com/eu/r30/Purple69/v4/56/94/d3/5694d376-cea1-ab3f-51b4-f771c73c9bce/screen480x480.jpeg',
-          'http://a3.mzstatic.com/eu/r30/Purple69/v4/2e/19/1d/2e191d6d-c571-360a-5d7c-a5a3e636af39/screen480x480.jpeg',
-          'http://a4.mzstatic.com/eu/r30/Purple69/v4/aa/ec/91/aaec918e-4e32-f90e-dc18-9d183a636925/screen480x480.jpeg',
-          'http://a4.mzstatic.com/eu/r30/Purple69/v4/6e/0d/30/6e0d30fc-aaa8-f3f4-0fd7-42f92b876e96/screen480x480.jpeg' ],
-       appletvScreenshotUrls: [],
-       artworkUrl60: 'http://is3.mzstatic.com/image/thumb/Purple49/v4/e9/84/67/e98467b8-388e-33fc-5ddd-70c1bf0e01ea/source/60x60bb.jpg',
-       artworkUrl512: 'http://is3.mzstatic.com/image/thumb/Purple49/v4/e9/84/67/e98467b8-388e-33fc-5ddd-70c1bf0e01ea/source/512x512bb.jpg',
-       artworkUrl100: 'http://is3.mzstatic.com/image/thumb/Purple49/v4/e9/84/67/e98467b8-388e-33fc-5ddd-70c1bf0e01ea/source/100x100bb.jpg',
-       artistViewUrl: 'https://itunes.apple.com/nl/developer/dillon-buchanan/id551531425?uo=4',
-       kind: 'software',
-       features: [ 'iosUniversal' ],
-       supportedDevices: 
-        [ 'iPad2Wifi',
-          'iPad23G',
-          'iPhone4S',
-          'iPadThirdGen',
-          'iPadThirdGen4G',
-          'iPhone5',
-          'iPodTouchFifthGen',
-          'iPadFourthGen',
-          'iPadFourthGen4G',
-          'iPadMini',
-          'iPadMini4G',
-          'iPhone5c',
-          'iPhone5s',
-          'iPhone6',
-          'iPhone6Plus',
-          'iPodTouchSixthGen' ],
-       advisories: [],
-       isGameCenterEnabled: false,
-       trackCensoredName: 'CodeHub - A Client for GitHub',
-       languageCodesISO2A: [ 'EN' ],
-       fileSizeBytes: '42504655',
-       sellerUrl: 'http://codehub-app.com',
-       contentAdvisoryRating: '4+',
-       trackViewUrl: 'https://itunes.apple.com/nl/app/codehub-a-client-for-github/id707173885?mt=8&uo=4',
-       trackContentRating: '4+',
-       currency: 'EUR',
-       wrapperType: 'software',
-       version: '2.9.1',
-       description: 'CodeHub is the best way to browse and maintain your GitHub repositories on any iPhone, iPod Touch, and iPad device! Keep an eye on your projects with the ability to view everything from pull requests to commenting on individual file diffs in the latest changeset. CodeHub brings GitHub to your finger tips in a sleek and efficient design. \n\nFeatures include: \n\n- GitHub.com and GitHub Enterprise support\n- Multiple GitHub profiles for easy switching \n- View repository events, issues, and change sets, pull requests, etc..\n- Browse source directories & files with beautiful syntax highlighting\n- Edit files and commit them!\n- View file diffs from checkins and pull requests\n- Update, comment and manage repository issues\n- Upload images directly from your devices to comments/issues.\n- Explore other GitHub open source repositories \n- Inline commit commenting\n- Access your public, private, and starred gists\n- Slide out menu for quick and efficient navigation\n- Much much more! \n\nFollow the project on twitter: @CodeHubApp\n\nPlease note: CodeHub is not affiliated with GitHub in any way. CodeHub is a third-party GitHub client.',
-       artistId: 551531425,
-       artistName: 'Dillon Buchanan',
-       genres: [ 'Productiviteit', 'Sociaal netwerken' ],
-       price: 0,
-       trackName: 'CodeHub - A Client for GitHub',
-       trackId: 707173885,
-       bundleId: 'com.dillonbuchanan.codehub',
-       primaryGenreName: 'Productivity',
-       releaseDate: '2013-10-01T01:00:56Z',
-       isVppDeviceBasedLicensingEnabled: false,
-       currentVersionReleaseDate: '2016-04-14T13:40:02Z',
-       releaseNotes: '- Bug fixes',
-       sellerName: 'Dillon Buchanan',
-       minimumOsVersion: '9.0',
-       primaryGenreId: 6007,
-       formattedPrice: 'Gratis',
-       genreIds: [ '6007', '6005' ],
-       averageUserRating: 4.5,
-       userRatingCount: 19 } ] }
-```
+{
+  "resultCount": 1,
+  "results": [
+    {
+      "isGameCenterEnabled": true,
+      "ipadScreenshotUrls": [
+        "http://a3.mzstatic.com/eu/r30/Purple20/v4/8d/c8/95/8dc89513-3f89-a1bb-2fc7-6bfebce5f7ca/screen480x480.jpeg",
+        "http://a1.mzstatic.com/eu/r30/Purple60/v4/bf/9b/09/bf9b0945-5821-9e5e-0688-72753bf5154c/screen480x480.jpeg",
+        "http://a3.mzstatic.com/eu/r30/Purple20/v4/aa/75/12/aa751229-68be-e7c7-fe9e-d1bcd32b67a0/screen480x480.jpeg",
+        "http://a1.mzstatic.com/eu/r30/Purple18/v4/8f/c7/e0/8fc7e07a-ac97-4df3-7721-47ed395b4b47/screen480x480.jpeg",
+        "http://a2.mzstatic.com/eu/r30/Purple18/v4/e8/e9/8a/e8e98ac4-c83b-eaf8-63d0-fb51fca086a8/screen480x480.jpeg"
+      ],
+      "screenshotUrls": [
+        "http://a5.mzstatic.com/eu/r30/Purple18/v4/e6/92/40/e69240cd-475f-b37e-7c07-ba337de30705/screen1136x1136.jpeg",
+        "http://a4.mzstatic.com/eu/r30/Purple20/v4/96/9a/93/969a9361-138a-ced6-8919-afad53bacad7/screen1136x1136.jpeg",
+        "http://a3.mzstatic.com/eu/r30/Purple20/v4/2b/05/9e/2b059e51-09b3-bc28-51a6-6c06cdba1f7b/screen1136x1136.jpeg",
+        "http://a5.mzstatic.com/eu/r30/Purple30/v4/2f/99/a8/2f99a8e3-467f-b37e-bada-ddbf8e686e57/screen1136x1136.jpeg",
+        "http://a4.mzstatic.com/eu/r30/Purple30/v4/28/25/ef/2825ef93-f09c-6c33-d38d-1f1c647deea3/screen1136x1136.jpeg"
+      ],
+      "appletvScreenshotUrls": [
 
+      ],
+      "artworkUrl512": "http://is1.mzstatic.com/image/thumb/Purple20/v4/9d/55/d0/9d55d0b4-bd6d-924a-4759-32df55b2bad1/source/512x512bb.jpg",
+      "artistViewUrl": "https://itunes.apple.com/nl/developer/kiloo/id330629809?uo=4",
+      "artworkUrl60": "http://is1.mzstatic.com/image/thumb/Purple20/v4/9d/55/d0/9d55d0b4-bd6d-924a-4759-32df55b2bad1/source/60x60bb.jpg",
+      "artworkUrl100": "http://is1.mzstatic.com/image/thumb/Purple20/v4/9d/55/d0/9d55d0b4-bd6d-924a-4759-32df55b2bad1/source/100x100bb.jpg",
+      "kind": "software",
+      "features": [
+        "gameCenter",
+        "iosUniversal"
+      ],
+      "supportedDevices": [
+        "iPhone4",
+        "iPad2Wifi",
+        "iPad23G",
+        "iPhone4S",
+        "iPadThirdGen",
+        "iPadThirdGen4G",
+        "iPhone5",
+        "iPodTouchFifthGen",
+        "iPadFourthGen",
+        "iPadFourthGen4G",
+        "iPadMini",
+        "iPadMini4G",
+        "iPhone5c",
+        "iPhone5s",
+        "iPhone6",
+        "iPhone6Plus",
+        "iPodTouchSixthGen"
+      ],
+      "advisories": [
+        "Content met mild animatiegeweld of fictief geweld kan onregelmatig voorkomen"
+      ],
+      "languageCodesISO2A": [
+        "EN"
+      ],
+      "fileSizeBytes": "98067771",
+      "averageUserRatingForCurrentVersion": 3.5,
+      "sellerUrl": "http://www.kiloo.com/games",
+      "userRatingCountForCurrentVersion": 8,
+      "trackContentRating": "9+",
+      "trackCensoredName": "Subway Surfers",
+      "trackViewUrl": "https://itunes.apple.com/nl/app/subway-surfers/id512939461?mt=8&uo=4",
+      "contentAdvisoryRating": "9+",
+      "currency": "EUR",
+      "wrapperType": "software",
+      "version": "1.56.0",
+      "description": "Presented by Kiloo Games and Sybo Games.\n\nDASH as fast as you can!\nDODGE the oncoming trains!\n\nHelp Jake, Tricky & Fresh escape from the grumpy Inspector and his dog.\n\n- Grind trains with your cool crew!\n- Colorful and vivid HD graphics!\n- Hoverboard Surfing!\n- Paint powered jetpack!\n- Lightning fast swipe acrobatics!\n- Challenge and help your friends!\n\nJoin the App Store's most daring chase!\n\nA Universal App with hd optimized graphics for retina resolution.\n\nSubway Surfers is compatible with iPod 5, iPhone 4, iPhone 4s, iPhone 5, iPhone 5s, iPhone 5c, iPhone 6, iPhone 6 Plus, iPad 2, iPad 3, iPad 4, iPad Air, iPad Air 2, iPad Mini, iPad Mini Retina, iPad Mini 3.\n\niOS 7 or later OS version is required.",
+      "artistId": 330629809,
+      "artistName": "Kiloo",
+      "genres": [
+        "Games",
+        "Actie",
+        "Arcade",
+        "Amusement"
+      ],
+      "price": 0,
+      "trackName": "Subway Surfers",
+      "trackId": 512939461,
+      "bundleId": "com.kiloo.subwaysurfers",
+      "releaseDate": "2012-05-24T07:00:00Z",
+      "primaryGenreName": "Games",
+      "isVppDeviceBasedLicensingEnabled": true,
+      "releaseNotes": "- The Subway Surfers World Tour goes to glamorous Las Vegas\n- Surf beneath the star covered sky and explore the flashy Subway\n- Unlock the new Win Outfit for Rex, the amazing performer\n- Cruise through the Subway on the fancy Roller board\n- Collect shiny Spades in the Weekly Hunts to unlock cool prizes",
+      "currentVersionReleaseDate": "2016-06-02T09:56:00Z",
+      "primaryGenreId": 6014,
+      "sellerName": "Kiloo",
+      "formattedPrice": "Gratis",
+      "genreIds": [
+        "6014",
+        "7001",
+        "7003",
+        "6016"
+      ],
+      "minimumOsVersion": "7.0",
+      "averageUserRating": 4.5,
+      "userRatingCount": 26772
+    }
+  ]
+}
+```
 
 Errors
 ------
@@ -182,11 +228,3 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <http://unlicense.org/>
-
-
-Author
-------
-
-Franklin van de Meent
-| [Website](https://frankl.in)
-| [Github](https://github.com/fvdm)

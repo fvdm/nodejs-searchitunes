@@ -2,7 +2,7 @@
 var itunes = require ('searchitunes');
 
 // Search parameters
-var params = {
+var params1 = {
   entity: 'software',
   country: 'NL',
   term: 'github',
@@ -18,5 +18,17 @@ function output (err, data) {
   });
 }
 
-// Do the search
-itunes (params, output);
+// Do the search by term
+itunes.searchByTerm(params1, output);
+
+// Search parameters
+var params2 = {
+  entity: 'software',
+  country: 'NL',
+  id: '12345678',
+  limit: 1,
+  price: 0
+};
+
+// Do the search by id
+itunes.searchByTerm(params2, output);
