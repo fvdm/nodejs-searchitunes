@@ -27,8 +27,8 @@ timeout   | number   | no       | 5000    | Wait time out in ms
 callback  | function | yes      |         | [Callback](#callback) function to process results
 
 
-* Parameters: [API documentation](http://www.apple.com/itunes/affiliates/resources/documentation/itunes-store-web-service-search-api.html)
-* Live demo: [Tonic](https://tonicdev.com/npm/searchitunes)
+* [Search API documentation](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#overview)
+* [Live demo](https://tonicdev.com/npm/searchitunes)
 
 
 #### Callback
