@@ -19,8 +19,10 @@
     "httpreq": "^0.4.22"
   },
   "devDependencies": {
+    "coveralls": "^2.11.9",
     "dotest": "^1.12.4",
-    "eslint": "^2.11.1"
+    "eslint": "^2.11.1",
+    "istanbul": "^0.4.3"
   },
   "engines": {
     "node": ">=0.12.0"
@@ -41,6 +43,6 @@
   "license": "Unlicense",
   "tonicExampleFilename": "example.js",
   "scripts": {
-    "test": "st=0; eslint . || st=1; node test.js || st=1; exit $st"
+    "test": "bash ./test.sh"
   }
 }
