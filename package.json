@@ -16,11 +16,11 @@
   },
   "main": "searchitunes.js",
   "dependencies": {
-    "httpreq": "^0.4.16"
+    "httpreq": "^0.4.22"
   },
   "devDependencies": {
-    "dotest": "^1.7.0",
-    "eslint": "^2.7.0"
+    "dotest": "^1.12.4",
+    "eslint": "^2.11.1"
   },
   "engines": {
     "node": ">=0.12.0"
