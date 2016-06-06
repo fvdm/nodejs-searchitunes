@@ -31,6 +31,30 @@ callback  | function | yes      |         | [Callback](#callback) function to pr
 * [Live demo](https://tonicdev.com/npm/searchitunes)
 
 
+#### Lookup by ID
+
+When you wish to retrieve one specific item by its ID,
+include one of the following params to use the Lookup API.
+The result `data` will be only the _object_ with the item's details.
+
+* [Lookup API documentation](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#lookup)
+
+
+**ID params**
+
+* amgAlbumId
+* amgArtistId
+* amgVideoId
+* id
+* isbn
+* upc
+
+
+```js
+searchitunes ({ id: 123456 }, callback);
+```
+
+
 #### Callback
 
 The `callback` function receives two parameters: `err` and `data`.
@@ -62,10 +86,16 @@ searchitunes (searchParams, function (err, data) {
   // All good
   console.log (data);
 );
+
+
+// Get one specific item by ID
+searchitunes ({ id: 512939461 }, console.log);
 ```
 
 
 #### Output
+
+When you lookup an item by its ID you only get the singular result _object_.
 
 ```js
 { resultCount: 1,
