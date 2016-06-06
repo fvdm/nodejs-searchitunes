@@ -1,13 +1,13 @@
-searchitunes-fruktorum
-======================
+searchitunes
+============
 
-Light node.js module to quickly search the Apple iTunes Store and App Store for music, apps, etc with functionality of searching by app store id.
+Light node.js module to quickly search the Apple iTunes Store and App Store for music, apps, etc. with added searching functionality by app store id.
 
 
 Installation
 ------------
 
-`npm install searchitunes-fruktorum`
+`npm install searchitunes`
 
 
 Usage
@@ -36,7 +36,7 @@ On error `err` is an instance of _Error_ and `data` is not set, see [Errors](#er
 #### Example 1
 
 ```js
-var itunes = require ('searchitunes-fruktorum');
+var itunes = require ('searchitunes');
 
 // Find free Panda app for iPhone in Dutch App Store
 itunes.searchByTerm (
@@ -59,6 +59,31 @@ itunes.searchByTerm (
 );
 ```
 
+#### Example 2
+
+```js
+var itunes = require ('searchitunes');
+
+// Find free app for iPhone in Dutch App Store by id from URL https://itunes.apple.com/nl/app/subway-surfers/id51293946
+itunes.searchById(
+    {
+        entity: 'software',
+        country: 'NL',
+        id: '51293946',
+        limit: 1,
+        price: 0
+    },
+    function (err, data) {
+        if (err) {
+            // Error
+            console.log ('Search failed: %s', err.message);
+        } else {
+            // All good
+            console.log (data);
+        }
+    }
+);
+```
 
 #### Output
 
@@ -165,32 +190,6 @@ itunes.searchByTerm (
 }
 ```
 
-#### Example 2
-
-```js
-var itunes = require ('searchitunes-fruktorum');
-
-// Find free app for iPhone in Dutch App Store by id from URL https://itunes.apple.com/nl/app/subway-surfers/id51293946
-itunes.searchById(
-    {
-        entity: 'software',
-        country: 'NL',
-        id: '51293946',
-        limit: 1,
-        price: 0
-    },
-    function (err, data) {
-        if (err) {
-            // Error
-            console.log ('Search failed: %s', err.message);
-        } else {
-            // All good
-            console.log (data);
-        }
-    }
-);
-```
-
 Errors
 ------
 
@@ -229,9 +228,3 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <http://unlicense.org/>
-
-
-Author
-------
-
-fruktorum.com
