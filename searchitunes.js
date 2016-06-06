@@ -9,12 +9,101 @@ License:      Unlicense / Public Domain, see UNLICENSE file
               (https://github.com/fvdm/nodejs-searchitunes/raw/master/UNLICENSE)
 */
 
-var http = require ('httpreq');
+var httpreq = require ('httpreq');
+
+var config = {
+  timeout: 5000
+};
+
+
+/**
+ * Process HTTP response
+ *
+ * @callback callback
+ * @param err {Error, null} - Client error
+ * @param [res] {object} - Response details
+ * @param [callback] {function} - `function (err, data) {}`
+ * @returns {void}
+ */
+
+function httpResponse (err, res, callback) {
+  var error = null;
+  var data = res && res.body || '';
+
+  if (err) {
+    error = new Error ('http error');
+    error.code = res.statusCode;
+    error.body = data;
+    callback (error);
+    return;
+  }
+
+  try {
+    data = JSON.parse (data);
+  } catch (e) {
+    error = new Error ('invalid response');
+    error.error = e;
+    callback (error);
+    return;
+  }
+
+  if (!(data.results instanceof Array) || !data.results.length) {
+    callback (new Error ('no results'));
+    return;
+  }
+
+  callback (null, data);
+}
+
+
+/**
+ * Send HTTP request
+ *
+ * @callback callback
+ * @param props {object} - Request details
+ * @param props.url {string} - URL to fetch
+ * @param props.params {object} - Parameters to send along
+ * @param [props.timeout = 5000] {number} - Wait time out in ms
+ * @param callback {function} - `function (err, data) {}`
+ * @returns {void}
+ */
+
+function httpRequest (props, callback) {
+  var options = {
+    url: 'https://itunes.apple.com/search',
+    method: 'GET',
+    parameters: props.params || {},
+    timeout: props.timeout || config.timeout,
+    headers: {
+      'Accept': 'application/json',
+      'User-Agent': 'searchitunes.js'
+    }
+  };
+
+  httpreq.doRequest (options, function (err, res) {
+    httpResponse (err, res, callback);
+  });
+}
+
+
+/**
+ * Module interface
+ *
+ * @callback callback
+ * @param params {object} - Parameters to send to API
+ * @param [timeout = 5000] {number} - Wait time out in ms
+ * @param callback {function} - `function (err, data) {}`
+ * @returns {void}
+ */
 
 module.exports = function (params, timeout, callback) {
+  var options = {
+    params: params || {}
+  };
+
   if (typeof timeout === 'function') {
     callback = timeout;
-    timeout = 5000;
+    timeout = null;
   }
 
   if (!params || !(params instanceof Object)) {
@@ -22,44 +111,7 @@ module.exports = function (params, timeout, callback) {
     return;
   }
 
-  params.version = params.version || 2;
-
-  http.get (
-    'https://itunes.apple.com/WebObjects/MZStoreServices.woa/ws/wsSearch',
-    {
-      parameters: params,
-      timeout: timeout,
-      headers: {
-        'Accept': 'application/json',
-        'User-Agent': 'searchitunes.js'
-      }
-    },
-    function (err, res) {
-      var error = null;
-      var data;
-
-      if (err) {
-        error = new Error ('http error');
-        error.code = res.statusCode;
-        error.body = res.body;
-        callback (error);
-        return;
-      }
-
-      try {
-        data = JSON.parse (res.body);
-
-        if (!(data.results instanceof Array) || !data.results.length) {
-          callback (new Error ('no results'));
-          return;
-        }
-
-        callback (null, data);
-      } catch (e) {
-        error = new Error ('invalid response');
-        error.error = e;
-        callback (error);
-      }
-    }
-  );
+  options.params.version = params.version || 2;
+  options.timeout = timeout;
+  httpRequest (options, callback);
 };
