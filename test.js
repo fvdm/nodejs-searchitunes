@@ -49,7 +49,21 @@ dotest.add ('Error: no results', function (test) {
 });
 
 
-dotest.add ('Search', function (test) {
+dotest.add ('Search by ID', function (test) {
+  var params = {
+    id: 512939461
+  };
+
+  app (params, timeout, function (err, data) {
+    test (err)
+      .isObject ('fail', 'data', data)
+      .isExactly ('fail', 'data.trackId', data && data.trackId, params.id)
+      .done ();
+  });
+});
+
+
+dotest.add ('Search by term', function (test) {
   var params = {
     entity: 'software',
     country: 'NL',
