@@ -1,3 +1,13 @@
+#### 2.3.1 (2016-6-6)
+
+##### Refactors
+
+* **errors:** Moved HTTP error handling to function ([5d721802](https://github.com/fvdm/nodejs-searchitunes/commit/5d721802dcef2c348d94113f4d336f02aedbb15e))
+
+##### Tests
+
+* **setup:** Config defaults are set by the module ([2842341f](https://github.com/fvdm/nodejs-searchitunes/commit/2842341fd4082a50183de5a5577ff060c81993be))
+
 ### 2.3.0 (2016-6-6)
 
 ##### Chores
