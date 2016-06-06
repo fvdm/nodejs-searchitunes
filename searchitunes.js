@@ -46,6 +46,27 @@ function keysInObject (keys, obj) {
 
 
 /**
+ * Call back a request error
+ *
+ * @callback callback
+ * @param err {Error} - The error to include in `.error`
+ * @param res {object} - Response details from httpreq
+ * @param message {string} - Error message to report
+ * @param callback {function} - Function to post-process the error
+ * @returns {void}
+ */
+
+function httpError (err, res, message, callback) {
+  var error = new Error (message);
+
+  error.code = res && res.statusCode;
+  error.body = res && res.body;
+  error.error = err;
+  callback (error);
+}
+
+
+/**
  * Process HTTP response
  *
  * @callback callback
@@ -57,23 +78,17 @@ function keysInObject (keys, obj) {
  */
 
 function httpResponse (err, res, callback, firstResult) {
-  var error = null;
   var data = res && res.body || '';
 
   if (err) {
-    error = new Error ('http error');
-    error.code = res && res.statusCode;
-    error.body = data;
-    callback (error);
+    httpError (err, res, 'http error', callback);
     return;
   }
 
   try {
     data = JSON.parse (data);
   } catch (e) {
-    error = new Error ('invalid response');
-    error.error = e;
-    callback (error);
+    httpError (e, res, 'invalid response', callback);
     return;
   }
 
