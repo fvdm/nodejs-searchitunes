@@ -18,7 +18,7 @@ var config = {
     'amgArtistId',
     'amgVideoId',
     'id',
-    'isdn',
+    'isbn',
     'upc'
   ]
 };
