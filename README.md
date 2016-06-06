@@ -6,6 +6,7 @@ Light node.js module to quickly search the Apple iTunes Store and App Store for 
 [![npm](https://img.shields.io/npm/v/searchitunes.svg?maxAge=3600)](https://github.com/fvdm/nodejs-searchitunes/blob/master/CHANGELOG.md)
 [![Build Status](https://travis-ci.org/fvdm/nodejs-searchitunes.svg?branch=master)](https://travis-ci.org/fvdm/nodejs-searchitunes)
 [![Dependency Status](https://gemnasium.com/badges/github.com/fvdm/nodejs-searchitunes.svg)](https://gemnasium.com/github.com/fvdm/nodejs-searchitunes#runtime-dependencies)
+[![Coverage Status](https://coveralls.io/repos/github/fvdm/nodejs-searchitunes/badge.svg?branch=master)](https://coveralls.io/github/fvdm/nodejs-searchitunes?branch=master)
 
 
 Installation
