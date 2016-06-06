@@ -12,8 +12,37 @@ License:      Unlicense / Public Domain, see UNLICENSE file
 var httpreq = require ('httpreq');
 
 var config = {
-  timeout: 5000
+  timeout: 5000,
+  idKeys: [
+    'amgAlbumId',
+    'amgArtistId',
+    'amgVideoId',
+    'id',
+    'isdn',
+    'upc'
+  ]
 };
+
+
+/**
+ * Check if one of the keys is a property
+ *
+ * @param keys {array} - Property names to check
+ * @param obj {object} - Object to process
+ * @returns {boolean} - `true` = yes
+ */
+
+function keysInObject (keys, obj) {
+  var i = 0;
+
+  for (i; i < keys.length; i++) {
+    if (obj [keys [i]]) {
+      return true;
+    }
+  }
+
+  return false;
+}
 
 
 /**
@@ -23,10 +52,11 @@ var config = {
  * @param err {Error, null} - Client error
  * @param [res] {object} - Response details
  * @param [callback] {function} - `function (err, data) {}`
+ * @param [firstResult = false] {boolean} - Call back only first result
  * @returns {void}
  */
 
-function httpResponse (err, res, callback) {
+function httpResponse (err, res, callback, firstResult) {
   var error = null;
   var data = res && res.body || '';
 
@@ -52,6 +82,10 @@ function httpResponse (err, res, callback) {
     return;
   }
 
+  if (firstResult) {
+    data = data.results [0];
+  }
+
   callback (null, data);
 }
 
@@ -69,6 +103,7 @@ function httpResponse (err, res, callback) {
  */
 
 function httpRequest (props, callback) {
+  var firstResult = false;
   var options = {
     url: 'https://itunes.apple.com/search',
     method: 'GET',
@@ -80,8 +115,13 @@ function httpRequest (props, callback) {
     }
   };
 
+  if (keysInObject (config.idKeys, options.parameters)) {
+    options.url = 'https://itunes.apple.com/lookup';
+    firstResult = true;
+  }
+
   httpreq.doRequest (options, function (err, res) {
-    httpResponse (err, res, callback);
+    httpResponse (err, res, callback, firstResult);
   });
 }
 
