@@ -21,7 +21,7 @@
   "devDependencies": {
     "coveralls": "^2.11.9",
     "dotest": "^1.12.4",
-    "eslint": "^2.11.1",
+    "eslint": "^2.13.1",
     "istanbul": "^0.4.3"
   },
   "engines": {
