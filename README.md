@@ -85,7 +85,7 @@ searchitunes (searchParams, function (err, data) {
 
   // All good
   console.log (data);
-);
+});
 
 
 // Get one specific item by ID
