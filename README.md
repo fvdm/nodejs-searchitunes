@@ -66,9 +66,9 @@ On error `err` is an instance of _Error_ and `data` is not set, see [Errors](#er
 #### Example
 
 ```js
-var searchitunes = require ('searchitunes');
+const searchitunes = require ('searchitunes');
 
-var searchParams = {
+const searchParams = {
   entity: 'software',
   country: 'NL',
   term: 'github',
@@ -78,7 +78,7 @@ var searchParams = {
   
 
 // Find free Github app for iPhone in Dutch App Store
-searchitunes (searchParams, function (err, data) {
+searchitunes (searchParams, (err, data) => {
   if (err) {
     console.log (err);
     return;
