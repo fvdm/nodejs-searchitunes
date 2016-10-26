@@ -52,17 +52,17 @@ function keysInObject (keys, obj) {
  * @param err {Error} - The error to include in `.error`
  * @param res {object} - Response details from httpreq
  * @param message {string} - Error message to report
- * @param callback {function} - Function to post-process the error
- * @returns {void}
+ * @returns {Error} error
  */
 
-function httpError (err, res, message, callback) {
+function httpError (err, res, message) {
   var error = new Error (message);
 
   error.code = res && res.statusCode;
   error.body = res && res.body;
   error.error = err;
-  callback (error);
+
+  return error;
 }
 
 
@@ -79,29 +79,29 @@ function httpError (err, res, message, callback) {
 
 function httpResponse (err, res, callback, firstResult) {
   var data = res && res.body || '';
-
-  if (err) {
-    httpError (err, res, 'http error', callback);
-    return;
-  }
+  var error = null;
 
   try {
     data = JSON.parse (data);
+
+    if (!(data.results instanceof Array) || !data.results.length) {
+      error = new Error ('no results');
+    } else if (firstResult) {
+      data = data.results [0];
+    }
   } catch (e) {
-    httpError (e, res, 'invalid response', callback);
-    return;
+    error = httpError (e, res, 'invalid response');
   }
 
-  if (!(data.results instanceof Array) || !data.results.length) {
-    callback (new Error ('no results'));
-    return;
+  if (err) {
+    error = httpError (err, res, 'http error');
   }
 
-  if (firstResult) {
-    data = data.results [0];
+  if (error) {
+    callback (error);
+  } else {
+    callback (null, data);
   }
-
-  callback (null, data);
 }
 
 
