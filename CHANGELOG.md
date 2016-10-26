@@ -1,3 +1,37 @@
+#### 2.3.2 (2016-10-26)
+
+##### Chores
+
+* **package:**
+  * Updated dev dependencies ([fbe13d78](https://github.com/fvdm/nodejs-searchitunes/commit/fbe13d782531c1fe47da66792a1227b71f8d359e))
+  * Replaced test runner and dev deps by dotest ([b10a9fbf](https://github.com/fvdm/nodejs-searchitunes/commit/b10a9fbf1b2e176c645c086be178183245dc5228))
+  * update eslint to version 3.0.0 ([435c7afb](https://github.com/fvdm/nodejs-searchitunes/commit/435c7afb89488c5cecb0ab3bf0662542427dac7f))
+* **develop:** Added bitHound config ([d0551f3e](https://github.com/fvdm/nodejs-searchitunes/commit/d0551f3e15e9e8cac32280bccf496632937a8e17))
+
+##### Documentation Changes
+
+* **readme:**
+  * ES6-style code example ([dc99610f](https://github.com/fvdm/nodejs-searchitunes/commit/dc99610f5a2173a6f3e55bfe98a11dc22fbc744f))
+  * Fixed syntax typo ([427f5107](https://github.com/fvdm/nodejs-searchitunes/commit/427f51072ea987866b5edde8f41829bbb8723f89))
+* **develop:** Added CONTRIBUTING.md doc ([65c345e2](https://github.com/fvdm/nodejs-searchitunes/commit/65c345e219ed6b1ac1388cd309b1135d488299ee))
+* **badges:**
+  * Added code quality status from bitHound ([db6dd064](https://github.com/fvdm/nodejs-searchitunes/commit/db6dd064127ab67222e3a446f5ac2e8edf22690a))
+  * Replaced Gemnasium with bitHound deps ([435a54e0](https://github.com/fvdm/nodejs-searchitunes/commit/435a54e0a8e0f4b172603202a82a50222836c4f2))
+
+##### Refactors
+
+* **package:**
+  * Renamed UNLICENSE file to LICENSE ([4988e80a](https://github.com/fvdm/nodejs-searchitunes/commit/4988e80a05440ed0c02c4a8017133a9588e1b0ae))
+  * Minimum supported node v4.0 ([9ccb3591](https://github.com/fvdm/nodejs-searchitunes/commit/9ccb35911145b384962c205a0b206b99b2ae31f3))
+* **errors:** Error handling without returns ([ac9126eb](https://github.com/fvdm/nodejs-searchitunes/commit/ac9126ebfb1be34103d93dd9df8f2f5dbbc14816))
+
+##### Tests
+
+* **config:**
+  * Set bitHound max lines to 400 ([89e979b7](https://github.com/fvdm/nodejs-searchitunes/commit/89e979b78d25fd567bea984f78758cddceddc2e3))
+  * Use dynamic node versions on Travis CI ([9f60008c](https://github.com/fvdm/nodejs-searchitunes/commit/9f60008ced5191f16db1b99263aad51becf006e4))
+* **lint:** Update eslint to ES6 ([b24c9651](https://github.com/fvdm/nodejs-searchitunes/commit/b24c9651a8f44d14fdd39604db19da0582d97e03))
+
 #### 2.3.1 (2016-6-6)
 
 ##### Refactors
