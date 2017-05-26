@@ -5,7 +5,7 @@ Author:       Franklin van de Meent (https://frankl.in)
 Source:       https://github.com/fvdm/nodejs-searchitunes
 Feedback:     https://github.com/fvdm/nodejs-searchitunes/issues
 API docs:     http://www.apple.com/itunes/affiliates/resources/documentation/itunes-store-web-service-search-api.html
-License:      Unlicense / Public Domain, see UNLICENSE file
+License:      Unlicense (Public Domain, see UNLICENSE file)
               (https://github.com/fvdm/nodejs-searchitunes/raw/master/UNLICENSE)
 */
 
@@ -27,9 +27,9 @@ var config = {
 /**
  * Check if one of the keys is a property
  *
- * @param keys {array} - Property names to check
- * @param obj {object} - Object to process
- * @returns {boolean} - `true` = yes
+ * @param   {array}    keys  Property names to check
+ * @param   {object}   obj   Object to process
+ * @return  {boolean}        `true` = yes
  */
 
 function keysInObject (keys, obj) {
@@ -48,11 +48,11 @@ function keysInObject (keys, obj) {
 /**
  * Call back a request error
  *
- * @callback callback
- * @param err {Error} - The error to include in `.error`
- * @param res {object} - Response details from httpreq
- * @param message {string} - Error message to report
- * @returns {Error} error
+ * @callback  callback
+ * @param     {error}   err      The error to include in `.error`
+ * @param     {object}  res      Response details from httpreq
+ * @param     {string}  message  Error message to report
+ * @return    {Error}   error
  */
 
 function httpError (err, res, message) {
@@ -69,12 +69,12 @@ function httpError (err, res, message) {
 /**
  * Process HTTP response
  *
- * @callback callback
- * @param err {Error, null} - Client error
- * @param [res] {object} - Response details
- * @param [callback] {function} - `function (err, data) {}`
- * @param [firstResult = false] {boolean} - Call back only first result
- * @returns {void}
+ * @callback  callback
+ * @param     {Error|null}  err                  Client error
+ * @param     {object}      [res]                Response details
+ * @param     {function}    [callback]           `(err, data)`
+ * @param     {boolean}     [firstResult=false]  Call back only first result
+ * @return    {void}
  */
 
 function httpResponse (err, res, callback, firstResult) {
@@ -108,13 +108,13 @@ function httpResponse (err, res, callback, firstResult) {
 /**
  * Send HTTP request
  *
- * @callback callback
- * @param props {object} - Request details
- * @param props.url {string} - URL to fetch
- * @param props.params {object} - Parameters to send along
- * @param [props.timeout = 5000] {number} - Wait time out in ms
- * @param callback {function} - `function (err, data) {}`
- * @returns {void}
+ * @callback  callback
+ * @param     {object}    props                 Request details
+ * @param     {string}    props.url             URL to fetch
+ * @param     {object}    props.params          Parameters to send along
+ * @param     {number}    [props.timeout=5000]  Wait time out in ms
+ * @param     {function}  callback              `(err, data)`
+ * @return    {void}
  */
 
 function httpRequest (props, callback) {
@@ -144,11 +144,11 @@ function httpRequest (props, callback) {
 /**
  * Module interface
  *
- * @callback callback
- * @param params {object} - Parameters to send to API
- * @param [timeout = 5000] {number} - Wait time out in ms
- * @param callback {function} - `function (err, data) {}`
- * @returns {void}
+ * @callback  callback
+ * @param     {object}    params          Parameters to send to API
+ * @param     {number}    [timeout=5000]  Wait time out in ms
+ * @param     {function}  callback        `(err, data)`
+ * @return    {void}
  */
 
 module.exports = function (params, timeout, callback) {
