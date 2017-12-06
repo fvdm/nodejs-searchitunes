@@ -1,8 +1,6 @@
 searchitunes
 ============
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/fvdm/nodejs-searchitunes.svg)](https://greenkeeper.io/)
-
 Light node.js module to quickly search the Apple iTunes Store and App Store for music, apps, etc.
 
 [![npm](https://img.shields.io/npm/v/searchitunes.svg?maxAge=3600)](https://github.com/fvdm/nodejs-searchitunes/blob/master/CHANGELOG.md)
@@ -10,6 +8,7 @@ Light node.js module to quickly search the Apple iTunes Store and App Store for 
 [![Coverage Status](https://coveralls.io/repos/github/fvdm/nodejs-searchitunes/badge.svg?branch=master)](https://coveralls.io/github/fvdm/nodejs-searchitunes?branch=master)
 [![bitHound Dependencies](https://www.bithound.io/github/fvdm/nodejs-searchitunes/badges/dependencies.svg)](https://www.bithound.io/github/fvdm/nodejs-searchitunes/develop/dependencies/npm)
 [![bitHound Code](https://www.bithound.io/github/fvdm/nodejs-searchitunes/badges/code.svg)](https://www.bithound.io/github/fvdm/nodejs-searchitunes)
+[![Greenkeeper badge](https://badges.greenkeeper.io/fvdm/nodejs-searchitunes.svg)](https://greenkeeper.io/)
 
 
 Installation
