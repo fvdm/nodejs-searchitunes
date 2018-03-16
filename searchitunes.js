@@ -9,9 +9,9 @@ License:      Unlicense (Public Domain, see UNLICENSE file)
               (https://github.com/fvdm/nodejs-searchitunes/raw/master/UNLICENSE)
 */
 
-var httpreq = require ('httpreq');
+const { doRequest } = require ('httpreq');
 
-var config = {
+let config = {
   timeout: 5000,
   idKeys: [
     'amgAlbumId',
@@ -34,7 +34,7 @@ var config = {
  */
 
 function keysInObject (keys, obj) {
-  var i = 0;
+  let i = 0;
 
   for (i; i < keys.length; i++) {
     if (obj [keys [i]]) {
@@ -58,7 +58,7 @@ function keysInObject (keys, obj) {
  */
 
 function httpError (err, res, message) {
-  var error = new Error (message);
+  let error = new Error (message);
 
   error.code = res && res.statusCode;
   error.body = res && res.body;
@@ -81,8 +81,8 @@ function httpError (err, res, message) {
  */
 
 function httpResponse (err, res, callback, firstResult) {
-  var data = res && res.body || '';
-  var error = null;
+  let data = res && res.body || '';
+  let error = null;
 
   try {
     data = JSON.parse (data);
@@ -122,8 +122,8 @@ function httpResponse (err, res, callback, firstResult) {
  */
 
 function httpRequest (props, callback) {
-  var firstResult = false;
-  var options = {
+  let firstResult = false;
+  let options = {
     url: 'https://itunes.apple.com/search',
     method: 'GET',
     parameters: props.params || {},
@@ -139,7 +139,7 @@ function httpRequest (props, callback) {
     firstResult = true;
   }
 
-  httpreq.doRequest (options, function (err, res) {
+  doRequest (options, (err, res) => {
     httpResponse (err, res, callback, firstResult);
   });
 }
@@ -156,8 +156,8 @@ function httpRequest (props, callback) {
  * @param     {function}  callback        `(err, data)`
  */
 
-module.exports = function (params, timeout, callback) {
-  var options = {
+module.exports = (params, timeout, callback) => {
+  let options = {
     params: params || {}
   };
 
