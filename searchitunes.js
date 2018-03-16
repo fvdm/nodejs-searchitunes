@@ -10,6 +10,7 @@ License:      Unlicense (Public Domain, see UNLICENSE file)
 */
 
 const { doRequest } = require ('httpreq');
+const { promisify } = require ('es6-promisify');
 
 let config = {
   timeout: 5000,
@@ -149,14 +150,14 @@ function httpRequest (props, callback) {
  * Module interface
  *
  * @callback  callback
- * @return    {void}
+ * @return    {object}                    Promises then & catch
  *
  * @param     {object}    params          Parameters to send to API
  * @param     {int}       [timeout=5000]  Wait time out in ms
  * @param     {function}  callback        `(err, data)`
  */
 
-module.exports = (params, timeout, callback) => {
+module.exports = promisify ((params, timeout, callback) => {
   let options = {
     params: params || {}
   };
@@ -174,4 +175,4 @@ module.exports = (params, timeout, callback) => {
   options.params.version = params.version || 2;
   options.timeout = timeout;
   httpRequest (options, callback);
-};
+});
