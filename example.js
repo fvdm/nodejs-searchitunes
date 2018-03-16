@@ -10,15 +10,10 @@ const params = {
   price: 0
 };
 
-// Fancy console.log
-function output (result) {
-  console.dir (err || data, {
-    depth: null,
-    colors: true
-  });
-}
-
 // Do the search
 itunes (params)
-  .then (output)
+  .then (data => console.dir (data, {
+    depth: null,
+    colors: true
+  }))
   .catch (console.error);
