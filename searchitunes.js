@@ -4,7 +4,7 @@ Description:  Search the Apple iTunes Store and App Store.
 Author:       Franklin van de Meent (https://frankl.in)
 Source:       https://github.com/fvdm/nodejs-searchitunes
 Feedback:     https://github.com/fvdm/nodejs-searchitunes/issues
-API docs:     http://www.apple.com/itunes/affiliates/resources/documentation/itunes-store-web-service-search-api.html
+API docs:     https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/
 License:      Unlicense (Public Domain, see UNLICENSE file)
               (https://github.com/fvdm/nodejs-searchitunes/raw/master/UNLICENSE)
 */
@@ -27,9 +27,10 @@ var config = {
 /**
  * Check if one of the keys is a property
  *
+ * @return  {boolean}        `true` = yes
+ *
  * @param   {array}    keys  Property names to check
  * @param   {object}   obj   Object to process
- * @return  {boolean}        `true` = yes
  */
 
 function keysInObject (keys, obj) {
@@ -46,13 +47,14 @@ function keysInObject (keys, obj) {
 
 
 /**
- * Call back a request error
+ * Callback a request error
  *
  * @callback  callback
+ * @return    {Error}   error
+ *
  * @param     {error}   err      The error to include in `.error`
  * @param     {object}  res      Response details from httpreq
  * @param     {string}  message  Error message to report
- * @return    {Error}   error
  */
 
 function httpError (err, res, message) {
@@ -70,11 +72,12 @@ function httpError (err, res, message) {
  * Process HTTP response
  *
  * @callback  callback
+ * @return    {void}
+ *
  * @param     {Error|null}  err                  Client error
  * @param     {object}      [res]                Response details
  * @param     {function}    [callback]           `(err, data)`
- * @param     {boolean}     [firstResult=false]  Call back only first result
- * @return    {void}
+ * @param     {bool}        [firstResult=false]  Call back only first result
  */
 
 function httpResponse (err, res, callback, firstResult) {
@@ -109,12 +112,13 @@ function httpResponse (err, res, callback, firstResult) {
  * Send HTTP request
  *
  * @callback  callback
+ * @return    {void}
+ *
  * @param     {object}    props                 Request details
  * @param     {string}    props.url             URL to fetch
  * @param     {object}    props.params          Parameters to send along
- * @param     {number}    [props.timeout=5000]  Wait time out in ms
+ * @param     {int}       [props.timeout=5000]  Wait time out in ms
  * @param     {function}  callback              `(err, data)`
- * @return    {void}
  */
 
 function httpRequest (props, callback) {
@@ -145,10 +149,11 @@ function httpRequest (props, callback) {
  * Module interface
  *
  * @callback  callback
- * @param     {object}    params          Parameters to send to API
- * @param     {number}    [timeout=5000]  Wait time out in ms
- * @param     {function}  callback        `(err, data)`
  * @return    {void}
+ *
+ * @param     {object}    params          Parameters to send to API
+ * @param     {int}       [timeout=5000]  Wait time out in ms
+ * @param     {function}  callback        `(err, data)`
  */
 
 module.exports = function (params, timeout, callback) {
