@@ -1,3 +1,54 @@
+### 2.4.0 (2018-03-16)
+
+##### Chores
+
+* **package:**
+  *  Update minimum node to v6 ([1a87868a](https://github.com/fvdm/nodejs-searchitunes/commit/1a87868ace4117fb01449f0ff64b994ffb95761b))
+  *  Update httpreq dep ([757621be](https://github.com/fvdm/nodejs-searchitunes/commit/757621befaa47e6e2a929c8d21efda84dd2dccb2))
+  *  Update dotest dev dep ([cbbb9df3](https://github.com/fvdm/nodejs-searchitunes/commit/cbbb9df3ae9dea1a36a2bfdfedf327bf18025e82))
+  *  Update dev deps ([53ad56b9](https://github.com/fvdm/nodejs-searchitunes/commit/53ad56b9f6595244a2370419435de4ee54f486a8))
+* **develop:**  Clean up gitignore ([e5e07cac](https://github.com/fvdm/nodejs-searchitunes/commit/e5e07cac5062fde9b1268923c3331f539fe41459))
+* **example:**
+  *  Fix and shorten callback ([c34d8aa7](https://github.com/fvdm/nodejs-searchitunes/commit/c34d8aa75d31a2375c99fb89daefeeabf422a141))
+  *  Rewrite to promises ([9d8bd694](https://github.com/fvdm/nodejs-searchitunes/commit/9d8bd6940d50b2e1a2fbec04f43effc1a34e0ac1))
+
+##### Documentation Changes
+
+* **readme:**
+  *  Clean up ([96ec3423](https://github.com/fvdm/nodejs-searchitunes/commit/96ec342315eee76759128ac58e53052379fd19a1))
+  *  Add coffee link to Author ([b188f5ea](https://github.com/fvdm/nodejs-searchitunes/commit/b188f5ea4133721c9d4f73d1f573470f087c22c0))
+* **badges:**  Moved GreenKeeper ([cef2a96c](https://github.com/fvdm/nodejs-searchitunes/commit/cef2a96cee87bda2b1ff6f54198ba8663b01fbfc))
+
+##### New Features
+
+* **interface:**  Return promises ([b4637e63](https://github.com/fvdm/nodejs-searchitunes/commit/b4637e635377dd4b8c323f1823dd412e3329ea8a))
+
+##### Bug Fixes
+
+* **request:**  Parse timeout to int ([17ceab20](https://github.com/fvdm/nodejs-searchitunes/commit/17ceab20721bb5d2fcb0a546c42f6e4f2454e8e9))
+
+##### Refactors
+
+* **package:**  Add es6-promisify to deps ([b711a72d](https://github.com/fvdm/nodejs-searchitunes/commit/b711a72d99e5efcb7b54211a73e3a88915a1b341))
+
+##### Code Style Changes
+
+* **test:**  Convert to const, let, arrows ([d6cd8eec](https://github.com/fvdm/nodejs-searchitunes/commit/d6cd8eec71a40a1d629e80448d2a7ce5f73e559e))
+* **syntax:**  Convert to const, let & arrows ([ad847cf3](https://github.com/fvdm/nodejs-searchitunes/commit/ad847cf3ef7aa266da39a633d7589a45ad4ac98e))
+* **main:**  Cleaner comments ([db75a86e](https://github.com/fvdm/nodejs-searchitunes/commit/db75a86ec3195adfb175cfe64a6f6ba3d47e53e0))
+* **comments:**  Clean up JSDoc comments ([e02e72f0](https://github.com/fvdm/nodejs-searchitunes/commit/e02e72f0be596713c37deb3145280bc2ef93a697))
+
+##### Tests
+
+* **main:**
+  *  Fix broken script after failed promise ([859eae62](https://github.com/fvdm/nodejs-searchitunes/commit/859eae62c989541d0b99fcf2ff953e537e4ed64c))
+  *  Just pass the timeout ([add96439](https://github.com/fvdm/nodejs-searchitunes/commit/add964391a033ac9ebab712393aa2b6633431534))
+  *  Added tests for promises ([27bc99fb](https://github.com/fvdm/nodejs-searchitunes/commit/27bc99fb9880608445e9058c92cf6ddbfda13eb7))
+* **package:**  Change dev deps to dotest ([359a8ff4](https://github.com/fvdm/nodejs-searchitunes/commit/359a8ff4d3427a89ad8c177afb9ff021bf66d702))
+* **config:**
+  *  Update Travis CI node versions ([543d70c5](https://github.com/fvdm/nodejs-searchitunes/commit/543d70c56f6d54866d9b4430806c8a23a0905175))
+  *  Travis CI update node versions ([18b433f7](https://github.com/fvdm/nodejs-searchitunes/commit/18b433f714ccba8e256f070a358338f754c7c7e6))
+
 #### 2.3.2 (2016-10-26)
 
 ##### Chores
