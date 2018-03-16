@@ -37,6 +37,30 @@ dotest.add ('Interface', test => {
 });
 
 
+dotest.add ('Promise - good', test => {
+  app ({ id: 512939461 })
+    .then (data => test()
+      .isObject ('fail', 'data', data)
+      .isNotEmpty ('fail', 'data', data)
+      .done()
+    )
+    .catch (err => test (err).done());
+});
+
+
+dotest.add ('Promise - Error', test => {
+  app (null)
+    .then (data => test()
+      .isUndefined ('fail', 'data', data)
+    )
+    .catch (err => test()
+      .isError ('fail', 'err', err)
+      .isExactly ('fail', 'err.message', err && err.message, 'invalid params')
+      .done()
+    );
+});
+
+
 dotest.add ('Error: invalid params', test => {
   app (null, err => {
     test ()
