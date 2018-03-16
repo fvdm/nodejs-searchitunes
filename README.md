@@ -1,7 +1,6 @@
-searchitunes
-============
+# searchitunes
 
-Light node.js module to quickly search the Apple iTunes Store and App Store for music, apps, etc.
+Lightweight Node.js package to quickly search the Apple iTunes Store and App Store for music, movies, apps, etc.
 
 [![npm](https://img.shields.io/npm/v/searchitunes.svg?maxAge=3600)](https://github.com/fvdm/nodejs-searchitunes/blob/master/CHANGELOG.md)
 [![Build Status](https://travis-ci.org/fvdm/nodejs-searchitunes.svg?branch=master)](https://travis-ci.org/fvdm/nodejs-searchitunes)
@@ -11,35 +10,55 @@ Light node.js module to quickly search the Apple iTunes Store and App Store for 
 [![Greenkeeper badge](https://badges.greenkeeper.io/fvdm/nodejs-searchitunes.svg)](https://greenkeeper.io/)
 
 
-Installation
-------------
+## Example
 
-`npm install searchitunes`
+```js
+const searchitunes = require ('searchitunes');
+const params = {
+  entity: 'software',
+  country: 'NL',
+  term: 'github',
+  limit: 1,
+  price: 0
+};
+
+// Find free Github app for iPhone in Dutch App Store
+searchitunes (params).then (console.log);
+
+// Get one specific item by ID
+searchitunes ({ id: 512939461 }).then (console.log);
+```
 
 
-Usage
------
+## Installation
 
-### ( params, [timeout], callback )
+`npm i searchitunes`
+
+
+## Usage
+**( params, [timeout], [callback] )**
+
+The module returns promises but also supports the callback argument.
+It's up to you which you prefer.
 
 argument  | type     | required | default | description
 :---------|:---------|:---------|:--------|:------------------------------
 params    | object   | yes      |         | Search parameters
-timeout   | number   | no       | 5000    | Wait time out in ms
-callback  | function | yes      |         | [Callback](#callback) function to process results
+timeout   | int      | no       | 5000    | Wait time out in ms
+callback  | function | no       |         | `(err, data)` or use promises
 
 
-* [Search API documentation](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#overview)
-* [Live demo](https://tonicdev.com/npm/searchitunes)
+* [Search-API docs](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#overview)
+* [Live demo](https://npm.runkit.com/searchitunes)
 
 
-#### Lookup by ID
+### Lookup by ID
 
 When you wish to retrieve one specific item by its ID,
 include one of the following params to use the Lookup API.
-The result `data` will be only the _object_ with the item's details.
+The result data will be only the _object_ with the item's details.
 
-* [Lookup API documentation](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#lookup)
+* [Lookup-API docs](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#lookup)
 
 
 **ID params**
@@ -53,128 +72,13 @@ The result `data` will be only the _object_ with the item's details.
 
 
 ```js
-searchitunes ({ id: 123456 }, callback);
+searchitunes ({ id: 123456 })
+  .then (console.log)
+  .catch (console.error);
 ```
 
 
-#### Callback
-
-The `callback` function receives two parameters: `err` and `data`.
-On success `err` is _null_ and `data` is the result object.
-On error `err` is an instance of _Error_ and `data` is not set, see [Errors](#errors) below.
-
-
-#### Example
-
-```js
-const searchitunes = require ('searchitunes');
-
-const searchParams = {
-  entity: 'software',
-  country: 'NL',
-  term: 'github',
-  limit: 1,
-  price: 0
-};
-  
-
-// Find free Github app for iPhone in Dutch App Store
-searchitunes (searchParams, (err, data) => {
-  if (err) {
-    console.log (err);
-    return;
-  }
-
-  // All good
-  console.log (data);
-});
-
-
-// Get one specific item by ID
-searchitunes ({ id: 512939461 }, console.log);
-```
-
-
-#### Output
-
-When you lookup an item by its ID you only get the singular result _object_.
-
-```js
-{ resultCount: 1,
-  results: 
-   [ { screenshotUrls: 
-        [ 'http://a4.mzstatic.com/eu/r30/Purple69/v4/8e/b6/b1/8eb6b18c-1703-3fe9-1311-9a891a851f2b/screen1136x1136.jpeg',
-          'http://a5.mzstatic.com/eu/r30/Purple69/v4/8c/9c/df/8c9cdf9a-36ec-9b81-63af-68be202691d3/screen1136x1136.jpeg',
-          'http://a3.mzstatic.com/eu/r30/Purple69/v4/9b/f7/6f/9bf76f76-05d8-80b0-4b9f-6dbb365a782a/screen1136x1136.jpeg',
-          'http://a1.mzstatic.com/eu/r30/Purple69/v4/3d/81/77/3d8177a8-2653-7cbb-e04c-d45942ca980e/screen1136x1136.jpeg',
-          'http://a4.mzstatic.com/eu/r30/Purple49/v4/b8/4d/24/b84d24c8-3647-9df3-2244-ea0ddea32bc6/screen1136x1136.jpeg' ],
-       ipadScreenshotUrls: 
-        [ 'http://a1.mzstatic.com/eu/r30/Purple69/v4/f6/44/ee/f644ee69-53ed-65dd-85f0-24cf31f7daa1/screen480x480.jpeg',
-          'http://a5.mzstatic.com/eu/r30/Purple69/v4/56/94/d3/5694d376-cea1-ab3f-51b4-f771c73c9bce/screen480x480.jpeg',
-          'http://a3.mzstatic.com/eu/r30/Purple69/v4/2e/19/1d/2e191d6d-c571-360a-5d7c-a5a3e636af39/screen480x480.jpeg',
-          'http://a4.mzstatic.com/eu/r30/Purple69/v4/aa/ec/91/aaec918e-4e32-f90e-dc18-9d183a636925/screen480x480.jpeg',
-          'http://a4.mzstatic.com/eu/r30/Purple69/v4/6e/0d/30/6e0d30fc-aaa8-f3f4-0fd7-42f92b876e96/screen480x480.jpeg' ],
-       appletvScreenshotUrls: [],
-       artworkUrl60: 'http://is2.mzstatic.com/image/thumb/Purple30/v4/19/f4/66/19f46673-c118-c52d-ca78-a1f3439a020e/source/60x60bb.jpg',
-       artworkUrl512: 'http://is2.mzstatic.com/image/thumb/Purple30/v4/19/f4/66/19f46673-c118-c52d-ca78-a1f3439a020e/source/512x512bb.jpg',
-       artworkUrl100: 'http://is2.mzstatic.com/image/thumb/Purple30/v4/19/f4/66/19f46673-c118-c52d-ca78-a1f3439a020e/source/100x100bb.jpg',
-       artistViewUrl: 'https://itunes.apple.com/nl/developer/dillon-buchanan/id551531425?uo=4',
-       kind: 'software',
-       features: [ 'iosUniversal' ],
-       supportedDevices: 
-        [ 'iPad2Wifi',
-          'iPad23G',
-          'iPhone4S',
-          'iPadThirdGen',
-          'iPadThirdGen4G',
-          'iPhone5',
-          'iPodTouchFifthGen',
-          'iPadFourthGen',
-          'iPadFourthGen4G',
-          'iPadMini',
-          'iPadMini4G',
-          'iPhone5c',
-          'iPhone5s',
-          'iPhone6',
-          'iPhone6Plus',
-          'iPodTouchSixthGen' ],
-       advisories: [],
-       isGameCenterEnabled: false,
-       trackCensoredName: 'CodeHub - A Client for GitHub',
-       languageCodesISO2A: [ 'EN' ],
-       fileSizeBytes: '42310545',
-       sellerUrl: 'http://codehub-app.com',
-       contentAdvisoryRating: '4+',
-       trackViewUrl: 'https://itunes.apple.com/nl/app/codehub-a-client-for-github/id707173885?mt=8&uo=4',
-       trackContentRating: '4+',
-       genreIds: [ '6007', '6005' ],
-       currency: 'EUR',
-       wrapperType: 'software',
-       version: '2.9.3',
-       description: 'CodeHub is the best way to browse and maintain your GitHub repositories on any iPhone, iPod Touch, and iPad device! Keep an eye on your projects with the ability to view everything from pull requests to commenting on individual file diffs in the latest changeset. CodeHub brings GitHub to your finger tips in a sleek and efficient design. \n\nFeatures include: \n\n- GitHub.com and GitHub Enterprise support\n- Multiple GitHub profiles for easy switching \n- View repository events, issues, and change sets, pull requests, etc..\n- Browse source directories & files with beautiful syntax highlighting\n- Edit files and commit them!\n- View file diffs from checkins and pull requests\n- Update, comment and manage repository issues\n- Upload images directly from your devices to comments/issues.\n- Explore other GitHub open source repositories \n- Inline commit commenting\n- Access your public, private, and starred gists\n- Slide out menu for quick and efficient navigation\n- Much much more! \n\nFollow the project on twitter: @CodeHubApp\n\nPlease note: CodeHub is not affiliated with GitHub in any way. CodeHub is a third-party GitHub client.',
-       artistId: 551531425,
-       artistName: 'Dillon Buchanan',
-       genres: [ 'Productiviteit', 'Sociaal netwerken' ],
-       price: 0,
-       trackName: 'CodeHub - A Client for GitHub',
-       trackId: 707173885,
-       bundleId: 'com.dillonbuchanan.codehub',
-       releaseDate: '2013-10-01T01:00:56Z',
-       primaryGenreName: 'Productivity',
-       isVppDeviceBasedLicensingEnabled: false,
-       primaryGenreId: 6007,
-       formattedPrice: 'Gratis',
-       releaseNotes: '- Bug fixes',
-       currentVersionReleaseDate: '2016-05-04T16:04:45Z',
-       sellerName: 'Dillon Buchanan',
-       minimumOsVersion: '9.0',
-       averageUserRating: 4.5,
-       userRatingCount: 19 } ] }
-```
-
-
-Errors
-------
+### Errors
 
 message          | description
 :----------------|:--------------------------------------------
@@ -184,8 +88,7 @@ invalid params   | Client provided no or invalid parameters
 no results       | No results received
 
 
-Unlicense
----------
+## Unlicense
 
 This is free and unencumbered software released into the public domain.
 
@@ -213,9 +116,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <http://unlicense.org/>
 
 
-Author
-------
+## Author
 
 [Franklin van de Meent](https://frankl.in)
 
-[![Buy me a coffee](https://frankl.in/u/kofi/kofi-readme.png)](https://ko-fi.com/franklin)
+Is this project useful to you?
+[Buy me a coffee](https://ko-fi.com/franklin)
+to help me stay awake while debugging.
