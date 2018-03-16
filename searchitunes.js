@@ -128,7 +128,7 @@ function httpRequest (props, callback) {
     url: 'https://itunes.apple.com/search',
     method: 'GET',
     parameters: props.params || {},
-    timeout: props.timeout || config.timeout,
+    timeout: parseInt (props.timeout || config.timeout, 10),
     headers: {
       'Accept': 'application/json',
       'User-Agent': 'searchitunes.js'
