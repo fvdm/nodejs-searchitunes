@@ -42,22 +42,18 @@ dotest.add ('Promise - good', test => {
     .then (data => test()
       .isObject ('fail', 'data', data)
       .isNotEmpty ('fail', 'data', data)
-      .done()
     )
-    .catch (err => test (err).done());
+    .then (() => test().done());
 });
 
 
 dotest.add ('Promise - Error', test => {
   app (null)
-    .then (data => test()
-      .isUndefined ('fail', 'data', data)
-    )
     .catch (err => test()
       .isError ('fail', 'err', err)
       .isExactly ('fail', 'err.message', err && err.message, 'invalid params')
-      .done()
-    );
+    )
+    .then(() => test().done());
 });
 
 
