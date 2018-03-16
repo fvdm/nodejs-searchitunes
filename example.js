@@ -1,8 +1,8 @@
 // Load module
-var itunes = require ('searchitunes');
+const itunes = require ('searchitunes');
 
 // Search parameters
-var params = {
+const params = {
   entity: 'software',
   country: 'NL',
   term: 'github',
@@ -11,7 +11,7 @@ var params = {
 };
 
 // Fancy console.log
-function output (err, data) {
+function output (result) {
   console.dir (err || data, {
     depth: null,
     colors: true
@@ -19,4 +19,6 @@ function output (err, data) {
 }
 
 // Do the search
-itunes (params, output);
+itunes (params)
+  .then (output)
+  .catch (console.error);
