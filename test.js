@@ -6,23 +6,39 @@ Feedback:     https://github.com/fvdm/nodejs-openkvk/issues
 License:      Public Domain / Unlicense (see LICENSE file)
 */
 
-var dotest = require ('dotest');
-var app = require ('./');
+const dotest = require ('dotest');
+const app = require ('./');
 
 // Setup
-var timeout = process.env.testTimeout || null;
+const timeout = process.env.testTimeout || null;
+
+const goodParams = {
+  entity: 'software',
+  country: 'NL',
+  term: 'github',
+  limit: 1,
+  price: 0
+};
+
+const badParams = {
+  entity: 'software',
+  country: 'NL',
+  term: null,
+  limit: 1,
+  price: 0
+};
 
 
 // Tests
-dotest.add ('Module', function (test) {
+dotest.add ('Interface', test => {
   test ()
     .isFunction ('fail', 'exports', app)
     .done ();
 });
 
 
-dotest.add ('Error: invalid params', function (test) {
-  app (null, function (err) {
+dotest.add ('Error: invalid params', test => {
+  app (null, err => {
     test ()
       .isError ('fail', 'err', err)
       .isExactly ('fail', 'err.message', err && err.message, 'invalid params')
@@ -31,16 +47,8 @@ dotest.add ('Error: invalid params', function (test) {
 });
 
 
-dotest.add ('Error: no results', function (test) {
-  var params = {
-    entity: 'software',
-    country: 'NL',
-    term: null,
-    limit: 1,
-    price: 0
-  };
-
-  app (params, timeout, function (err) {
+dotest.add ('Error: no results', test => {
+  app (badParams, timeout, err => {
     test ()
       .isError ('fail', 'err', err)
       .isExactly ('fail', 'err.message', err && err.message, 'no results')
@@ -49,8 +57,8 @@ dotest.add ('Error: no results', function (test) {
 });
 
 
-dotest.add ('Error: http error', function (test) {
-  app ({}, 1, function (err, data) {
+dotest.add ('Error: http error', test => {
+  app ({}, 1, (err, data) => {
     test (null)
       .isError ('fail', 'err', err)
       .isExactly ('fail', 'err.message', err && err.message, 'http error')
@@ -61,31 +69,19 @@ dotest.add ('Error: http error', function (test) {
 });
 
 
-dotest.add ('Search by ID', function (test) {
-  var params = {
-    id: 512939461
-  };
-
-  app (params, timeout, function (err, data) {
+dotest.add ('Lookup by ID', test => {
+  app ({ id: 512939461 }, timeout, (err, data) => {
     test (err)
       .isObject ('fail', 'data', data)
-      .isExactly ('fail', 'data.trackId', data && data.trackId, params.id)
+      .isExactly ('fail', 'data.trackId', data && data.trackId, 512939461)
       .done ();
   });
 });
 
 
-dotest.add ('Search by term', function (test) {
-  var params = {
-    entity: 'software',
-    country: 'NL',
-    term: 'github',
-    limit: 1,
-    price: 0
-  };
-
-  app (params, timeout, function (err, data) {
-    var item = data && data.results && data.results [0];
+dotest.add ('Search by term', test => {
+  app (goodParams, timeout, (err, data) => {
+    const item = data && data.results && data.results [0];
 
     test (err)
       .isObject ('fail', 'data', data)
