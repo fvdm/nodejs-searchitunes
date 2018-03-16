@@ -16,6 +16,7 @@
   },
   "main": "searchitunes.js",
   "dependencies": {
+    "es6-promisify": "^6.0.0",
     "httpreq": "^0.4.22"
   },
   "devDependencies": {
