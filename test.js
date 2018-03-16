@@ -10,7 +10,7 @@ const dotest = require ('dotest');
 const app = require ('./');
 
 // Setup
-const timeout = process.env.testTimeout || null;
+const timeout = String (process.env.testTimeout);
 
 const goodParams = {
   entity: 'software',
