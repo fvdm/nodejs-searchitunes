@@ -16,4 +16,5 @@ itunes (params)
     depth: null,
     colors: true
   }))
-  .catch (console.error);
+  .catch (console.error)
+;
