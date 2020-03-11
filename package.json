@@ -1,6 +1,6 @@
 {
   "author": {
-    "name": "Franklin van de Meent",
+    "name": "Franklin",
     "email": "fr@nkl.in",
     "url": "https://frankl.in"
   },
@@ -20,10 +20,10 @@
     "httpreq": "^0.4.24"
   },
   "devDependencies": {
-    "dotest": "^2.3.0"
+    "dotest": "^2.6.1"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=10.0.0"
   },
   "keywords": [
     "api",
