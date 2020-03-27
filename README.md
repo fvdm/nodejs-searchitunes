@@ -12,15 +12,16 @@ Lightweight Node.js package to quickly search the Apple iTunes Store and App Sto
 
 ```js
 const searchitunes = require ('searchitunes');
+
+// Find free Github app for iPhone in Dutch App Store
 const params = {
   entity: 'software',
   country: 'NL',
   term: 'github',
   limit: 1,
-  price: 0
+  price: 0,
 };
 
-// Find free Github app for iPhone in Dutch App Store
 searchitunes (params).then (console.log);
 
 // Get one specific item by ID
@@ -39,11 +40,11 @@ searchitunes ({ id: 512939461 }).then (console.log);
 The module returns promises but also supports the callback argument.
 It's up to you which you prefer.
 
-argument  | type     | required | default | description
-:---------|:---------|:---------|:--------|:------------------------------
-params    | object   | yes      |         | Search parameters
-timeout   | int      | no       | 5000    | Wait time out in ms
-callback  | function | no       |         | `(err, data)` or use promises
+argument   | type     | default | description
+:----------|:---------|:--------|:-----------
+params     | object   |         | Search parameters
+[timeout]  | int      | 5000    | Wait time out in ms
+[callback] | function |         | `(err, data)` or use promises
 
 
 * [Search-API docs](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#overview)
@@ -67,6 +68,8 @@ The result data will be only the _object_ with the item's details.
 * id
 * isbn
 * upc
+
+When converting from the Search API, use its `trackId` value on the `id` parameter of the Lookup API.
 
 
 ```js
@@ -119,5 +122,5 @@ For more information, please refer to <http://unlicense.org/>
 [Franklin van de Meent](https://frankl.in)
 
 Is this project useful to you?
-[Buy me a coffee](https://ko-fi.com/franklin)
-to help me stay awake while debugging.
+You can [buy me a coffee](https://buymeacoff.ee/franklin)
+to keep me charged ⚡️ while coding.
