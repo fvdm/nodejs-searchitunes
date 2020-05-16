@@ -1,8 +1,10 @@
-sudo: false
-language: node_js
+os: "linux"
+arch: "arm64"
+dist: "bionic"
+language: "node_js"
 node_js:
- - '14'
- - '13'
- - '12'
- - '10'
+ - "14"
+ - "13"
+ - "12"
+ - "10"
  
