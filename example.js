@@ -2,7 +2,7 @@
 const itunes = require ('searchitunes');
 
 // Search parameters
-const params = {
+const parameters = {
   entity: 'software',
   country: 'NL',
   term: 'github',
@@ -11,10 +11,10 @@ const params = {
 };
 
 // Do the search
-itunes (params)
+itunes ({ parameters })
   .then (data => console.dir (data, {
     depth: null,
-    colors: true
+    colors: true,
   }))
   .catch (console.error)
 ;

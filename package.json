@@ -30,13 +30,10 @@
     "apple",
     "apps",
     "appstore",
-    "id",
     "itunes",
     "lookup",
     "music",
-    "search",
-    "term",
-    "terms"
+    "search"
   ],
   "license": "Unlicense",
   "tonicExampleFilename": "example.js",
