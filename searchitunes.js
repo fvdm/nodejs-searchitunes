@@ -1,44 +1,34 @@
 /*
 Name:         searchitunes
 Description:  Search the Apple iTunes Store and App Store.
-Author:       Franklin van de Meent (https://frankl.in)
+Author:       Franklin (https://fvdm.com)
 Source:       https://github.com/fvdm/nodejs-searchitunes
-Feedback:     https://github.com/fvdm/nodejs-searchitunes/issues
-API docs:     https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/
 License:      Unlicense (Public Domain, see UNLICENSE file)
-              (https://github.com/fvdm/nodejs-searchitunes/raw/master/UNLICENSE)
 */
 
 const { doRequest } = require ('httpreq');
-const { promisify } = require ('es6-promisify');
-
-let config = {
-  timeout: 5000,
-  idKeys: [
-    'amgAlbumId',
-    'amgArtistId',
-    'amgVideoId',
-    'id',
-    'isbn',
-    'upc'
-  ]
-};
 
 
 /**
  * Check if one of the keys is a property
  *
- * @return  {boolean}        `true` = yes
+ * @return  {Promise<boolean>}  `true` = yes
  *
- * @param   {array}    keys  Property names to check
  * @param   {object}   obj   Object to process
  */
 
-function keysInObject (keys, obj) {
-  let i = 0;
+async function keysInObject (obj) {
+  const keys = [
+    'amgAlbumId',
+    'amgArtistId',
+    'amgVideoId',
+    'id',
+    'isbn',
+    'upc',
+  ];
 
-  for (i; i < keys.length; i++) {
-    if (obj [keys [i]]) {
+  for (let i = 0; i < keys.length; i++) {
+    if (obj[keys[i]]) {
       return true;
     }
   }
@@ -48,63 +38,34 @@ function keysInObject (keys, obj) {
 
 
 /**
- * Callback a request error
- *
- * @callback  callback
- * @return    {Error}   error
- *
- * @param     {error}   err      The error to include in `.error`
- * @param     {object}  res      Response details from httpreq
- * @param     {string}  message  Error message to report
- */
-
-function httpError (err, res, message) {
-  let error = new Error (message);
-
-  error.code = res && res.statusCode;
-  error.body = res && res.body;
-  error.error = err;
-
-  return error;
-}
-
-
-/**
  * Process HTTP response
  *
- * @callback  callback
- * @return    {void}
+ * @return  {Promise}
  *
- * @param     {Error|null}  err                  Client error
- * @param     {object}      [res]                Response details
- * @param     {function}    [callback]           `(err, data)`
- * @param     {bool}        [firstResult=false]  Call back only first result
+ * @param   {object}   res            Response
+ * @param   {bool}     [first=false]  Only first result
  */
 
-function httpResponse (err, res, callback, firstResult) {
-  let data = res && res.body || '';
-  let error = null;
+async function httpResponse ({
+  res = {},
+  first = false,
+}) {
+  let data = res.body || '';
 
   try {
     data = JSON.parse (data);
 
-    if (!(data.results instanceof Array) || !data.results.length) {
-      error = new Error ('no results');
-    } else if (firstResult) {
-      data = data.results [0];
+    if (!data.results || !data.results.length) {
+      throw new Error ('no results');
     }
-  } catch (e) {
-    error = httpError (e, res, 'invalid response');
-  }
+    else if (first) {
+      return data.results[0];
+    }
 
-  if (err) {
-    error = httpError (err, res, 'http error');
+    return data;
   }
-
-  if (error) {
-    callback (error);
-  } else {
-    callback (null, data);
+  catch (e) {
+    return e;
   }
 }
 
@@ -112,67 +73,40 @@ function httpResponse (err, res, callback, firstResult) {
 /**
  * Send HTTP request
  *
- * @callback  callback
- * @return    {void}
+ * @return  {Promise}
  *
- * @param     {object}    props                 Request details
- * @param     {string}    props.url             URL to fetch
- * @param     {object}    props.params          Parameters to send along
- * @param     {int}       [props.timeout=5000]  Wait time out in ms
- * @param     {function}  callback              `(err, data)`
+ * @param   {object}   [parameters]    Parameters to send along
+ * @param   {number}   [timeout=5000]  Wait time out in ms
  */
 
-function httpRequest (props, callback) {
-  let firstResult = false;
+module.exports = async function search ({
+  parameters = {},
+  timeout = 5000,
+  userAgent = 'searchitunes.js',
+}) {
+  let first = false;
   let options = {
     url: 'https://itunes.apple.com/search',
-    method: 'GET',
-    parameters: props.params || {},
-    timeout: parseInt (props.timeout || config.timeout, 10),
+    parameters,
+    timeout,
     headers: {
       'Accept': 'application/json',
-      'User-Agent': 'searchitunes.js'
-    }
+      'User-Agent': userAgent,
+    },
   };
 
-  if (keysInObject (config.idKeys, options.parameters)) {
+  if (keysInObject (parameters) {
     options.url = 'https://itunes.apple.com/lookup';
-    firstResult = true;
+    first = true;
   }
 
-  doRequest (options, (err, res) => {
-    httpResponse (err, res, callback, firstResult);
+  return new Promise ((resolve, reject) => {
+    doRequest (options, async (err, res) => {
+      if (err) return reject (err);
+
+      const data = await httpResponse ({ res, first });
+
+      resolve (data);
+    });
   });
-}
-
-
-/**
- * Module interface
- *
- * @callback  callback
- * @return    {object}                    Promises then & catch
- *
- * @param     {object}    params          Parameters to send to API
- * @param     {int}       [timeout=5000]  Wait time out in ms
- * @param     {function}  callback        `(err, data)`
- */
-
-module.exports = promisify ((params, timeout, callback) => {
-  let options = {
-    params: params || {}
-  };
-
-  if (typeof timeout === 'function') {
-    callback = timeout;
-    timeout = null;
-  }
-
-  if (!params || !(params instanceof Object)) {
-    callback (new Error ('invalid params'));
-    return;
-  }
-
-  options.params.version = params.version || 2;
-  options.timeout = timeout;
-  httpRequest (options, callback);
-});
+};

@@ -5,7 +5,6 @@ Lightweight Node.js package to quickly search the Apple iTunes Store and App Sto
 [![npm](https://img.shields.io/npm/v/searchitunes.svg?maxAge=3600)](https://github.com/fvdm/nodejs-searchitunes/blob/master/CHANGELOG.md)
 [![Build Status](https://travis-ci.org/fvdm/nodejs-searchitunes.svg?branch=master)](https://travis-ci.org/fvdm/nodejs-searchitunes)
 [![Coverage Status](https://coveralls.io/repos/github/fvdm/nodejs-searchitunes/badge.svg?branch=master)](https://coveralls.io/github/fvdm/nodejs-searchitunes?branch=master)
-[![Greenkeeper badge](https://badges.greenkeeper.io/fvdm/nodejs-searchitunes.svg)](https://greenkeeper.io/)
 
 
 ## Example
@@ -35,10 +34,9 @@ searchitunes ({ id: 512939461 }).then (console.log);
 
 
 ## Usage
-**( params, [timeout], [callback] )**
+**({ parameters, [timeout], [userAgent] })**
 
-The module returns promises but also supports the callback argument.
-It's up to you which you prefer.
+The module returns a promise.
 
 argument   | type     | default | description
 :----------|:---------|:--------|:-----------
@@ -119,8 +117,5 @@ For more information, please refer to <http://unlicense.org/>
 
 ## Author
 
-[Franklin van de Meent](https://frankl.in)
-
-Is this project useful to you?
-You can [buy me a coffee](https://buymeacoff.ee/franklin)
-to keep me charged ⚡️ while coding.
+[Franklin](https://fvdm.com)
+| [buy me a coffee](https://fvdm.com/donating)
