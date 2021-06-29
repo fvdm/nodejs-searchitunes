@@ -36,7 +36,7 @@ async function keysInObject (obj) {
   return false;
 }
 
-  
+
 /**
  * Process HTTP response
  *
