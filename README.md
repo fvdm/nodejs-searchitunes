@@ -38,11 +38,11 @@ searchitunes ({ id: 512939461 }).then (console.log);
 
 The module returns a promise.
 
-argument   | type     | default | description
-:----------|:---------|:--------|:-----------
-params     | object   |         | Search parameters
-[timeout]  | int      | 5000    | Wait time out in ms
-[callback] | function |         | `(err, data)` or use promises
+argument    | type   | default         | description
+:-----------|:-------|:----------------|:-----------
+parameters  | object |                 | Search parameters
+[timeout]   | number | 5000            | Wait time out in ms
+[userAgent] | string | searchitunes.js | User-Agent header
 
 
 * [Search-API docs](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#overview)
@@ -73,7 +73,8 @@ When converting from the Search API, use its `trackId` value on the `id` paramet
 ```js
 searchitunes ({ id: 123456 })
   .then (console.log)
-  .catch (console.error);
+  .catch (console.error)
+;
 ```
 
 
