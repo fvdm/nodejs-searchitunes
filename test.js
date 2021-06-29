@@ -82,7 +82,8 @@ dotest.add ('Error: invalid params', test => {
     test ()
       .isError ('fail', 'err', err)
       .isExactly ('fail', 'err.message', err && err.message, 'invalid params')
-      .done ();
+      .done ()
+    ;
   });
 });
 
@@ -92,7 +93,8 @@ dotest.add ('Error: no results', test => {
     test ()
       .isError ('fail', 'err', err)
       .isExactly ('fail', 'err.message', err && err.message, 'no results')
-      .done ();
+      .done ()
+    ;
   });
 });
 
@@ -104,7 +106,8 @@ dotest.add ('Error: http error', test => {
       .isExactly ('fail', 'err.message', err && err.message, 'http error')
       .isUndefined ('fail', 'err.statusCode', err && err.statusCode)
       .isUndefined ('fail', 'data', data)
-      .done ();
+      .done ()
+    ;
   });
 });
 
@@ -114,7 +117,8 @@ dotest.add ('Lookup by ID', test => {
     test (err)
       .isObject ('fail', 'data', data)
       .isExactly ('fail', 'data.trackId', data && data.trackId, 512939461)
-      .done ();
+      .done ()
+    ;
   });
 });
 
@@ -130,7 +134,8 @@ dotest.add ('Search by term', test => {
       .isNotEmpty ('fail', 'data.results', data && data.results)
       .isObject ('fail', 'data.results[0]', item)
       .isExactly ('fail', 'data.results[0].kind', item && item.kind, 'software')
-      .done ();
+      .done ()
+    ;
   });
 });
 
