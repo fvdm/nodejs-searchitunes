@@ -85,6 +85,7 @@ module.exports = async function search ({
   userAgent = 'searchitunes.js',
 }) {
   let first = false;
+
   let options = {
     url: 'https://itunes.apple.com/search',
     parameters,
@@ -95,7 +96,7 @@ module.exports = async function search ({
     },
   };
 
-  if (keysInObject (parameters) {
+  if (keysInObject (parameters)) {
     options.url = 'https://itunes.apple.com/lookup';
     first = true;
   }
