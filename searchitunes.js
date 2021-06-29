@@ -83,7 +83,7 @@ module.exports = async function search ({
   timeout = 5000,
   userAgent = 'searchitunes.js',
 }) {
-  const parameters = arguments[0];
+  const parameters = arguments[0] || {};
 
   delete parameters.timeout;
   delete parameters.userAgent;
