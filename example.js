@@ -7,7 +7,7 @@ const parameters = {
   country: 'NL',
   term: 'github',
   limit: 1,
-  price: 0
+  price: 0,
 };
 
 // Do the search

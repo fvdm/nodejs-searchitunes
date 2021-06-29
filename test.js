@@ -17,7 +17,7 @@ const goodParams = {
   country: 'NL',
   term: 'github',
   limit: 1,
-  price: 0
+  price: 0,
 };
 
 const badParams = {
@@ -25,7 +25,7 @@ const badParams = {
   country: 'NL',
   term: null,
   limit: 1,
-  price: 0
+  price: 0,
 };
 
 
