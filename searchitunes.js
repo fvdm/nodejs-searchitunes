@@ -36,7 +36,7 @@ async function keysInObject (obj) {
   return false;
 }
 
-
+  
 /**
  * Process HTTP response
  *
@@ -103,7 +103,10 @@ module.exports = async function search ({
 
   return new Promise ((resolve, reject) => {
     doRequest (options, async (err, res) => {
-      if (err) return reject (err);
+      if (err) {
+        reject (err);
+        return;
+      }
 
       const data = await httpResponse ({ res, first });
 
