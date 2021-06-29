@@ -80,10 +80,14 @@ async function httpResponse ({
  */
 
 module.exports = async function search ({
-  parameters = {},
   timeout = 5000,
   userAgent = 'searchitunes.js',
 }) {
+  const parameters = arguments[0];
+
+  delete parameters.timeout;
+  delete parameters.userAgent;
+
   let first = false;
 
   let options = {
