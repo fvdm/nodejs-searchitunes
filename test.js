@@ -79,7 +79,7 @@ dotest.add ('Error: no results', async test => {
 });
 
 
-dotest.add ('Error: http error', async test => {
+dotest.add ('Error: request error', async test => {
   let error;
   let data;
 
@@ -92,8 +92,7 @@ dotest.add ('Error: http error', async test => {
 
   test ()
     .isError ('fail', 'error', error)
-    .isExactly ('fail', 'error.message', error && error.message, 'http error')
-    .isUndefined ('fail', 'error.statusCode', error && error.statusCode)
+    .isExactly ('fail', 'error.code', error && error.code, 'TIMEOUT')
     .isUndefined ('fail', 'data', data)
     .done ()
   ;

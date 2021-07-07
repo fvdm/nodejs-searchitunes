@@ -94,7 +94,7 @@ module.exports = (params) => {
 
   // Check input
   if (!(params instanceof Object)) {
-    throw new Error ('invalid parameters');
+    throw new Error ('invalid params');
   }
 
   // Process internal settings
