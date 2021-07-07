@@ -64,8 +64,8 @@ async function httpResponse ({
 
     return data;
   }
-  catch (e) {
-    return e;
+  catch (err) {
+    throw err;
   }
 }
 
@@ -73,38 +73,48 @@ async function httpResponse ({
 /**
  * Send HTTP request
  *
- * @return  {Promise}
+ * @return  {Promise<object>}
  *
- * @param   {object}   [parameters]    Parameters to send along
- * @param   {number}   [timeout=5000]  Wait time out in ms
+ * @param   {object}  params          Parameters to send along
+ * @param   {number}  [timeout=5000]  Wait timeout in ms
+ * @param   {string}  [userAgent]     Custom User-Agent header
  */
 
-module.exports = async function search ({
-  timeout = 5000,
-  userAgent = 'searchitunes.js',
-}) {
-  const parameters = arguments[0] || {};
-
-  delete parameters.timeout;
-  delete parameters.userAgent;
-
+module.exports = (params) => {
   let first = false;
-
   let options = {
     url: 'https://itunes.apple.com/search',
-    parameters,
-    timeout,
+    parameters: params,
+    timeout: 5000,
     headers: {
       'Accept': 'application/json',
-      'User-Agent': userAgent,
+      'User-Agent': 'searchitunes.js',
     },
   };
 
-  if (keysInObject (parameters)) {
+  // Check input
+  if (!(params instanceof Object)) {
+    throw new Error ('invalid parameters');
+  }
+
+  // Process internal settings
+  if (params.timeout) {
+    options.timeout = params.timeout;
+    delete params.timeout;
+  }
+
+  if (params.userAgent) {
+    options.headers['User-Agent'] = parameters.userAgent;
+    delete params.userAgent;
+  }
+
+  // Search or lookup
+  if (keysInObject (params)) {
     options.url = 'https://itunes.apple.com/lookup';
     first = true;
   }
 
+  // Process request
   return new Promise ((resolve, reject) => {
     doRequest (options, async (err, res) => {
       if (err) {
