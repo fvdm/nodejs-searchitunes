@@ -104,7 +104,7 @@ module.exports = (params) => {
   }
 
   if (params.userAgent) {
-    options.headers['User-Agent'] = parameters.userAgent;
+    options.headers['User-Agent'] = params.userAgent;
     delete params.userAgent;
   }
 
