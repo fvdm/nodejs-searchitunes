@@ -56,16 +56,17 @@ async function httpResponse ({
     data = JSON.parse (data);
 
     if (!data.results || !data.results.length) {
-      throw new Error ('no results');
+      return new Error ('no results');
     }
-    else if (first) {
+
+    if (first) {
       return data.results[0];
     }
 
     return data;
   }
   catch (err) {
-    throw err;
+    return err;
   }
 }
 
@@ -94,7 +95,7 @@ module.exports = (params) => {
 
   // Check input
   if (!(params instanceof Object)) {
-    throw new Error ('invalid params');
+    return new Error ('invalid params');
   }
 
   // Process internal settings
