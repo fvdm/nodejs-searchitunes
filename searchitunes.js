@@ -50,10 +50,8 @@ async function httpResponse ({
   res = {},
   first = false,
 }) {
-  let data = res.body || '';
-
   try {
-    data = JSON.parse (data);
+    data = JSON.parse (res.body);
 
     if (!data.results || !data.results.length) {
       throw new Error ('no results');
@@ -117,15 +115,20 @@ module.exports = async (params) => {
 
   // Process request
   return new Promise ((resolve, reject) => {
-    doRequest (options, async (err, res) => {
-      if (err) {
-        reject (err);
-        return;
-      }
+    try {
+      doRequest (options, async (err, res) => {
+        if (err) {
+          reject (err);
+          return;
+        }
 
-      const data = await httpResponse ({ res, first });
+        const data = await httpResponse ({ res, first });
 
-      resolve (data);
-    });
+        resolve (data);
+      });
+    }
+    catch (error) {
+      reject (error);
+    }
   });
 };
