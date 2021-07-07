@@ -81,7 +81,7 @@ async function httpResponse ({
  * @param   {string}  [userAgent]     Custom User-Agent header
  */
 
-module.exports = (params) => {
+module.exports = async (params) => {
   let first = false;
   let options = {
     url: 'https://itunes.apple.com/search',
