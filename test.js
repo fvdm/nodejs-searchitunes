@@ -19,6 +19,7 @@ const goodParams = {
   limit: 1,
   price: 0,
   userAgent: 'test.js',
+  timeout,
 };
 
 const badParams = {
@@ -27,6 +28,7 @@ const badParams = {
   term: null,
   limit: 1,
   price: 0,
+  timeout,
 };
 
 
@@ -104,7 +106,10 @@ dotest.add ('Lookup by ID', async test => {
   let data;
 
   try {
-    data = await app ({ id: 512939461 });
+    data = await app ({
+      id: 512939461,
+      timeout,
+    });
   }
   catch (err) {
     error = err;
