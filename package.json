@@ -19,13 +19,13 @@
     "example.js"
   ],
   "dependencies": {
-    "httpreq": "^0.4.24"
+    "httpreq": "^0.5.2"
   },
   "devDependencies": {
-    "dotest": "^2.6.1"
+    "dotest": "^2.8.2"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=12"
   },
   "keywords": [
     "api",
