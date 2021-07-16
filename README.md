@@ -21,10 +21,16 @@ const params = {
   price: 0,
 };
 
-searchitunes (params).then (console.log);
+searchitunes (params)
+  .then (console.log)
+  .catch (console.error)
+;
 
 // Get one specific item by ID
-searchitunes ({ id: 512939461 }).then (console.log);
+searchitunes ({ id: 512939461 })
+  .then (console.log)
+  .catch (console.error)
+;
 ```
 
 
@@ -33,41 +39,42 @@ searchitunes ({ id: 512939461 }).then (console.log);
 `npm i searchitunes`
 
 
-## Usage
-**({ parameters, [timeout], [userAgent] })**
+## Search by parameters
+
+**( params )**
 
 The module returns a promise.
 
-argument    | type   | default         | description
+param       | type   | default         | description
 :-----------|:-------|:----------------|:-----------
-parameters  | object |                 | Search parameters
 [timeout]   | number | 5000            | Wait time out in ms
 [userAgent] | string | searchitunes.js | User-Agent header
+...         | mixed  |                 | API parameters
 
-
-* [Search-API docs](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#overview)
-* [Live demo](https://npm.runkit.com/searchitunes)
+- [Search-API docs](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#overview)
+- [Live demo](https://npm.runkit.com/searchitunes)
 
 
 ### Lookup by ID
 
-When you wish to retrieve one specific item by its ID,
-include one of the following params to use the Lookup API.
-The result data will be only the _object_ with the item's details.
+When you wish to retrieve one specific item by its ID, include one of the ID
+params to use the Lookup API. The result data will be only the `object` with
+the item's details.
 
-* [Lookup-API docs](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#lookup)
+- [Lookup-API docs](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#lookup)
 
 
 **ID params**
 
-* amgAlbumId
-* amgArtistId
-* amgVideoId
-* id
-* isbn
-* upc
+- amgAlbumId
+- amgArtistId
+- amgVideoId
+- id
+- isbn
+- upc
 
-When converting from the Search API, use its `trackId` value on the `id` parameter of the Lookup API.
+When you lookup a `trackId` from a search response it will be automatically
+converted to the `id` parameter instead. Otherwise the API won't understand it.
 
 
 ```js
