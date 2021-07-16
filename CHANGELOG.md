@@ -1,3 +1,84 @@
+### 2.5.0 (2021-07-16)
+
+##### Chores
+
+* **package:**
+  *  Removed redundant .npmignore ([7a3e92b7](https://github.com/fvdm/nodejs-searchitunes/commit/7a3e92b798ee2b60f935854e4d47d7e8d50ed0c9))
+  *  Update dev dependencies ([d7b2bd1d](https://github.com/fvdm/nodejs-searchitunes/commit/d7b2bd1d0388997f18ccaa0d1a1a0b3817b99f41))
+  *  Update dependencies ([dcf1aa4d](https://github.com/fvdm/nodejs-searchitunes/commit/dcf1aa4d2b34bdf6a1b02f0073c039734d381666))
+  *  Include example.js ([5f857441](https://github.com/fvdm/nodejs-searchitunes/commit/5f857441bd924df56449d2da89c6f08fafbd5850))
+  *  Update author meta ([06f055dd](https://github.com/fvdm/nodejs-searchitunes/commit/06f055dd4f171a2c3499b49449cdcc21a3cae7bf))
+  *  Removed promisify dependency ([c7a4d900](https://github.com/fvdm/nodejs-searchitunes/commit/c7a4d9001ec2fab77d4ae107260fc8fe9763ebab))
+  *  Clean up tags ([002146e0](https://github.com/fvdm/nodejs-searchitunes/commit/002146e0a9b1ec195dcfd666583fffd551b1d1e7))
+  *  Added npmignore config ([6aa51258](https://github.com/fvdm/nodejs-searchitunes/commit/6aa512582e23698b8c60a43444b7446a5d5fd87b))
+* **dev:**
+  *  Added .nyc_output to gitignore ([056f4ac1](https://github.com/fvdm/nodejs-searchitunes/commit/056f4ac194078e8979f765134a479451ca7270de))
+  *  Added .editorconfig ([4320b0e1](https://github.com/fvdm/nodejs-searchitunes/commit/4320b0e17627f4fde77315672a9a4d2b6481a049))
+  *  Removed .bithoundrc ([f5eb71c0](https://github.com/fvdm/nodejs-searchitunes/commit/f5eb71c00577164a680d8fddc21c07847036518f))
+
+##### Documentation Changes
+
+*  Modified markdown, texts and example ([7e9dacdd](https://github.com/fvdm/nodejs-searchitunes/commit/7e9dacdd0796b757ffc9cf752b74962c158aa712))
+*  Fix arguments table ([51465b33](https://github.com/fvdm/nodejs-searchitunes/commit/51465b33bda143c7dfad20de751a7a8a9d97fd72))
+* **badges:**
+  *  Replaced Travis with Github action ([157b764e](https://github.com/fvdm/nodejs-searchitunes/commit/157b764e9e58e0a5ff7ae6a25d0d0fb2ff4a80c8))
+  *  Removed bitHound ([e45bfcfd](https://github.com/fvdm/nodejs-searchitunes/commit/e45bfcfd1dfe4c5f89a711e83db30697e7c415f6))
+* **readme:**  Added note about lookup id ([29a927cf](https://github.com/fvdm/nodejs-searchitunes/commit/29a927cf2a548f442ef01ec5a3306d2031953b8e))
+
+##### New Features
+
+*  Auto convert `trackId` param to `id` ([fba14822](https://github.com/fvdm/nodejs-searchitunes/commit/fba148221d8593f4c297a423ff8e7a706b049bd0))
+
+##### Bug Fixes
+
+*  Internal settings remained in request ([e8e2ea34](https://github.com/fvdm/nodejs-searchitunes/commit/e8e2ea34e3620e9edd5e158e9f190b6136ea3867))
+*  Async promises handling ([1ef230c9](https://github.com/fvdm/nodejs-searchitunes/commit/1ef230c993f19341bc3fbf028d9b621106b0b63c))
+*  API requires POST request ([6882688c](https://github.com/fvdm/nodejs-searchitunes/commit/6882688cf5d40d40c6acd20da77badd084a8e530))
+*  Wrap doRequest in a try..catch ([dacfc9dd](https://github.com/fvdm/nodejs-searchitunes/commit/dacfc9dd0c2affcb338912e7f56a10804fa99cb3))
+*  Throw...catch ([e6fce9e2](https://github.com/fvdm/nodejs-searchitunes/commit/e6fce9e2debe8bec1aaa0cadef09bde52cd4dd15))
+*  Exports function is not async ([55408268](https://github.com/fvdm/nodejs-searchitunes/commit/55408268cc4af0d2f525b70723771f48a7dba51d))
+*  Throw is unstable ([a833df3c](https://github.com/fvdm/nodejs-searchitunes/commit/a833df3c0b7412fb49dab587e02f205d80aab74b))
+*  Bad params ref ([6b6a6a4a](https://github.com/fvdm/nodejs-searchitunes/commit/6b6a6a4a0185deec6bb7eaccb51693aca4a666fd))
+*  Parameters default to empty object ([25ade45f](https://github.com/fvdm/nodejs-searchitunes/commit/25ade45fd7a267728e924217800836469dc4a38d))
+*  Broken search parameters ([a56083af](https://github.com/fvdm/nodejs-searchitunes/commit/a56083af98f64c4e5ab4d26f32e49fab55f00bd8))
+*  Syntax typo ([bdc26da7](https://github.com/fvdm/nodejs-searchitunes/commit/bdc26da7e2fd32adce3adbbc17b8f44cd8dcbb6b))
+
+##### Refactors
+
+* **errors:**  Removed invalid params error ([6eddd2f2](https://github.com/fvdm/nodejs-searchitunes/commit/6eddd2f2297c9373fbb13f516d584d2222c48690))
+*  Replaced arguments w/ object ([4a624d5c](https://github.com/fvdm/nodejs-searchitunes/commit/4a624d5c7aece62600122d56cbb3af4bd3256aed))
+
+##### Code Style Changes
+
+*  Removed trailing whitespace ([1c256c31](https://github.com/fvdm/nodejs-searchitunes/commit/1c256c3110a836b9d49ae476b55f312cf45a5267))
+*  Comma dangle on last lines ([b930a247](https://github.com/fvdm/nodejs-searchitunes/commit/b930a247520c87dc81ebfc96191a932aeb307ec3))
+*  Readability and consistent return ([5d1eabb9](https://github.com/fvdm/nodejs-searchitunes/commit/5d1eabb923a058be3f3e3054973d2b8732abfe55))
+* **test:**  Minor readability edits ([62e62ddc](https://github.com/fvdm/nodejs-searchitunes/commit/62e62ddc1fedc8c19c70e790367315b7203eb46a))
+* **example:**  Minor style change ([917e7312](https://github.com/fvdm/nodejs-searchitunes/commit/917e73128d6c5ab2f59ada52f1e0fcf2893fd64f))
+
+##### Tests
+
+*  Clean up intro comment ([45379bb7](https://github.com/fvdm/nodejs-searchitunes/commit/45379bb727d8e7254974dce3df723492c0e1a606))
+*  Added default timeout test ([bd8fda6f](https://github.com/fvdm/nodejs-searchitunes/commit/bd8fda6f3d7521a389ce0c2fa63b12100a8736e3))
+*  Check error value ([2d503c77](https://github.com/fvdm/nodejs-searchitunes/commit/2d503c772a635d4858cc465732d78956a4a585c3))
+*  Fixed timeout config ([0a0577a6](https://github.com/fvdm/nodejs-searchitunes/commit/0a0577a63c410898503728d3fc7a6347f8c299a9))
+*  Fix and clean up params ([9a6c742f](https://github.com/fvdm/nodejs-searchitunes/commit/9a6c742f9315db392ef60c7c5a328d083cb28d46))
+*  Fixed timeout ref ([e6d07db4](https://github.com/fvdm/nodejs-searchitunes/commit/e6d07db411d2afb97ac313426317b38fe6f21c71))
+*  API doesn't use HTTP status codes ([d6db0bc5](https://github.com/fvdm/nodejs-searchitunes/commit/d6db0bc5ef39e026210ba99bd620318f24d9cfc2))
+*  Improved promise tests ([efc7b62b](https://github.com/fvdm/nodejs-searchitunes/commit/efc7b62b447900bac86960e92446e27eb24d8dc0))
+* **config:**
+  *  Modernized ESLint config ([5229e894](https://github.com/fvdm/nodejs-searchitunes/commit/5229e8943b506e4cf6510a12aa6700d32bd2d79c))
+  *  Removed Travis CI ([47face64](https://github.com/fvdm/nodejs-searchitunes/commit/47face64de31fd26a0c03e03713d3cf04e5f0935))
+  *  Update Travis node versions ([0f8abe10](https://github.com/fvdm/nodejs-searchitunes/commit/0f8abe10349ce0c1386f6190ce463cf1ec4d3498))
+  *  Modernize Travis config ([8525c8d3](https://github.com/fvdm/nodejs-searchitunes/commit/8525c8d31ae58c86ef5c97d124e758b8de212a59))
+  *  Update Travis node versions ([e6609a3a](https://github.com/fvdm/nodejs-searchitunes/commit/e6609a3ac83fca409922004d5e294ca5612f787b))
+  *  Update Travis node versions ([0dabbd90](https://github.com/fvdm/nodejs-searchitunes/commit/0dabbd90804714c944c8d61eec78fee721b39aed))
+  *  Update node versions on Travis CI ([c868103a](https://github.com/fvdm/nodejs-searchitunes/commit/c868103a91823b0c8b6b2af026d49b5af81f3891))
+* **github:**
+  *  Add Node.js CI action ([dbc845c0](https://github.com/fvdm/nodejs-searchitunes/commit/dbc845c06ea63097ff03c8f849ac316025040387))
+  *  Add CodeQL ([a21956fc](https://github.com/fvdm/nodejs-searchitunes/commit/a21956fce7602bec916bd6754e37dc7c7a905357))
+  *  Add dependabot.yml ([1cb2fa99](https://github.com/fvdm/nodejs-searchitunes/commit/1cb2fa99016b1ab11b489b8edc189c2068b19b6f))
+
 ### 2.4.0 (2018-03-16)
 
 ##### Chores
