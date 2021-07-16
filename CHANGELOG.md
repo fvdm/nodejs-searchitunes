@@ -1,3 +1,14 @@
+#### 2.5.1 (2021-07-16)
+
+##### Chores
+
+* **example:**  Fixed parameters argument ([81346e49](https://github.com/fvdm/nodejs-searchitunes/commit/81346e49d94c14e9b8dbdcafb994aa7847964917))
+
+##### Documentation Changes
+
+*  Minor edits ([aeb6d9a9](https://github.com/fvdm/nodejs-searchitunes/commit/aeb6d9a99ab69397b93cd64d23007f2a07da0653))
+*  Removed error section ([9eba443f](https://github.com/fvdm/nodejs-searchitunes/commit/9eba443f5ac95540c61fbf6b912cdc4032eb4a93))
+
 ### 2.5.0 (2021-07-16)
 
 ##### Chores
