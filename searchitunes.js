@@ -116,16 +116,16 @@ module.exports = async params => {
   // Process internal settings
   if (params.timeout) {
     options.timeout = params.timeout;
-    delete params.timeout;
+    delete options.parameters.timeout;
   }
 
   if (params.userAgent) {
     options.headers['User-Agent'] = params.userAgent;
-    delete params.userAgent;
+    delete options.parameters.userAgent;
   }
 
   // Search or lookup
-  if (keysInObject (params)) {
+  if (keysInObject (options.parameters)) {
     options.url = 'https://itunes.apple.com/lookup';
     first = true;
   }
