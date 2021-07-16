@@ -2,7 +2,6 @@
 Name:         openkvk - test.js
 Description:  Test script for openkvk.js
 Source:       https://github.com/fvdm/nodejs-openkvk
-Feedback:     https://github.com/fvdm/nodejs-openkvk/issues
 License:      Public Domain / Unlicense (see LICENSE file)
 */
 
