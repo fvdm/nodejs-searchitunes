@@ -12,24 +12,6 @@ const app = require ('./');
 // Setup
 const timeout = String (process.env.testTimeout);
 
-const goodParams = {
-  entity: 'software',
-  country: 'NL',
-  term: 'github',
-  limit: 1,
-  price: 0,
-  userAgent: 'test.js',
-  timeout,
-};
-
-const badParams = {
-  entity: 'software',
-  country: 'NL',
-  term: null,
-  limit: 1,
-  price: 0,
-  timeout,
-};
 
 
 // Tests
@@ -46,7 +28,14 @@ dotest.add ('Error: no results', async test => {
   let data;
 
   try {
-    data = await app ({ badParams });
+    data = await app ({
+      entity: 'software',
+      country: 'NL',
+      term: 'this_is_hopefully_not_an_existing_app_in_the_app_store',
+      limit: 1,
+      price: 0,
+      timeout,
+    });
   }
   catch (err) {
     error = err;
@@ -109,7 +98,16 @@ dotest.add ('Search by term', async test => {
   let item;
 
   try {
-    data = await app (goodParams);
+    data = await app ({
+      entity: 'software',
+      country: 'NL',
+      term: 'github',
+      limit: 1,
+      price: 0,
+      userAgent: 'test.js',
+      timeout,
+    });
+
     item = data.results && data.results [0];
   }
   catch (err) {
