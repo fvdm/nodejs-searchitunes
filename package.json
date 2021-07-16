@@ -15,6 +15,9 @@
     "url": "https://github.com/fvdm/nodejs-searchitunes/issues"
   },
   "main": "searchitunes.js",
+  "files": [
+    "example.js"
+  ],
   "dependencies": {
     "httpreq": "^0.4.24"
   },
