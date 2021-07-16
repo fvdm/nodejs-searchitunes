@@ -82,6 +82,7 @@ async function httpResponse ({
 module.exports = async (params) => {
   let first = false;
   let options = {
+    method: 'POST',
     url: 'https://itunes.apple.com/search',
     parameters: params,
     timeout: 5000,
