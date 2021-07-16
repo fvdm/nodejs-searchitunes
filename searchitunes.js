@@ -17,7 +17,7 @@ const { doRequest } = require ('httpreq');
  * @param   {object}   obj   Object to process
  */
 
-async function keysInObject (obj) {
+function keysInObject (obj) {
   const keys = [
     'amgAlbumId',
     'amgArtistId',
@@ -38,48 +38,69 @@ async function keysInObject (obj) {
 
 
 /**
+ * Send HTTP request
+ *
+ * @return  {Promise<object>}
+ * @param   {object}  options  httpreq.doRequest options
+ */
+
+function httpRequest (options) {
+  return new Promise ((resolve, reject) => {
+    doRequest (options, (err, res) => {
+      if (err) {
+        reject (err);
+        return;
+      }
+
+      resolve (res);
+    });
+  });
+}
+
+
+/**
  * Process HTTP response
  *
- * @return  {Promise}
+ * @return  {Promise<object|array>}
  *
  * @param   {object}   res            Response
  * @param   {bool}     [first=false]  Only first result
  */
 
-async function httpResponse ({
-  res = {},
-  first = false,
+function httpResponse ({
+  res,
+  first,
 }) {
-  try {
-    data = JSON.parse (res.body);
+  return new Promise ((resolve, reject) => {
+    const data = JSON.parse (res.body);
 
     if (!data.results || !data.results.length) {
-      throw new Error ('no results');
+      reject (new Error ('no results'));
+      return;
     }
 
     if (first) {
-      return data.results[0];
+      resolve (data.results[0]);
+      return;
     }
 
-    return data;
-  }
-  catch (err) {
-    throw err;
-  }
+    resolve (data);
+  });
 }
 
 
 /**
  * Send HTTP request
  *
- * @return  {Promise<object>}
+ * @return  {Promise<object|array>}
  *
  * @param   {object}  params          Parameters to send along
  * @param   {number}  [timeout=5000]  Wait timeout in ms
  * @param   {string}  [userAgent]     Custom User-Agent header
  */
 
-module.exports = async (params) => {
+module.exports = async params => {
+  let res;
   let first = false;
   let options = {
     method: 'POST',
@@ -110,21 +131,6 @@ module.exports = async (params) => {
   }
 
   // Process request
-  return new Promise ((resolve, reject) => {
-    try {
-      doRequest (options, async (err, res) => {
-        if (err) {
-          reject (err);
-          return;
-        }
-
-        const data = await httpResponse ({ res, first });
-
-        resolve (data);
-      });
-    }
-    catch (error) {
-      reject (error);
-    }
-  });
+  res = await httpRequest (options);
+  return httpResponse ({ res, first });
 };
