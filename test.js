@@ -86,6 +86,7 @@ dotest.add ('Lookup by ID', async test => {
   test (error)
     .isObject ('fail', 'data', data)
     .isExactly ('fail', 'data.trackId', data && data.trackId, 512939461)
+    .isUndefined ('fail', 'error', error)
     .done ()
   ;
 });
@@ -120,6 +121,7 @@ dotest.add ('Search by term', async test => {
     .isNotEmpty ('fail', 'data.results', data && data.results)
     .isObject ('fail', 'data.results[0]', item)
     .isExactly ('fail', 'data.results[0].kind', item && item.kind, 'software')
+    .isUndefined ('fail', 'error', error)
     .done ()
   ;
 });
