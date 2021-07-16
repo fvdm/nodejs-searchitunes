@@ -124,6 +124,12 @@ module.exports = async params => {
     delete options.parameters.userAgent;
   }
 
+  // Convert trackId from a search response
+  if (params.trackId) {
+    options.parameters.id = params.trackId;
+    delete options.parameters.trackId;
+  }
+
   // Search or lookup
   if (keysInObject (options.parameters)) {
     options.url = 'https://itunes.apple.com/lookup';

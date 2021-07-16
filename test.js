@@ -91,6 +91,29 @@ dotest.add ('Lookup by ID', async test => {
 });
 
 
+dotest.add ('Lookup by trackId', async test => {
+  let error;
+  let data;
+
+  try {
+    data = await app ({
+      trackId: 512939461,
+      timeout,
+    });
+  }
+  catch (err) {
+    error = err;
+  }
+
+  test (error)
+    .isObject ('fail', 'data', data)
+    .isExactly ('fail', 'data.trackId', data && data.trackId, 512939461)
+    .isUndefined ('fail', 'error', error)
+    .done ()
+  ;
+});
+
+
 dotest.add ('Search by term', async test => {
   let error;
   let data;
