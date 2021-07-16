@@ -85,16 +85,6 @@ searchitunes ({ id: 123456 })
 ```
 
 
-### Errors
-
-message          | description
-:----------------|:--------------------------------------------
-http error       | API communication failed
-invalid response | API returned unreadable data, see `err.body`
-invalid params   | Client provided no or invalid parameters
-no results       | No results received
-
-
 ## Unlicense
 
 This is free and unencumbered software released into the public domain.
