@@ -127,5 +127,30 @@ dotest.add ('Search by term', async test => {
 });
 
 
+dotest.add ('Default timeout', async test => {
+  let error;
+  let data;
+
+  try {
+    data = await app ({
+      term: 'github',
+      limit: 1,
+    });
+  }
+  catch (err) {
+    error = err;
+  }
+
+  test (error)
+    .isObject ('fail', 'data', data)
+    .isExactly ('fail', 'data.resultCount', data && data.resultCount, 1)
+    .isArray ('fail', 'data.results', data && data.results)
+    .isNotEmpty ('fail', 'data.results', data && data.results)
+    .isUndefined ('fail', 'error', error)
+    .done ()
+  ;
+});
+
+
 // Start the tests
 dotest.run ();
