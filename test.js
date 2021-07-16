@@ -10,8 +10,7 @@ const dotest = require ('dotest');
 const app = require ('./');
 
 // Setup
-const timeout = String (process.env.testTimeout);
-
+const timeout = process.env.testTimeout || 5000;
 
 
 // Tests
