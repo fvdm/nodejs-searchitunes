@@ -91,11 +91,6 @@ module.exports = async (params) => {
     },
   };
 
-  // Check input
-  if (!(params instanceof Object)) {
-    throw new Error ('invalid params');
-  }
-
   // Process internal settings
   if (params.timeout) {
     options.timeout = params.timeout;

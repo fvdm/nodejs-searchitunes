@@ -41,26 +41,6 @@ dotest.add ('Interface', test => {
 });
 
 
-dotest.add ('Error: invalid params', async test => {
-  let data;
-  let error;
-
-  try {
-    data = await app (null);
-  }
-  catch (err) {
-    error = err;
-  }
-
-  test ()
-    .isError ('fail', 'error', error)
-    .isExactly ('fail', 'error.message', error && error.message, 'invalid params')
-    .isUndefined ('fail', 'data', data)
-    .done ()
-  ;
-});
-
-
 dotest.add ('Error: no results', async test => {
   let error;
   let data;
