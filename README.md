@@ -37,17 +37,38 @@ searchitunes ({ id: 512939461 })
 `npm i searchitunes`
 
 
-## Search by parameters
+## Interface
 
-**( params )**
+The module exports only one function.
+Arguments must be wrapped in an object.
+It returns a Promise.
 
-The module returns a promise.
+
+## Configuration
+
+The parameters below can be included along with the
+normal API params.
 
 param       | type   | default         | description
 :-----------|:-------|:----------------|:-----------
 [timeout]   | number | 5000            | Wait time out in ms
 [userAgent] | string | searchitunes.js | User-Agent header
 ...         | mixed  |                 | API parameters
+
+```js
+itunes ({
+  timeout: 8000,
+  entity: 'software',
+  term: 'github',
+})
+```
+
+
+## Search API
+
+For searching in the iTunes databases you simply include
+the search params in your request. The function will
+resolve with an object.
 
 - [Search-API docs](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#overview)
 - [Live demo](https://npm.runkit.com/searchitunes)
@@ -70,6 +91,7 @@ the item's details.
 - id
 - isbn
 - upc
+- trackId
 
 When you lookup a `trackId` from a search response it will be automatically
 converted to the `id` parameter instead. Otherwise the API won't understand it.
