@@ -12,9 +12,9 @@ const { doRequest } = require ('httpreq');
 /**
  * Check if one of the keys is a property
  *
- * @return  {Promise<boolean>}  `true` = yes
+ * @param   {object}  obj  Object to process
  *
- * @param   {object}   obj   Object to process
+ * @return  {Promise<boolean>}  `true` = yes
  */
 
 function keysInObject (obj) {
@@ -40,8 +40,9 @@ function keysInObject (obj) {
 /**
  * Send HTTP request
  *
- * @return  {Promise<object>}
  * @param   {object}  options  httpreq.doRequest options
+ *
+ * @return  {Promise<object>}
  */
 
 function httpRequest (options) {
@@ -61,10 +62,10 @@ function httpRequest (options) {
 /**
  * Process HTTP response
  *
- * @return  {Promise<object|array>}
- *
  * @param   {object}   res            Response
  * @param   {bool}     [first=false]  Only first result
+ *
+ * @return  {Promise<object|array>}
  */
 
 function httpResponse ({
@@ -94,9 +95,9 @@ function httpResponse ({
  *
  * @return  {Promise<object|array>}
  *
- * @param   {object}  params          Parameters to send along
- * @param   {number}  [timeout=5000]  Wait timeout in ms
- * @param   {string}  [userAgent]     Custom User-Agent header
+ * @param   {object}  params                 Parameters to send along
+ * @param   {number}  [params.timeout=5000]  Wait timeout in ms
+ * @param   {string}  [params.userAgent]     Custom User-Agent header
  */
 
 module.exports = async params => {
