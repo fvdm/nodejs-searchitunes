@@ -70,7 +70,7 @@ function httpRequest (options) {
 
 function httpResponse ({
   res,
-  first=false,
+  first = false,
 }) {
   return new Promise ((resolve, reject) => {
     const data = JSON.parse (res.body);
