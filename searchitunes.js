@@ -70,7 +70,7 @@ function httpRequest (options) {
 
 function httpResponse ({
   res,
-  first,
+  first=false,
 }) {
   return new Promise ((resolve, reject) => {
     const data = JSON.parse (res.body);
@@ -102,7 +102,7 @@ function httpResponse ({
 
 module.exports = async params => {
   let res;
-  let first = false;
+  let first;
   let options = {
     method: 'POST',
     url: 'https://itunes.apple.com/search',
