@@ -38,28 +38,6 @@ function keysInObject (obj) {
 
 
 /**
- * Send HTTP request
- *
- * @param   {object}  options  httpreq.doRequest options
- *
- * @return  {Promise<object>}
- */
-
-function httpRequest (options) {
-  return new Promise ((resolve, reject) => {
-    doRequest (options, (err, res) => {
-      if (err) {
-        reject (err);
-        return;
-      }
-
-      resolve (res);
-    });
-  });
-}
-
-
-/**
  * Process HTTP response
  *
  * @param   {object}   res            Response
@@ -138,6 +116,6 @@ module.exports = async params => {
   }
 
   // Process request
-  res = await httpRequest (options);
+  res = await doRequest (options);
   return httpResponse ({ res, first });
 };
