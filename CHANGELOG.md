@@ -1,3 +1,9 @@
+#### 2.5.3 (2021-10-06)
+
+##### Tests
+
+* **config:**  Update Dependabot ([81a1e6ba](https://github.com/fvdm/nodejs-searchitunes/commit/81a1e6baedeb02d54cdf92b7791509f1a28e9cc8))
+
 #### 2.5.2 (2021-10-06)
 
 ##### Chores
