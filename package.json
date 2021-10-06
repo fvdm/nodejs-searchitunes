@@ -38,7 +38,7 @@
     "search"
   ],
   "license": "Unlicense",
-  "tonicExampleFilename": "example.js",
+  "runkitExampleFilename": "example.js",
   "scripts": {
     "test": "dotest"
   }
