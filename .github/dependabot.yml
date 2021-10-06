@@ -19,5 +19,3 @@ updates:
     commit-message:
       prefix: "Chore(deps)"
       prefix-development: "Chore(devdeps)"
-    allow:
-      dependency-type: "production"
