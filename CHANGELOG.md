@@ -1,3 +1,36 @@
+#### 2.5.2 (2021-10-06)
+
+##### Chores
+
+* **package:**  Update RunKit example key ([3d7974fc](https://github.com/fvdm/nodejs-searchitunes/commit/3d7974fcebb989d7f9ca870c5c451cf17c0a845a))
+*  Removed contributing doc ([c109aec0](https://github.com/fvdm/nodejs-searchitunes/commit/c109aec0d598e774ab752e76b1339eae8bf2fb9e))
+
+##### Documentation Changes
+
+*  Better text ([e805ca63](https://github.com/fvdm/nodejs-searchitunes/commit/e805ca63836481040377034d920a8862469da66c))
+
+##### Refactors
+
+*  httpreq supports promises ([4f2c1ff3](https://github.com/fvdm/nodejs-searchitunes/commit/4f2c1ff3bb256b0af12939f46455917de745efef))
+*  Moved `first` default to httpResponse ([b96af967](https://github.com/fvdm/nodejs-searchitunes/commit/b96af967176c9f573e00bbe5166e9bd5a467e7ed))
+
+##### Code Style Changes
+
+*  Whitespace fixes ([5c06da51](https://github.com/fvdm/nodejs-searchitunes/commit/5c06da5163d5e9605e39eb8d0a0833e49b695bcd))
+*  Removed final newline from json ([81280976](https://github.com/fvdm/nodejs-searchitunes/commit/812809760dc0a0da541af8ac82815b9022d22d51))
+*  Fix JSDoc comments ([c184f7cc](https://github.com/fvdm/nodejs-searchitunes/commit/c184f7cc84d8af4577fad4a9e6d0c26dd8486f59))
+* **lint:**  Fix whitespace ([8aa6b28a](https://github.com/fvdm/nodejs-searchitunes/commit/8aa6b28a44e12f4d8f75cb365f84dfa34e8a8871))
+
+##### Tests
+
+* **ci:**
+  *  Modernized ESLint config ([9211ef35](https://github.com/fvdm/nodejs-searchitunes/commit/9211ef350649bb7db2f35507b8d9f6524bfd044d))
+  *  Improved Github action ([5b6a8f90](https://github.com/fvdm/nodejs-searchitunes/commit/5b6a8f90142e2b72dfa812ffbf2b87a4612a92d6))
+* **config:**
+  *  Schedule and clean up Github action ([f1ea7216](https://github.com/fvdm/nodejs-searchitunes/commit/f1ea72161ecdbf0ce5be3fb5834202b8f8ddf3de))
+  *  Fix ESLint hierarchy issue ([3a42e9c9](https://github.com/fvdm/nodejs-searchitunes/commit/3a42e9c99886d8a7964a9f2b1631ba9ba71f9dd3))
+  *  Limit Dependabot to production deps ([2d7f7b9f](https://github.com/fvdm/nodejs-searchitunes/commit/2d7f7b9fc45b6dac288f73986dcd51d2006b5924))
+
 #### 2.5.1 (2021-07-16)
 
 ##### Chores
