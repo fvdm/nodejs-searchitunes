@@ -79,6 +79,7 @@ module.exports = async ({
   userAgent = 'searchitunes.js',
   trackId,
 }) => {
+  let first;
   let options = {
     method: 'POST',
     url: 'https://itunes.apple.com/search',
