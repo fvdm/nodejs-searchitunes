@@ -103,6 +103,9 @@ module.exports = async ({
   }
 
   // Process request
+  delete options.parameters.timeout;
+  delete options.parameters.userAgent;
+
   const res = await doRequest (options);
 
   return httpResponse ({ res, first });
