@@ -17,7 +17,7 @@ const { doRequest } = require ('httpreq');
  * @return  {Promise<boolean>}  `true` = yes
  */
 
-function keysInObject (obj) {
+async function keysInObject (obj) {
   const keys = [
     'amgAlbumId',
     'amgArtistId',
@@ -46,25 +46,21 @@ function keysInObject (obj) {
  * @return  {Promise<object|array>}
  */
 
-function httpResponse ({
+async function httpResponse ({
   res,
   first = false,
 }) {
-  return new Promise ((resolve, reject) => {
-    const data = JSON.parse (res.body);
+  const data = JSON.parse (res.body);
 
-    if (!data.results || !data.results.length) {
-      reject (new Error ('no results'));
-      return;
-    }
+  if (!data.results || !data.results.length) {
+    throw new Error ('no results');
+  }
 
-    if (first) {
-      resolve (data.results[0]);
-      return;
-    }
+  if (first) {
+    return data.results[0];
+  }
 
-    resolve (data);
-  });
+  return data;
 }
 
 
@@ -78,45 +74,43 @@ function httpResponse ({
  * @param   {string}  [params.userAgent]     Custom User-Agent header
  */
 
-module.exports = async params => {
-  let res;
+module.exports = async function SearchItunes ({
+  timeout = 5000,
+  userAgent = 'searchitunes.js',
+  trackId,
+}) {
   let first;
   let options = {
     method: 'POST',
     url: 'https://itunes.apple.com/search',
-    parameters: params,
-    timeout: 5000,
+    parameters: arguments[0],
+    timeout,
     headers: {
       'Accept': 'application/json',
-      'User-Agent': 'searchitunes.js',
+      'User-Agent': userAgent,
     },
   };
 
-  // Process internal settings
-  if (params.timeout) {
-    options.timeout = params.timeout;
-    delete options.parameters.timeout;
-  }
-
-  if (params.userAgent) {
-    options.headers['User-Agent'] = params.userAgent;
-    delete options.parameters.userAgent;
-  }
-
   // Convert trackId from a search response
-  if (params.trackId) {
-    options.parameters.id = params.trackId;
+  if (trackId) {
+    options.parameters.id = trackId;
     delete options.parameters.trackId;
   }
 
   // Search or lookup
-  if (keysInObject (options.parameters)) {
+  const hasKeys = await keysInObject (options.parameters);
+
+  if (hasKeys) {
     options.url = 'https://itunes.apple.com/lookup';
     first = true;
   }
 
   // Process request
-  res = await doRequest (options);
+  delete options.parameters.timeout;
+  delete options.parameters.userAgent;
+
+  const res = await doRequest (options);
+
   return httpResponse ({ res, first });
 };
 
