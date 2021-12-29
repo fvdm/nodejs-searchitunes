@@ -51,7 +51,14 @@ function httpResponse ({
   first = false,
 }) {
   return new Promise ((resolve, reject) => {
-    const data = JSON.parse (res.body);
+    let data = {}
+    
+    try {
+      data = JSON.parse(res.body);
+    } catch (e) {
+      reject(e);
+      return
+    }
 
     if (!data.results || !data.results.length) {
       reject (new Error ('no results'));
