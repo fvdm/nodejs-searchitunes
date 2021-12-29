@@ -1,3 +1,12 @@
+#### 2.5.4 (2021-12-29)
+
+##### Tests
+
+* **ci:**
+  *  Renamed finish job ([2a8494fa](https://github.com/fvdm/nodejs-searchitunes/commit/2a8494fa28d77a9640260550c9d30f97ef3df821))
+  *  Removed obsolete git fetch ([7363e0bc](https://github.com/fvdm/nodejs-searchitunes/commit/7363e0bc45e06a99e9799856cb9469e170848538))
+  *  Require full coverage of functions ([2eabeefa](https://github.com/fvdm/nodejs-searchitunes/commit/2eabeefa7214526303f24a51c69b42c56e8997b4))
+
 #### 2.5.3 (2021-10-06)
 
 ##### Tests
