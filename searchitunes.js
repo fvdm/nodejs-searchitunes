@@ -74,11 +74,11 @@ async function httpResponse ({
  * @param   {string}  [params.userAgent]     Custom User-Agent header
  */
 
-module.exports = async ({
+module.exports = async function SearchItunes ({
   timeout = 5000,
   userAgent = 'searchitunes.js',
   trackId,
-}) => {
+}) {
   let first;
   let options = {
     method: 'POST',
