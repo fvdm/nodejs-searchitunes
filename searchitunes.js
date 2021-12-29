@@ -98,7 +98,9 @@ module.exports = async ({
   }
 
   // Search or lookup
-  if (keysInObject (options.parameters)) {
+  const hasKeys = await keysInObject (options.parameters);
+
+  if (hasKeys) {
     options.url = 'https://itunes.apple.com/lookup';
     first = true;
   }
