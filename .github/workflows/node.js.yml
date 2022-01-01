@@ -34,6 +34,7 @@ jobs:
       - run: npm install
       - run: npm test
         env:
+          testTimeout: ${{ secrets.testTimeout }}
           DOTEST_NOCOV: ${{ secrets.DOTEST_NOCOV }}
           DOTEST_MINCOV: ${{ secrets.DOTEST_MINCOV }}
           DOTEST_COVFUNCTIONS: 100
