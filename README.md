@@ -70,7 +70,7 @@ For searching in the iTunes databases you simply include
 the search params in your request. The function will
 resolve with an object.
 
-- [Search-API docs](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#overview)
+- [Search API docs](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/)
 - [Live demo](https://npm.runkit.com/searchitunes)
 
 
@@ -80,7 +80,7 @@ When you wish to retrieve one specific item by its ID, include one of the ID
 params to use the Lookup API. The result data will be only the `object` with
 the item's details.
 
-- [Lookup-API docs](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#lookup)
+- [Lookup API docs](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/LookupExamples.html)
 
 
 **ID params**
