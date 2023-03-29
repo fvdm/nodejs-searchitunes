@@ -6,7 +6,7 @@ Source:       https://github.com/fvdm/nodejs-searchitunes
 License:      Unlicense (Public Domain, see UNLICENSE file)
 */
 
-const { doRequest } = require ('httpreq');
+const { doRequest } = require( 'httpreq' );
 
 
 /**
@@ -17,7 +17,7 @@ const { doRequest } = require ('httpreq');
  * @return  {Promise<boolean>}  `true` = yes
  */
 
-async function keysInObject (obj) {
+async function keysInObject ( obj ) {
   const keys = [
     'amgAlbumId',
     'amgArtistId',
@@ -46,17 +46,17 @@ async function keysInObject (obj) {
  * @return  {Promise<object|array>}
  */
 
-async function httpResponse ({
+async function httpResponse ( {
   res,
   first = false,
-}) {
-  const data = JSON.parse (res.body);
+} ) {
+  const data = JSON.parse( res.body );
 
-  if (!data.results || !data.results.length) {
-    throw new Error ('no results');
+  if ( ! data.results || ! data.results.length ) {
+    throw new Error( 'no results' );
   }
 
-  if (first) {
+  if ( first ) {
     return data.results[0];
   }
 
@@ -74,11 +74,11 @@ async function httpResponse ({
  * @param   {string}  [params.userAgent]     Custom User-Agent header
  */
 
-module.exports = async function SearchItunes ({
+module.exports = async function SearchItunes ( {
   timeout = 5000,
   userAgent = 'searchitunes.js',
   trackId,
-}) {
+} ) {
   let first;
   let options = {
     method: 'POST',
@@ -92,15 +92,15 @@ module.exports = async function SearchItunes ({
   };
 
   // Convert trackId from a search response
-  if (trackId) {
+  if ( trackId ) {
     options.parameters.id = trackId;
     delete options.parameters.trackId;
   }
 
   // Search or lookup
-  const hasKeys = await keysInObject (options.parameters);
+  const hasKeys = await keysInObject( options.parameters );
 
-  if (hasKeys) {
+  if ( hasKeys ) {
     options.url = 'https://itunes.apple.com/lookup';
     first = true;
   }
@@ -109,8 +109,8 @@ module.exports = async function SearchItunes ({
   delete options.parameters.timeout;
   delete options.parameters.userAgent;
 
-  const res = await doRequest (options);
+  const res = await doRequest( options );
 
-  return httpResponse ({ res, first });
+  return httpResponse( { res, first } );
 };
 

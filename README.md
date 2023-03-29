@@ -10,24 +10,24 @@ Lightweight Node.js package to quickly search the Apple iTunes Store and App Sto
 ## Example
 
 ```js
-const searchitunes = require ('searchitunes');
+const searchitunes = require( 'searchitunes' );
 
 // Find free Github app for iPhone in Dutch App Store
-searchitunes ({
-  entity: 'software',
+searchitunes( {
+  entity:  'software',
   country: 'NL',
-  term: 'github',
-  limit: 1,
-  price: 0,
-})
-  .then (console.log)
-  .catch (console.error)
+  term:    'github',
+  limit:   1,
+  price:   0,
+} )
+  .then( console.log )
+  .catch( console.error )
 ;
 
 // Get one specific item by ID
-searchitunes ({ id: 512939461 })
-  .then (console.log)
-  .catch (console.error)
+searchitunes( { id: 512939461 } )
+  .then( console.log )
+  .catch( console.error )
 ;
 ```
 
@@ -56,11 +56,11 @@ param       | type   | default         | description
 ...         | mixed  |                 | API parameters
 
 ```js
-itunes ({
+itunes( {
   timeout: 8000,
-  entity: 'software',
-  term: 'github',
-})
+  entity:  'software',
+  term:    'github',
+} )
 ```
 
 
@@ -98,9 +98,9 @@ converted to the `id` parameter instead. Otherwise the API won't understand it.
 
 
 ```js
-searchitunes ({ id: 123456 })
-  .then (console.log)
-  .catch (console.error)
+searchitunes( { id: 123456 } )
+  .then( console.log )
+  .catch( console.error )
 ;
 ```
 
@@ -137,3 +137,4 @@ For more information, please refer to <https://unlicense.org/>
 
 [Franklin](https://fvdm.com)
 | [buy me a coffee](https://fvdm.com/donating)
+

@@ -1,19 +1,19 @@
 // Load module
-const itunes = require ('searchitunes');
+const itunes = require( 'searchitunes' );
 
 // Find an app
-itunes ({
+itunes( {
   entity: 'software',
   country: 'NL',
   term: 'github',
   limit: 1,
   price: 0,
 
-})
-  .then (data => console.dir (data, {
+} )
+  .then( data => console.dir( data, {
     depth: null,
     colors: true,
-  }))
-  .catch (console.error)
+  } ) )
+  .catch( console.error )
 ;
 
