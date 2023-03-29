@@ -22,10 +22,10 @@
     "httpreq": "^0.5.2"
   },
   "devDependencies": {
-    "dotest": "^2.9.0"
+    "dotest": "^2.12.2"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "keywords": [
     "api",
