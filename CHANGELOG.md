@@ -1,3 +1,32 @@
+#### 2.5.5 (2023-03-29)
+
+##### Chores
+
+* **github:**
+  *  Update workflow set-output syntax ([eec957f7](https://github.com/fvdm/nodejs-searchitunes/commit/eec957f712bd4fe8b8187a487a140a219510dd07))
+  *  Removed audit command from CI test ([1e2a471c](https://github.com/fvdm/nodejs-searchitunes/commit/1e2a471ccc20d13ead10ec721561f76b440ec582))
+  *  Bump github/codeql-action from 1 to 2 ([#34](https://github.com/fvdm/nodejs-searchitunes/pull/34)) ([e2f86cfa](https://github.com/fvdm/nodejs-searchitunes/commit/e2f86cfac50e8a67dc5cfec81760ec591d021371))
+  *  Bump actions/checkout from 2 to 3 ([#33](https://github.com/fvdm/nodejs-searchitunes/pull/33)) ([8939e667](https://github.com/fvdm/nodejs-searchitunes/commit/8939e6673ba2c6691bed485eea62a21518e73224))
+  *  Bump actions/setup-node from 2 to 3 ([#32](https://github.com/fvdm/nodejs-searchitunes/pull/32)) ([64226db1](https://github.com/fvdm/nodejs-searchitunes/commit/64226db1889c8c7abeb1ac8972b0b9ea15508654))
+* **package:**  Update dependencies ([9121a614](https://github.com/fvdm/nodejs-searchitunes/commit/9121a61445af67868504f5f7f2a13a01dee7d3e6))
+
+##### Documentation Changes
+
+* **security:**  Added security policy ([2eafd216](https://github.com/fvdm/nodejs-searchitunes/commit/2eafd216f63a5f38fc01dc1a61b8498c73bd7876))
+* **readme:**  Fixed links to API docs ([fc80abe5](https://github.com/fvdm/nodejs-searchitunes/commit/fc80abe5c02142466231608b0359c4dd86521096))
+
+##### Refactors
+
+*  Minor code cleanup ([2e8d27f3](https://github.com/fvdm/nodejs-searchitunes/commit/2e8d27f35a366505bcb50cb59b51cce4be123137))
+
+##### Code Style Changes
+
+*  Better readable whitespace ([b2750b2b](https://github.com/fvdm/nodejs-searchitunes/commit/b2750b2b024bf64f68dd5d941a89803a572b49ba))
+
+##### Tests
+
+* **ci:**  Include testTimeout env var in action ([e93ceebc](https://github.com/fvdm/nodejs-searchitunes/commit/e93ceebc5a7e091d9010b5f77916ed02107cdb5c))
+
 #### 2.5.4 (2021-12-29)
 
 ##### Tests
