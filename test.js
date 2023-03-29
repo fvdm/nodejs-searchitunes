@@ -1,7 +1,7 @@
 /*
-Name:         openkvk - test.js
-Description:  Test script for openkvk.js
-Source:       https://github.com/fvdm/nodejs-openkvk
+Name:         searchitunes - test.js
+Description:  Test script for searchitunes.js
+Source:       https://github.com/fvdm/nodejs-searchitunes
 License:      Public Domain / Unlicense (see LICENSE file)
 */
 
