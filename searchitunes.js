@@ -18,6 +18,7 @@ const { doRequest } = require( 'httpreq' );
  */
 
 async function keysInObject ( obj ) {
+  const objKeys = Object.keys( obj );
   const keys = [
     'amgAlbumId',
     'amgArtistId',
@@ -27,13 +28,7 @@ async function keysInObject ( obj ) {
     'upc',
   ];
 
-  for (let i = 0; i < keys.length; i++) {
-    if (obj[keys[i]]) {
-      return true;
-    }
-  }
-
-  return false;
+  return objKeys.some( key => keys.includes( key ) );
 }
 
 
@@ -113,4 +108,3 @@ module.exports = async function SearchItunes ( {
 
   return httpResponse( { res, first } );
 };
-
