@@ -27,7 +27,7 @@ module.exports = async function SearchItunes ( {
   let url = 'https://itunes.apple.com/search?';
 
   let options = {
-    signal: AbortSignal.timeout( timeout ),
+    signal: AbortSignal.timeout( parseInt( timeout, 10 ) ),
     headers: {
       'Accept': 'application/json',
       'User-Agent': userAgent,
