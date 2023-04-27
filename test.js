@@ -74,7 +74,7 @@ dotest.add( 'Lookup by ID', async test => {
 
   try {
     data = await app( {
-      id: 512939461,
+      id: 1477376905,
       timeout,
     } );
   }
@@ -84,7 +84,7 @@ dotest.add( 'Lookup by ID', async test => {
 
   test( error )
     .isObject( 'fail', 'data', data )
-    .isExactly( 'fail', 'data.trackId', data && data.trackId, 512939461 )
+    .isExactly( 'fail', 'data.trackId', data && data.trackId, 1477376905 )
     .isUndefined( 'fail', 'error', error )
     .done()
   ;
@@ -97,7 +97,7 @@ dotest.add( 'Lookup by trackId', async test => {
 
   try {
     data = await app( {
-      trackId: 512939461,
+      trackId: 1477376905,
       timeout,
     } );
   }
@@ -107,7 +107,7 @@ dotest.add( 'Lookup by trackId', async test => {
 
   test( error )
     .isObject( 'fail', 'data', data )
-    .isExactly( 'fail', 'data.trackId', data && data.trackId, 512939461 )
+    .isExactly( 'fail', 'data.trackId', data && data.trackId, 1477376905 )
     .isUndefined( 'fail', 'error', error )
     .done()
   ;
@@ -124,13 +124,14 @@ dotest.add( 'Search by term', async test => {
       entity: 'software',
       country: 'NL',
       term: 'github',
+      media: 'software',
       limit: 1,
       price: 0,
       userAgent: 'test.js',
       timeout,
     } );
 
-    item = data.results && data.results [0];
+    item = data.results && data.results[0];
   }
   catch ( err ) {
     error = err;
@@ -155,8 +156,13 @@ dotest.add( 'Default timeout', async test => {
 
   try {
     data = await app( {
+      entity: 'software',
+      country: 'NL',
       term: 'github',
+      media: 'software',
       limit: 1,
+      price: 0,
+      userAgent: 'test.js',
     } );
   }
   catch ( err ) {
