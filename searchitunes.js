@@ -6,58 +6,6 @@ Source:       https://github.com/fvdm/nodejs-searchitunes
 License:      Unlicense (Public Domain, see UNLICENSE file)
 */
 
-const { doRequest } = require( 'httpreq' );
-
-
-/**
- * Check if one of the keys is a property
- *
- * @param   {object}  obj  Object to process
- *
- * @return  {Promise<boolean>}  `true` = yes
- */
-
-async function keysInObject ( obj ) {
-  const objKeys = Object.keys( obj );
-  const keys = [
-    'amgAlbumId',
-    'amgArtistId',
-    'amgVideoId',
-    'id',
-    'isbn',
-    'upc',
-  ];
-
-  return objKeys.some( key => keys.includes( key ) );
-}
-
-
-/**
- * Process HTTP response
- *
- * @param   {object}   res            Response
- * @param   {bool}     [first=false]  Only first result
- *
- * @return  {Promise<object|array>}
- */
-
-async function httpResponse ( {
-  res,
-  first = false,
-} ) {
-  const data = JSON.parse( res.body );
-
-  if ( ! data.results || ! data.results.length ) {
-    throw new Error( 'no results' );
-  }
-
-  if ( first ) {
-    return data.results[0];
-  }
-
-  return data;
-}
-
 
 /**
  * Send HTTP request
@@ -75,36 +23,57 @@ module.exports = async function SearchItunes ( {
   trackId,
 } ) {
   let first;
+  let params = arguments[0];
+  let url = 'https://itunes.apple.com/search?';
+
   let options = {
-    method: 'POST',
-    url: 'https://itunes.apple.com/search',
-    parameters: arguments[0],
-    timeout,
+    signal: AbortSignal.timeout( timeout ),
     headers: {
       'Accept': 'application/json',
       'User-Agent': userAgent,
     },
   };
 
+  delete params.timeout;
+  delete params.userAgent;
+
   // Convert trackId from a search response
   if ( trackId ) {
-    options.parameters.id = trackId;
-    delete options.parameters.trackId;
+    params.id = trackId;
+    delete params.trackId;
   }
 
   // Search or lookup
-  const hasKeys = await keysInObject( options.parameters );
+  const idKeys = [
+    'amgAlbumId',
+    'amgArtistId',
+    'amgVideoId',
+    'id',
+    'isbn',
+    'upc',
+  ];
+
+  const hasKeys = Object.keys( params ).some( key => idKeys.includes( key ) );
 
   if ( hasKeys ) {
-    options.url = 'https://itunes.apple.com/lookup';
+    url = 'https://itunes.apple.com/lookup';
     first = true;
   }
 
   // Process request
-  delete options.parameters.timeout;
-  delete options.parameters.userAgent;
+  params = new URLSearchParams( params );
+  url += '?' + params.toString();
 
-  const res = await doRequest( options );
+  const res = await fetch( url, options );
+  const data = await res.json();
 
-  return httpResponse( { res, first } );
+  if ( ! data.results || ! data.results.length ) {
+    throw new Error( 'no results' );
+  }
+
+  if ( first ) {
+    return data.results[0];
+  }
+
+  return data;
 };
