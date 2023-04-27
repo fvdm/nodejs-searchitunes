@@ -22,7 +22,7 @@
     "httpreq": "^0.5.2"
   },
   "devDependencies": {
-    "dotest": "^2.12.2"
+    "dotest": "^2"
   },
   "engines": {
     "node": ">=14"
