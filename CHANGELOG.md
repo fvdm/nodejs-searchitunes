@@ -1,3 +1,23 @@
+#### 2.5.6 (2023-04-27)
+
+##### Chores
+
+* **package:**  Simpler dev deps syntax ([2d3343b6](https://github.com/fvdm/nodejs-searchitunes/commit/2d3343b6ea4c21d77914bb1544ba4250a94ac9e5))
+* **github:**  Fixed syntax typo ([b59e67ef](https://github.com/fvdm/nodejs-searchitunes/commit/b59e67ef460b0b27aa24bc750632ef51fc95377c))
+
+##### Bug Fixes
+
+*  Timeout must be a number ([954d98ba](https://github.com/fvdm/nodejs-searchitunes/commit/954d98ba065cb039db7ea219acf1f433ba02ab0e))
+
+##### Refactors
+
+*  Rewrite to remove dependency ([32d50145](https://github.com/fvdm/nodejs-searchitunes/commit/32d501457bf2bdd4dd40010eff25f56ed67b8c84))
+
+##### Tests
+
+*  Updated search data for checks ([e72d3d50](https://github.com/fvdm/nodejs-searchitunes/commit/e72d3d50d52376e7ec756f1d400fcbd1828e05ce))
+*  Minor comment fix ([f6d8712a](https://github.com/fvdm/nodejs-searchitunes/commit/f6d8712a88d145738b00c5bcb2b5d57b77f556c4))
+
 #### 2.5.5 (2023-03-29)
 
 ##### Chores
