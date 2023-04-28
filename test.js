@@ -61,7 +61,7 @@ dotest.add( 'Error: request error', async test => {
 
   test()
     .isError( 'fail', 'error', error )
-    .isExactly( 'fail', 'error.code', error && error.name, 'TimeoutError' )
+    .isExactly( 'fail', 'error.name', error && error.name, 'TimeoutError' )
     .isUndefined( 'fail', 'data', data )
     .done()
   ;
