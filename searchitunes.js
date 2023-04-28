@@ -24,7 +24,7 @@ module.exports = async function SearchItunes ( {
 } ) {
   let first;
   let params = arguments[0];
-  let url = 'https://itunes.apple.com/search?';
+  let url = 'https://itunes.apple.com/search';
 
   let options = {
     signal: AbortSignal.timeout( parseInt( timeout, 10 ) ),
