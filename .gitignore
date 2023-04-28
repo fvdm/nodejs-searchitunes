@@ -14,3 +14,4 @@ coverage
 .lock-wscript
 build/Release
 .nyc_output
+.nova
