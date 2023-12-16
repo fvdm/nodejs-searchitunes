@@ -83,10 +83,12 @@ module.exports = async function SearchItunes ( {
   const res = await fetch( url, options );
   const data = await res.json();
 
+  // Empty result
   if ( ! data.results || ! data.results.length ) {
     throw new Error( 'no results' );
   }
 
+  // Lookup response
   if ( idKey ) {
 
     // Bulk lookup
