@@ -21,7 +21,7 @@ dotest.add( 'Interface', test => {
 } );
 
 
-dotest.add( 'Error: no results', async test => {
+dotest.add( 'Error: no results (throwEmpty = true)', async test => {
   let error;
   let data;
 
@@ -203,7 +203,31 @@ dotest.add( 'Default timeout', async test => {
 } );
 
 
-dotest.add( 'API error', async test => {
+dotest.add( 'throwEmpty = false', async test => {
+  let error;
+  let data;
+
+  try {
+    data = await app( {
+      entity: 'software',
+      term: 'SomethingThatShouldNotExistForAPITestingPuposes',
+      throwEmpty: false,
+    } );
+  }
+  catch ( err ) {
+    error = err;
+  }
+
+  test( error )
+    .isArray( 'fail', 'data', data )
+    .isEmpty( 'fail', 'data', data )
+    .isUndefined( 'fail', 'error', error )
+    .done()
+  ;
+} );
+
+
+dotest.add( 'Error: API error', async test => {
   let error;
   let data;
 

@@ -49,11 +49,12 @@ It returns a Promise.
 The parameters below can be included along with the
 normal API params.
 
-param       | type   | default         | description
-:-----------|:-------|:----------------|:-----------
-[timeout]   | number | 5000            | Wait time out in ms
-[userAgent] | string | searchitunes.js | User-Agent header
-...         | mixed  |                 | API parameters
+param        | type   | default         | description
+:------------|:-------|:----------------|:-----------
+[timeout]    | number | 5000            | Wait time out in ms
+[userAgent]  | string | searchitunes.js | User-Agent header
+[throwEmpty] | bool   | true            | Throw `no results` instead of returning `[]`
+...          | mixed  |                 | API parameters
 
 ```js
 itunes( {
@@ -120,10 +121,21 @@ searchitunes( { id: [ 123, 789 ] } )
 
 ## Errors
 
-API errors are handled and thrown, prefixed with `API: `.
+API errors are handled and thrown, prefixed with `API: `
 
-When nothing is found it will throw with message `no results`.
+When nothing is found it will throw with `no results` message. You can prevent
+this behavior by setting `throwEmpty` to `false` to return an empty array.
 
+```js
+searchitunes( {
+  throwEmpty: false,
+  entity: 'software',
+  term: 'github',
+} )
+  .then( console.log )
+  .catch( console.error )
+;
+```
 
 
 ## Unlicense

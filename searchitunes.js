@@ -12,15 +12,17 @@ License:      Unlicense (Public Domain, see UNLICENSE file)
  *
  * @return  {Promise<object|array>}
  *
- * @param   {object}  params                 Parameters to send along
- * @param   {number}  [params.timeout=5000]  Wait timeout in ms
- * @param   {string}  [params.userAgent]     Custom User-Agent header
+ * @param   {object}  params                    Parameters to send along
+ * @param   {number}  [params.timeout=5000]     Wait timeout in ms
+ * @param   {string}  [params.userAgent]        Custom User-Agent header
+ * @param   {bool}    [params.throwEmpty=true]  Throw 'no results' instead of returning an empty array
  */
 
 module.exports = async function SearchItunes ( {
 
   timeout = 5000,
   userAgent = 'searchitunes.js',
+  throwEmpty = true,
   trackId,
 
 } ) {
@@ -38,6 +40,7 @@ module.exports = async function SearchItunes ( {
 
   delete params.timeout;
   delete params.userAgent;
+  delete params.throwEmpty;
 
   // Convert trackId from a search response
   if ( trackId ) {
@@ -90,7 +93,11 @@ module.exports = async function SearchItunes ( {
 
   // Empty result
   if ( ! data.results || ! data.results.length ) {
-    throw new Error( 'no results' );
+    if ( throwEmpty ) {
+      throw new Error( 'no results' );
+    }
+
+    return [];
   }
 
   // Lookup response
