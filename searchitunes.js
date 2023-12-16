@@ -18,11 +18,14 @@ License:      Unlicense (Public Domain, see UNLICENSE file)
  */
 
 module.exports = async function SearchItunes ( {
+
   timeout = 5000,
   userAgent = 'searchitunes.js',
   trackId,
+
 } ) {
   let first;
+
   let params = arguments[0];
   let url = 'https://itunes.apple.com/search';
 
@@ -43,7 +46,7 @@ module.exports = async function SearchItunes ( {
     delete params.trackId;
   }
 
-  // Search or lookup
+  // Lookup API
   const idKeys = [
     'amgAlbumId',
     'amgArtistId',
@@ -60,7 +63,7 @@ module.exports = async function SearchItunes ( {
     first = true;
   }
 
-  // Process request
+  // Process
   params = new URLSearchParams( params );
   url += '?' + params.toString();
 
@@ -75,5 +78,7 @@ module.exports = async function SearchItunes ( {
     return data.results[0];
   }
 
+  // Search response
   return data;
+
 };
