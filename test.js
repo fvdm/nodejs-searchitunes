@@ -203,6 +203,28 @@ dotest.add( 'Default timeout', async test => {
 } );
 
 
+dotest.add( 'API error', async test => {
+  let error;
+  let data;
+
+  try {
+    data = await app( {
+      id: 'error-test',
+    } );
+  }
+  catch ( err ) {
+    error = err;
+  }
+
+  test()
+    .isError( 'fail', 'error', error )
+    .isRegexpMatch( 'fail', 'error.message', error?.message, /^API: .+/ )
+    .isUndefined( 'fail', 'data', data )
+    .done()
+  ;
+} );
+
+
 // Start the tests
 dotest.run();
 
