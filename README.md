@@ -118,6 +118,14 @@ searchitunes( { id: [ 123, 789 ] } )
 ```
 
 
+## Errors
+
+API errors are handled and thrown, prefixed with `API: `.
+
+When nothing is found it will throw with message `no results`.
+
+
+
 ## Unlicense
 
 This is free and unencumbered software released into the public domain.
