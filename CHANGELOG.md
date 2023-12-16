@@ -1,3 +1,22 @@
+### 2.6.0 (2023-12-16)
+
+##### Chores
+
+* **github:**
+  *  Bump github/codeql-action from 2 to 3 ([#37](https://github.com/fvdm/nodejs-searchitunes/pull/37)) ([59a47088](https://github.com/fvdm/nodejs-searchitunes/commit/59a47088eb5c8b868219234628c09835ce5ddc5b))
+  *  Bump actions/setup-node from 3 to 4 ([#36](https://github.com/fvdm/nodejs-searchitunes/pull/36)) ([56af9297](https://github.com/fvdm/nodejs-searchitunes/commit/56af9297868a3ce27f0dfaa2e0bad8fc866a2035))
+  *  Bump actions/checkout from 3 to 4 ([#35](https://github.com/fvdm/nodejs-searchitunes/pull/35)) ([d227df6b](https://github.com/fvdm/nodejs-searchitunes/commit/d227df6b9dc41041e7a8a299a3587ff48b9f30b1))
+
+##### Documentation Changes
+
+*  Added error section ([da2031e3](https://github.com/fvdm/nodejs-searchitunes/commit/da2031e324aec264c1567d51d56a60631fde1d67))
+
+##### Other Changes
+
+*  Added config param `throwEmpty` ([9cf1090b](https://github.com/fvdm/nodejs-searchitunes/commit/9cf1090b589963839028542eeecdfd3823df7ef4))
+*  API error handling ([2f8cfd38](https://github.com/fvdm/nodejs-searchitunes/commit/2f8cfd3869642d343042a55f7d4bfc8d8087d8e5))
+*  Added bulk lookups ([19b41333](https://github.com/fvdm/nodejs-searchitunes/commit/19b4133330166cf7a01e2ab8ee92c0836e18e59e))
+
 #### 2.5.6 (2023-04-27)
 
 ##### Chores
