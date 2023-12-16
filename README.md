@@ -83,7 +83,7 @@ the item's details.
 - [Lookup API docs](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/LookupExamples.html)
 
 
-**ID params**
+#### ID params
 
 - amgAlbumId
 - amgArtistId
@@ -100,6 +100,19 @@ converted to the `id` parameter instead. Otherwise the API won't understand it.
 ```js
 searchitunes( { id: 123456 } )
   .then( console.log )
+  .catch( console.error )
+;
+```
+
+
+#### Bulk lookup
+
+To request multiple objects at once you set one of the ID params above to an
+_array_ with the item ID's. This will always return an _array_.
+
+```js
+searchitunes( { id: [ 123, 789 ] } )
+  .then( arr => arr.forEach( processItems )
   .catch( console.error )
 ;
 ```

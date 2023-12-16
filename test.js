@@ -68,7 +68,7 @@ dotest.add( 'Error: request error', async test => {
 } );
 
 
-dotest.add( 'Lookup by ID', async test => {
+dotest.add( 'Lookup by ID - One item', async test => {
   let error;
   let data;
 
@@ -85,6 +85,29 @@ dotest.add( 'Lookup by ID', async test => {
   test( error )
     .isObject( 'fail', 'data', data )
     .isExactly( 'fail', 'data.trackId', data && data.trackId, 1477376905 )
+    .isUndefined( 'fail', 'error', error )
+    .done()
+  ;
+} );
+
+
+dotest.add( 'Lookup by ID - Bulk', async test => {
+  let error;
+  let data;
+
+  try {
+    data = await app( {
+      id: [1477376905, 6448311069],
+      timeout,
+    } );
+  }
+  catch ( err ) {
+    error = err;
+  }
+
+  test( error )
+    .isArray( 'fail', 'data', data )
+    .isExactly( 'fail', 'data.length', data?.length, 2 )
     .isUndefined( 'fail', 'error', error )
     .done()
   ;

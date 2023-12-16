@@ -24,7 +24,6 @@ module.exports = async function SearchItunes ( {
   trackId,
 
 } ) {
-  let first;
 
   let params = arguments[0];
   let url = 'https://itunes.apple.com/search';
@@ -56,11 +55,25 @@ module.exports = async function SearchItunes ( {
     'upc',
   ];
 
-  const hasKeys = Object.keys( params ).some( key => idKeys.includes( key ) );
+  let bulkRequest = false;
+  let idKey = false;
+  let key;
 
-  if ( hasKeys ) {
-    url = 'https://itunes.apple.com/lookup';
-    first = true;
+  for ( let i = 0; i < idKeys.length; i++ ) {
+    key = idKeys[i];
+
+    if ( params[key] ) {
+      idKey = true;
+      url = 'https://itunes.apple.com/lookup';
+
+      // Bulk request
+      if ( Array.isArray( params[key] ) ) {
+        bulkRequest = true;
+        params[key] = params[key].join( ',' );
+      }
+
+      break;
+    }
   }
 
   // Process
@@ -74,7 +87,14 @@ module.exports = async function SearchItunes ( {
     throw new Error( 'no results' );
   }
 
-  if ( first ) {
+  if ( idKey ) {
+
+    // Bulk lookup
+    if ( bulkRequest ) {
+      return data.results;
+    }
+
+    // Single lookup
     return data.results[0];
   }
 
