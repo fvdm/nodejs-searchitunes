@@ -2,7 +2,7 @@
 
 Lightweight Node.js package to quickly search the Apple iTunes Store and App Store for music, movies, apps, etc.
 
-[![npm](https://img.shields.io/npm/v/searchitunes.svg?maxAge=3600)](https://github.com/fvdm/nodejs-searchitunes/blob/master/CHANGELOG.md)
+[![npm](https://img.shields.io/npm/v/searchitunes.svg?maxAge=3600)](https://github.com/fvdm/nodejs-searchitunes/releases)
 [![Build Status](https://github.com/fvdm/nodejs-searchitunes/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/fvdm/nodejs-searchitunes/actions/workflows/node.js.yml)
 [![Coverage Status](https://coveralls.io/repos/github/fvdm/nodejs-searchitunes/badge.svg?branch=master)](https://coveralls.io/github/fvdm/nodejs-searchitunes?branch=master)
 
