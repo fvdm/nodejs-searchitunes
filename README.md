@@ -113,7 +113,7 @@ _array_ with the item ID's. This will always return an _array_.
 
 ```js
 searchitunes( { id: [ 123, 789 ] } )
-  .then( arr => arr.forEach( processItems )
+  .then( arr => arr.forEach( processItems ) )
   .catch( console.error )
 ;
 ```
