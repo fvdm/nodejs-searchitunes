@@ -1,7 +1,7 @@
 /*
 Name:         searchitunes
 Description:  Search the Apple iTunes Store and App Store.
-Author:       Franklin (https://fvdm.com)
+Author:       Franklin (https://frankl.in)
 Source:       https://github.com/fvdm/nodejs-searchitunes
 License:      Unlicense (Public Domain, see UNLICENSE file)
 */
