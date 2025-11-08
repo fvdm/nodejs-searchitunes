@@ -1,8 +1,8 @@
 {
   "author": {
     "name": "Franklin",
-    "email": "info@fvdm.com",
-    "url": "https://fvdm.com"
+    "email": "fr@nkl.in",
+    "url": "https://frankl.in"
   },
   "name": "searchitunes",
   "description": "Search the Apple iTunes Store and App Store with this lightweight module",
@@ -33,6 +33,7 @@
     "itunes",
     "lookup",
     "music",
+    "osint",
     "search"
   ],
   "license": "Unlicense",
