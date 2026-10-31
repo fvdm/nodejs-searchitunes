@@ -71,7 +71,7 @@ For searching in the iTunes databases you simply include
 the search params in your request. The function will
 resolve with an object.
 
-- [Search API docs](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/)
+- [Search API docs](https://performance-partners.apple.com/search-api#//apple_ref/doc/uid/TP40017632-CH5-SW1)
 - [Live demo](https://npm.runkit.com/searchitunes)
 
 
@@ -169,5 +169,5 @@ For more information, please refer to <https://unlicense.org/>
 ## Author
 
 [Franklin](https://frankl.in)
-| [buy me a coffee](https://frankl.in/donating)
+| [buy me a coffee](https://frankl.in/tip)
 
