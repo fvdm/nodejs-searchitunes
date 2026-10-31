@@ -209,8 +209,7 @@ dotest.add( 'throwEmpty = false', async test => {
 
   try {
     data = await app( {
-      entity: 'software',
-      term: 'SomethingThatShouldNotExistForAPITestingPuposes',
+      term: 'osnfuwufjwidjtiroejwnfoa',
       throwEmpty: false,
     } );
   }
