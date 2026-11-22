@@ -15,7 +15,7 @@ const timeout = process.env.testTimeout || 5000;
 // Tests
 dotest.add( 'Interface', test => {
   test()
-    .isFunction( 'fail', 'exports', app )
+    .isAsyncFunction( 'fail', 'exports', app )
     .done()
   ;
 } );
@@ -29,7 +29,7 @@ dotest.add( 'Error: no results (throwEmpty = true)', async test => {
     data = await app( {
       entity: 'software',
       country: 'NL',
-      term: 'this_is_hopefully_not_an_existing_app_in_the_app_store',
+      term: 'osnfuwufjwidjtiroejwnfoa',
       limit: 1,
       price: 0,
       timeout,
@@ -41,7 +41,7 @@ dotest.add( 'Error: no results (throwEmpty = true)', async test => {
 
   test()
     .isError( 'fail', 'error', error )
-    .isExactly( 'fail', 'error.message', error && error.message, 'no results' )
+    .isExactly( 'fail', 'error.message', error?.message, 'no results' )
     .isUndefined( 'fail', 'data', data )
     .done()
   ;
@@ -61,7 +61,7 @@ dotest.add( 'Error: request error', async test => {
 
   test()
     .isError( 'fail', 'error', error )
-    .isExactly( 'fail', 'error.name', error && error.name, 'TimeoutError' )
+    .isExactly( 'fail', 'error.name', error?.name, 'TimeoutError' )
     .isUndefined( 'fail', 'data', data )
     .done()
   ;
@@ -84,7 +84,7 @@ dotest.add( 'Lookup by ID - One item', async test => {
 
   test( error )
     .isObject( 'fail', 'data', data )
-    .isExactly( 'fail', 'data.trackId', data && data.trackId, 1477376905 )
+    .isExactly( 'fail', 'data.trackId', data?.trackId, 1477376905 )
     .isUndefined( 'fail', 'error', error )
     .done()
   ;
@@ -130,7 +130,7 @@ dotest.add( 'Lookup by trackId', async test => {
 
   test( error )
     .isObject( 'fail', 'data', data )
-    .isExactly( 'fail', 'data.trackId', data && data.trackId, 1477376905 )
+    .isExactly( 'fail', 'data.trackId', data?.trackId, 1477376905 )
     .isUndefined( 'fail', 'error', error )
     .done()
   ;
@@ -140,7 +140,6 @@ dotest.add( 'Lookup by trackId', async test => {
 dotest.add( 'Search by term', async test => {
   let error;
   let data;
-  let item;
 
   try {
     data = await app( {
@@ -153,8 +152,6 @@ dotest.add( 'Search by term', async test => {
       userAgent: 'test.js',
       timeout,
     } );
-
-    item = data.results && data.results[0];
   }
   catch ( err ) {
     error = err;
@@ -162,11 +159,11 @@ dotest.add( 'Search by term', async test => {
 
   test( error )
     .isObject( 'fail', 'data', data )
-    .isExactly( 'fail', 'data.resultCount', data && data.resultCount, 1 )
-    .isArray( 'fail', 'data.results', data && data.results )
-    .isNotEmpty( 'fail', 'data.results', data && data.results )
-    .isObject( 'fail', 'data.results[0]', item )
-    .isExactly( 'fail', 'data.results[0].kind', item && item.kind, 'software' )
+    .isExactly( 'fail', 'data.resultCount', data?.resultCount, 1 )
+    .isArray( 'fail', 'data.results', data?.results )
+    .isNotEmpty( 'fail', 'data.results', data?.results )
+    .isObject( 'fail', 'data.results[0]', data?.results?.[0] )
+    .isExactly( 'fail', 'data.results[0].kind', data?.results?.[0]?.kind, 'software' )
     .isUndefined( 'fail', 'error', error )
     .done()
   ;
@@ -194,9 +191,9 @@ dotest.add( 'Default timeout', async test => {
 
   test( error )
     .isObject( 'fail', 'data', data )
-    .isExactly( 'fail', 'data.resultCount', data && data.resultCount, 1 )
-    .isArray( 'fail', 'data.results', data && data.results )
-    .isNotEmpty( 'fail', 'data.results', data && data.results )
+    .isExactly( 'fail', 'data.resultCount', data?.resultCount, 1 )
+    .isArray( 'fail', 'data.results', data?.results )
+    .isNotEmpty( 'fail', 'data.results', data?.results )
     .isUndefined( 'fail', 'error', error )
     .done()
   ;
@@ -250,4 +247,3 @@ dotest.add( 'Error: API error', async test => {
 
 // Start the tests
 dotest.run();
-
