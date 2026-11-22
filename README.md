@@ -112,7 +112,7 @@ To request multiple objects at once you set one of the ID params above to an
 _array_ with the item ID's. This will always return an _array_.
 
 ```js
-searchitunes( { id: [ 123, 789 ] } )
+searchitunes( { id: [123, 789] } )
   .then( arr => arr.forEach( processItems ) )
   .catch( console.error )
 ;
