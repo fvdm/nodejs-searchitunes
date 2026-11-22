@@ -4,6 +4,7 @@ logs
 npm-debug.log*
 package-lock.json
 node_modules
+.node-version
 .npm
 pids
 *.pid
