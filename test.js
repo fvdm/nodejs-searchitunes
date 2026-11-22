@@ -15,7 +15,7 @@ const timeout = process.env.testTimeout || 5000;
 // Tests
 dotest.add( 'Interface', test => {
   test()
-    .isFunction( 'fail', 'exports', app )
+    .isAsyncFunction( 'fail', 'exports', app )
     .done()
   ;
 } );
