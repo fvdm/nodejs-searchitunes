@@ -140,7 +140,6 @@ dotest.add( 'Lookup by trackId', async test => {
 dotest.add( 'Search by term', async test => {
   let error;
   let data;
-  let item;
 
   try {
     data = await app( {
